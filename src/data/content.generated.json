@@ -5,25 +5,7 @@
     "primaryCta": {
       "label": "Join the community",
       "url": "/connect"
-    },
-    "navLinks": [
-      {
-        "label": "Home",
-        "href": "/"
-      },
-      {
-        "label": "About",
-        "href": "/about"
-      },
-      {
-        "label": "Gatherings",
-        "href": "/gatherings"
-      },
-      {
-        "label": "Connect",
-        "href": "/connect"
-      }
-    ]
+    }
   },
   "homePage": {
     "title": "Gathering people who help others connect with nature.",
@@ -70,18 +52,6 @@
   ],
   "events": [
     {
-      "slug": "winter-solstice-gathering-2022",
-      "title": "Winter Solstice Gathering",
-      "startDate": "2022-12-21T18:00:00-06:00",
-      "endDate": "2022-12-21T21:00:00-06:00",
-      "location": "Spiritwoods, Stillwater, MN",
-      "summary": "A community evening focused on connection during the longest night.",
-      "details": "Included shared practice, reflection, and facilitated group activities.",
-      "status": "past",
-      "registrationUrl": "",
-      "imageUrl": ""
-    },
-    {
       "slug": "summer-field-practice-circle",
       "title": "Summer Field Practice Circle",
       "startDate": "2026-07-13T17:30:00-05:00",
@@ -91,7 +61,19 @@
       "details": "Participants will explore guided prompts, partner dialogue, and shared skill-building around nature-based professional practice.",
       "status": "upcoming",
       "registrationUrl": "",
-      "imageUrl": ""
+      "imageUrl": "https://images.ctfassets.net/ek9rx9938ifx/3G8Gu8iLbCEiPoERV0pj2a/8b6b36b4f814daef5e85548822cf4384/hero-nature.svg"
+    },
+    {
+      "slug": "winter-solstice-gathering-2022",
+      "title": "Winter Solstice Gathering",
+      "startDate": "2022-12-21T18:00:00-06:00",
+      "endDate": "2022-12-21T21:00:00-06:00",
+      "location": "Spiritwoods, Stillwater, MN",
+      "summary": "A community evening focused on connection during the longest night.",
+      "details": "Included shared practice, reflection, and facilitated group activities.",
+      "status": "past",
+      "registrationUrl": "",
+      "imageUrl": "https://images.ctfassets.net/ek9rx9938ifx/3G8Gu8iLbCEiPoERV0pj2a/8b6b36b4f814daef5e85548822cf4384/hero-nature.svg"
     },
     {
       "slug": "spring-networking-walk",
@@ -103,7 +85,7 @@
       "details": "Participants will move through guided introductions, small-group exchange, and a closing reflection focused on practical collaboration opportunities.",
       "status": "upcoming",
       "registrationUrl": "",
-      "imageUrl": ""
+      "imageUrl": "https://images.ctfassets.net/ek9rx9938ifx/3G8Gu8iLbCEiPoERV0pj2a/8b6b36b4f814daef5e85548822cf4384/hero-nature.svg"
     }
   ],
   "communityLinks": [

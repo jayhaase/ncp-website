@@ -1,18 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import {
-  getFeaturedEvents,
-  getHomeContent,
-  getSiteSettings,
-  getUpcomingEvents
-} from '../lib/content.js';
+import { getHomeContent, getSiteSettings, getUpcomingEvents } from '../lib/content.js';
 
 const site = getSiteSettings();
 const home = getHomeContent();
-const featuredEvents = getFeaturedEvents();
-const upcomingEvents = getUpcomingEvents().slice(0, 3);
-
-const displayEvents = featuredEvents.length ? featuredEvents : upcomingEvents;
+const displayEvents = getUpcomingEvents().slice(0, 1);
 ---
 
 <BaseLayout title={site.organizationName} description={home.description}>

@@ -1,4 +1,5 @@
 import generated from '../data/content.generated.json';
+import { NAV_LINKS } from './navLinks.js';
 
 /** @typedef {{label: string, href: string}} NavLink */
 /** @typedef {{label: string, url: string}} PrimaryCta */
@@ -28,7 +29,7 @@ function sortByDateDesc(a, b) {
 export function getSiteSettings() {
   return {
     ...generated.siteSettings,
-    navLinks: (generated.siteSettings?.navLinks || []).filter((item) => item?.href !== '/join')
+    navLinks: NAV_LINKS.filter((item) => item?.href !== '/join')
   };
 }
 

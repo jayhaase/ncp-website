@@ -18,13 +18,7 @@ const FALLBACK_CONTENT = {
     primaryCta: {
       label: 'Join the community',
       url: '/connect'
-    },
-    navLinks: [
-      { label: 'Home', href: '/' },
-      { label: 'About', href: '/about' },
-      { label: 'Gatherings', href: '/gatherings' },
-      { label: 'Connect', href: '/connect' }
-    ]
+    }
   },
   homePage: {
     title: 'Gathering people who help others connect with nature.',
@@ -319,31 +313,6 @@ function createClient() {
   };
 }
 
-function mapNavLinks(siteItem, linkMap) {
-  const field = siteItem?.fields?.navLinks;
-  const linked = resolveLinkedEntries(field, linkMap);
-
-  const fromLinked = linked
-    .map((item) => ({
-      label: item.fields?.label || item.fields?.title,
-      href: item.fields?.href || item.fields?.url
-    }))
-    .filter((item) => item.label && item.href);
-
-  if (fromLinked.length) {
-    return fromLinked;
-  }
-
-  const fromInline = toArray(field)
-    .map((item) => ({
-      label: item?.fields?.label || item?.label,
-      href: item?.fields?.href || item?.href || item?.url
-    }))
-    .filter((item) => item.label && item.href);
-
-  return fromInline.length ? fromInline : FALLBACK_CONTENT.siteSettings.navLinks;
-}
-
 function mapHighlightCards(homeItem, linkMap) {
   const field = homeItem?.fields?.highlightCards || homeItem?.fields?.highlights;
   const linked = resolveLinkedEntries(field, linkMap);
@@ -404,7 +373,6 @@ function mapSiteSettings(siteResponse) {
     return FALLBACK_CONTENT.siteSettings;
   }
 
-  const linkMap = getLinkedEntryMap(siteResponse);
   return {
     organizationName: siteItem.fields?.organizationName || siteItem.fields?.siteName || FALLBACK_CONTENT.siteSettings.organizationName,
     footerText: toPlainText(siteItem.fields?.footerText) || FALLBACK_CONTENT.siteSettings.footerText,
@@ -417,8 +385,7 @@ function mapSiteSettings(siteResponse) {
         siteItem.fields?.primaryCtaUrl ||
         siteItem.fields?.ctaUrl ||
         FALLBACK_CONTENT.siteSettings.primaryCta.url
-    },
-    navLinks: mapNavLinks(siteItem, linkMap)
+    }
   };
 }
 

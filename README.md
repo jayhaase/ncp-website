@@ -70,7 +70,8 @@ These are configured in `netlify.toml`.
 - `footerText` (short/long text)
 - `primaryCtaLabel` (short text)
 - `primaryCtaUrl` (short text)
-- `navLinks` (references or array-style objects with `label` + `href`)
+
+Navigation links are defined in code (`src/lib/navLinks.js`), not in Contentful.
 
 ### `homePage` (single entry)
 - `heroTitle` (short text)

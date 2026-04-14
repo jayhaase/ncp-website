@@ -27,20 +27,13 @@ const MODEL_CONTENT_TYPES = [
   {
     id: 'siteSettings',
     name: 'Site Settings',
-    description: 'Global site settings and navigation content.',
+    description: 'Global site settings.',
     displayField: 'organizationName',
     fields: [
       { id: 'organizationName', name: 'Organization Name', type: 'Symbol', required: true },
       { id: 'footerText', name: 'Footer Text', type: 'Text', required: false },
       { id: 'primaryCtaLabel', name: 'Primary CTA Label', type: 'Symbol', required: false },
-      { id: 'primaryCtaUrl', name: 'Primary CTA URL', type: 'Symbol', required: false },
-      {
-        id: 'navLinks',
-        name: 'Nav Links',
-        type: 'Array',
-        required: false,
-        items: { type: 'Object', validations: [] }
-      }
+      { id: 'primaryCtaUrl', name: 'Primary CTA URL', type: 'Symbol', required: false }
     ]
   },
   {
