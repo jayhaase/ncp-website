@@ -45,12 +45,7 @@ const FALLBACK_CONTENT = {
         title: 'Participation first',
         description: 'Join events, contribute ideas, and help shape the direction of the community.'
       }
-    ],
-    featuredEventSlugs: ['spring-networking-walk'],
-    connectIntro:
-      'Build relationships through the online community, shared events, and introductions to peers in related fields.',
-    joinCtaText:
-      'Ready to take part? Start with the Connect page to see the simplest path into gatherings, directory access, and community spaces.'
+    ]
   },
   pages: [
     {
@@ -397,10 +392,6 @@ function mapHomePage(homeResponse) {
 
   const linkMap = getLinkedEntryMap(homeResponse);
   const assetMap = getLinkedAssetMap(homeResponse);
-  const featuredEvents = resolveLinkedEntries(
-    homeItem.fields?.featuredEvents || homeItem.fields?.eventHighlights,
-    linkMap
-  );
 
   return {
     title: homeItem.fields?.heroTitle || homeItem.fields?.title || FALLBACK_CONTENT.homePage.title,
@@ -415,12 +406,7 @@ function mapHomePage(homeResponse) {
     howItWorks: toArray(homeItem.fields?.howItWorks)
       .map((item) => toPlainText(item))
       .filter(Boolean),
-    highlightCards: mapHighlightCards(homeItem, linkMap),
-    featuredEventSlugs: featuredEvents
-      .map((entry) => entry.fields?.slug)
-      .filter(Boolean),
-    connectIntro: toPlainText(homeItem.fields?.connectIntro) || FALLBACK_CONTENT.homePage.connectIntro,
-    joinCtaText: toPlainText(homeItem.fields?.joinCtaText) || FALLBACK_CONTENT.homePage.joinCtaText
+    highlightCards: mapHighlightCards(homeItem, linkMap)
   };
 }
 

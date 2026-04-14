@@ -4,7 +4,7 @@ import { NAV_LINKS } from './navLinks.js';
 /** @typedef {{label: string, href: string}} NavLink */
 /** @typedef {{label: string, url: string}} PrimaryCta */
 /** @typedef {{organizationName: string, footerText: string, primaryCta: PrimaryCta, navLinks: NavLink[]}} SiteSettings */
-/** @typedef {{title: string, description: string, mission: string, howItWorks: string[], highlightCards: {title: string, description: string}[], featuredEventSlugs: string[], connectIntro: string, joinCtaText: string}} HomeContent */
+/** @typedef {{title: string, description: string, heroImageUrl: string, heroImageAlt: string, mission: string, howItWorks: string[], highlightCards: {title: string, description: string}[]}} HomeContent */
 /** @typedef {{heading: string, bodyText?: string, cards?: {title: string, description: string}[], listItems?: string[]}} PageSection */
 /** @typedef {{slug: string, title: string, intro: string, sections: PageSection[]}} PageContent */
 /** @typedef {{slug: string, title: string, startDate: string, endDate: string, location: string, summary: string, details: string, status: 'upcoming' | 'past', registrationUrl?: string, imageUrl?: string}} EventItem */
@@ -86,14 +86,4 @@ export function getPastEvents() {
 /** @returns {CommunityLink[]} */
 export function getCommunityLinks() {
   return generated.communityLinks || [];
-}
-
-/** @returns {EventItem[]} */
-export function getFeaturedEvents() {
-  const slugs = new Set(getHomeContent().featuredEventSlugs || []);
-  if (!slugs.size) {
-    return getUpcomingEvents().slice(0, 3);
-  }
-
-  return getAllEvents().filter((event) => slugs.has(event.slug));
 }

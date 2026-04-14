@@ -62,16 +62,7 @@ const CONTENT_TYPES = [
         type: 'Array',
         required: false,
         items: { type: 'Symbol' }
-      },
-      {
-        id: 'featuredEventSlugs',
-        name: 'Featured Event Slugs',
-        type: 'Array',
-        required: false,
-        items: { type: 'Symbol' }
-      },
-      { id: 'connectIntro', name: 'Connect Intro', type: 'Text', required: false },
-      { id: 'joinCtaText', name: 'Join CTA Text', type: 'Text', required: false }
+      }
     ]
   },
   {

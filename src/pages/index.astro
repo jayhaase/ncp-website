@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getHomeContent, getSiteSettings, getUpcomingEvents } from '../lib/content.js';
+import { assetUrl, resolveHref, sitePath } from '../lib/sitePath.js';
 
 const site = getSiteSettings();
 const home = getHomeContent();
@@ -13,13 +14,13 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
       <h1 id="home-hero-title">{home.title}</h1>
       {home.description ? <p class="lead-text">{home.description}</p> : null}
       <div class="button-row">
-        <a class="button" href={site.primaryCta.url}>{site.primaryCta.label}</a>
-        <a class="button button--secondary" href="/gatherings">Explore gatherings</a>
+        <a class="button" href={resolveHref(site.primaryCta.url)}>{site.primaryCta.label}</a>
+        <a class="button button--secondary" href={sitePath('/gatherings')}>Explore gatherings</a>
       </div>
     </div>
     <img
       class="placeholder-image placeholder-image--hero"
-      src={home.heroImageUrl || '/images/placeholders/hero-nature.svg'}
+      src={assetUrl(home.heroImageUrl || '/images/placeholders/hero-nature.svg')}
       alt={home.heroImageAlt || 'Homepage hero image'}
       loading="lazy"
     />
@@ -55,22 +56,22 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
       <article class="how-item">
         <h3><span aria-hidden="true">🌲</span> Attend a Gathering</h3>
         <p>Join a seasonal gathering — held outdoors, in community, with space for honest conversation.</p>
-        <a class="how-action" href="/gatherings">Explore</a>
+        <a class="how-action" href={sitePath('/gatherings')}>Explore</a>
       </article>
       <article class="how-item">
         <h3><span aria-hidden="true">💬</span> Connect Online</h3>
         <p>Join our Slack community to stay in touch, share resources, and find collaborators between events.</p>
-        <a class="how-action" href="/connect">Connect</a>
+        <a class="how-action" href={sitePath('/connect')}>Connect</a>
       </article>
       <article class="how-item">
         <h3><span aria-hidden="true">📇</span> Join the Directory</h3>
         <p>Add yourself to the member directory so others can find and reach out to you.</p>
-        <a class="how-action" href="/connect">Join</a>
+        <a class="how-action" href={sitePath('/connect')}>Join</a>
       </article>
       <article class="how-item">
         <h3><span aria-hidden="true">🤝</span> Participate &amp; Contribute</h3>
         <p>Propose a session, share your expertise, or simply show up and be present.</p>
-        <a class="how-action" href="/connect">Participate</a>
+        <a class="how-action" href={sitePath('/connect')}>Participate</a>
       </article>
     </div>
   </section>
@@ -88,7 +89,7 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
                 {event.imageUrl ? (
                   <img
                     class="event-thumb"
-                    src={event.imageUrl}
+                    src={assetUrl(event.imageUrl)}
                     alt={`Event image for ${event.title}`}
                     loading="lazy"
                   />
@@ -102,8 +103,8 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
                 </p>
                 <p>{event.summary}</p>
                 <div class="event-cta-row">
-                  <a class="button button--compact" href={event.registrationUrl || '/connect'}>Register</a>
-                  <a class="button button--secondary button--compact" href="/gatherings">View all gatherings</a>
+                  <a class="button button--compact" href={resolveHref(event.registrationUrl || '/connect')}>Register</a>
+                  <a class="button button--secondary button--compact" href={sitePath('/gatherings')}>View all gatherings</a>
                 </div>
               </div>
             </article>

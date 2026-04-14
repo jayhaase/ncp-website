@@ -452,7 +452,8 @@ p {
 .gathering-preview-item--media {
   display: grid;
   grid-template-columns: 170px 1fr;
-  gap: 0.9rem;
+  column-gap: 1.5rem;
+  row-gap: 0.9rem;
   align-items: start;
 }
 
@@ -481,7 +482,8 @@ p {
 .event-item--media {
   display: grid;
   grid-template-columns: 190px 1fr;
-  gap: 1rem;
+  column-gap: 1.5rem;
+  row-gap: 1rem;
   align-items: start;
 }
 

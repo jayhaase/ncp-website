@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { getSiteSettings } from '../lib/content.js';
+import { pathMatchesNav, sitePath } from '../lib/sitePath.js';
 
 const site = getSiteSettings();
 const {
@@ -8,11 +9,8 @@ const {
   description = site.organizationName
 } = Astro.props;
 
-const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
-
 function isActiveNavItem(href) {
-  const normalizedHref = (href || '/').replace(/\/+$/, '') || '/';
-  return normalizedHref === currentPath;
+  return pathMatchesNav(Astro.url.pathname, href);
 }
 ---
 
@@ -29,13 +27,13 @@ function isActiveNavItem(href) {
 
     <header class="site-header">
       <div class="wrapper nav-shell">
-        <a href="/" class="brand">{site.organizationName}</a>
+        <a href={sitePath('/')} class="brand">{site.organizationName}</a>
         <nav aria-label="Main navigation">
           <ul class="main-nav">
             {
               site.navLinks.map((item) => (
                 <li>
-                  <a href={item.href} aria-current={isActiveNavItem(item.href) ? 'page' : undefined}>
+                  <a href={sitePath(item.href)} aria-current={isActiveNavItem(item.href) ? 'page' : undefined}>
                     {item.label}
                   </a>
                 </li>

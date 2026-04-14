@@ -59,16 +59,7 @@ const MODEL_CONTENT_TYPES = [
         type: 'Array',
         required: false,
         items: { type: 'Symbol' }
-      },
-      {
-        id: 'featuredEventSlugs',
-        name: 'Featured Event Slugs',
-        type: 'Array',
-        required: false,
-        items: { type: 'Symbol' }
-      },
-      { id: 'connectIntro', name: 'Connect Intro', type: 'Text', required: false },
-      { id: 'joinCtaText', name: 'Join CTA Text', type: 'Text', required: false }
+      }
     ]
   },
   {
@@ -545,9 +536,6 @@ async function seedHomePage(content, locale) {
   assignIfPossible(fields, locale, fMap, 'heroImageAlt', content.heroImageAlt);
   assignIfPossible(fields, locale, fMap, 'mission', content.mission);
   assignIfPossible(fields, locale, fMap, 'howItWorks', content.howItWorks);
-  assignIfPossible(fields, locale, fMap, 'connectIntro', content.connectIntro);
-  assignIfPossible(fields, locale, fMap, 'joinCtaText', content.joinCtaText);
-  assignIfPossible(fields, locale, fMap, 'featuredEventSlugs', content.featuredEventSlugs);
 
   await upsertEntry({ contentTypeId, existingEntry: existing, fields });
 }

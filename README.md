@@ -56,6 +56,8 @@ Notes:
 
 These are configured in `netlify.toml`.
 
+**GitHub Pages (project site):** `astro.config.mjs` sets `base` to `/${repo}/` when the GitHub Actions workflow runs (`GITHUB_ACTIONS` + `GITHUB_REPOSITORY`). Internal links and `public/` assets go through `src/lib/sitePath.js` so URLs work under `https://<user>.github.io/<repo>/`.
+
 ## Routes in v1
 
 - `/` Home
@@ -81,9 +83,6 @@ Navigation links are defined in code (`src/lib/navLinks.js`), not in Contentful.
 - `mission` (long text)
 - `howItWorks` (list of short/long text)
 - `highlightCards` or `highlights` (references)
-- `featuredEvents` or `eventHighlights` (references to `event`)
-- `connectIntro` (long text)
-- `joinCtaText` (long text)
 
 ### `standardPage` (multiple)
 - `slug` (short text)

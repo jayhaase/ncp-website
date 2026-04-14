@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getSiteSettings, getUpcomingEvents } from '../lib/content.js';
+import { assetUrl, resolveHref } from '../lib/sitePath.js';
 
 const site = getSiteSettings();
 const upcoming = getUpcomingEvents().slice(0, 2);
@@ -19,7 +20,7 @@ const upcoming = getUpcomingEvents().slice(0, 2);
     </div>
     <img
       class="placeholder-image placeholder-image--hero"
-      src="/images/placeholders/gathering-circle.svg"
+      src={assetUrl('/images/placeholders/gathering-circle.svg')}
       alt="Placeholder illustration for gatherings page"
       loading="lazy"
     />
@@ -35,7 +36,7 @@ const upcoming = getUpcomingEvents().slice(0, 2);
               {event.imageUrl ? (
                 <img
                   class="event-thumb"
-                  src={event.imageUrl}
+                  src={assetUrl(event.imageUrl)}
                   alt={`Event image for ${event.title}`}
                   loading="lazy"
                 />
@@ -50,7 +51,7 @@ const upcoming = getUpcomingEvents().slice(0, 2);
                 {event.summary ? <p>{event.summary}</p> : null}
                 {event.details ? <p>{event.details}</p> : null}
                 <div class="event-cta-row">
-                  <a class="button button--compact" href={event.registrationUrl || '/connect'}>Register</a>
+                  <a class="button button--compact" href={resolveHref(event.registrationUrl || '/connect')}>Register</a>
                 </div>
               </div>
             </article>
