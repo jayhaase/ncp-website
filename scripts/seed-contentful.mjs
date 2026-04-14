@@ -63,6 +63,17 @@ const MODEL_CONTENT_TYPES = [
     ]
   },
   {
+    id: 'infoCard',
+    name: 'Info Card',
+    description: 'Cards referenced from standard pages.',
+    displayField: 'title',
+    fields: [
+      { id: 'title', name: 'Title', type: 'Symbol', required: true },
+      { id: 'description', name: 'Description', type: 'Text', required: false },
+      { id: 'href', name: 'Link URL', type: 'Symbol', required: false }
+    ]
+  },
+  {
     id: 'standardPage',
     name: 'Standard Page',
     description: 'Reusable standard content pages.',
@@ -77,6 +88,17 @@ const MODEL_CONTENT_TYPES = [
       },
       { id: 'title', name: 'Title', type: 'Symbol', required: true },
       { id: 'intro', name: 'Intro', type: 'Text', required: false },
+      {
+        id: 'infoCards',
+        name: 'Info Cards',
+        type: 'Array',
+        required: false,
+        items: {
+          type: 'Link',
+          linkType: 'Entry',
+          validations: [{ linkContentType: ['infoCard'] }]
+        }
+      },
       {
         id: 'sections',
         name: 'Sections',
@@ -458,7 +480,7 @@ async function upsertEntry({ contentTypeId, existingEntry, fields }) {
       version: updated.sys.version
     });
     counters.published += 1;
-    return;
+    return updated;
   }
 
   const created = await cma('/entries', {
@@ -475,6 +497,7 @@ async function upsertEntry({ contentTypeId, existingEntry, fields }) {
     version: created.sys.version
   });
   counters.published += 1;
+  return created;
 }
 
 async function seedSiteSettings(content, locale) {
@@ -517,12 +540,35 @@ async function seedStandardPages(pages, locale) {
   const contentTypeId = 'standardPage';
   const ct = await getContentType(contentTypeId);
   const fMap = fieldMap(ct);
+  const cardCt = await getContentType('infoCard');
+  const cardFMap = fieldMap(cardCt);
 
   for (const page of pages) {
+    const infoCardIds = [];
+    for (const card of page.infoCards || []) {
+      const cardFields = {};
+      assignIfPossible(cardFields, locale, cardFMap, 'title', card.title);
+      assignIfPossible(cardFields, locale, cardFMap, 'heading', card.title);
+      assignIfPossible(cardFields, locale, cardFMap, 'description', card.description);
+      assignIfPossible(cardFields, locale, cardFMap, 'body', card.description);
+      assignIfPossible(cardFields, locale, cardFMap, 'href', card.href);
+      assignIfPossible(cardFields, locale, cardFMap, 'url', card.href);
+
+      const createdCard = await upsertEntry({
+        contentTypeId: 'infoCard',
+        existingEntry: null,
+        fields: cardFields
+      });
+      if (createdCard?.sys?.id) {
+        infoCardIds.push(createdCard.sys.id);
+      }
+    }
+
     const fields = {};
     assignIfPossible(fields, locale, fMap, 'slug', page.slug);
     assignIfPossible(fields, locale, fMap, 'title', page.title);
     assignIfPossible(fields, locale, fMap, 'intro', page.intro);
+    assignIfPossible(fields, locale, fMap, 'infoCards', infoCardIds);
 
     const mergedBody = (page.sections || [])
       .map((section) => {

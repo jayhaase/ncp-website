@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getPageBySlug, getRoutableStandardPages, getSiteSettings } from '../lib/content.js';
+import { resolveHref } from '../lib/sitePath.js';
 
 const site = getSiteSettings();
 
@@ -26,25 +27,23 @@ if (!page || slug === 'gatherings') {
   </section>
 
   {
-    slug === 'about' || slug === 'connect' ? (
-      <>
-        <section class="section-stack identity-section" aria-labelledby={`${slug}-static-card-1`}>
-          <h2 id={`${slug}-static-card-1`}>Lorem ipsum dolor</h2>
-          <p class="page-body standard-page-card__text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+    (page.infoCards ?? []).map((card, i) => (
+      <section
+        class="section-stack"
+        aria-labelledby={card.title ? `info-card-${slug}-${i}` : undefined}
+        aria-label={card.title ? undefined : 'Information'}
+      >
+        {card.title ? <h2 id={`info-card-${slug}-${i}`}>{card.title}</h2> : null}
+        {card.description ? <p class="page-body">{card.description}</p> : null}
+        {card.href ? (
+          <p>
+            <a class="button button--compact" href={resolveHref(card.href)}>
+              Learn more
+            </a>
           </p>
-        </section>
-        <section class="section-stack identity-section" aria-labelledby={`${slug}-static-card-2`}>
-          <h2 id={`${slug}-static-card-2`}>Sit amet consectetur</h2>
-          <p class="page-body standard-page-card__text">
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum.
-          </p>
-        </section>
-      </>
-    ) : null
+        ) : null}
+      </section>
+    ))
   }
 
   {

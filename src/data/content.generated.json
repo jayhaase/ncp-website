@@ -38,12 +38,36 @@
       "slug": "connect",
       "title": "Connect With Others",
       "intro": "Find clear pathways to connect with members, conversations, and collaboration opportunities across the community.",
+      "infoCards": [
+        {
+          "title": "Join our Slack Group",
+          "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "href": ""
+        },
+        {
+          "title": "Get Listed in our Directory",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+          "href": ""
+        }
+      ],
       "sections": []
     },
     {
       "slug": "about",
       "title": "About Nature Connected Professionals",
       "intro": "Nature Connected Professionals is a member-powered network supporting people who use nature connection in counseling, education, health, and community practice.",
+      "infoCards": [
+        {
+          "title": "Lorem Ipsum Dolor",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+          "href": ""
+        },
+        {
+          "title": "Sit Amet Consectetur",
+          "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "href": ""
+        }
+      ],
       "sections": []
     }
   ],

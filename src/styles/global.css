@@ -41,19 +41,6 @@ body {
   min-height: 100dvh;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(rgba(29, 53, 43, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(29, 53, 43, 0.04) 1px, transparent 1px);
-  background-size: 42px 42px;
-  mask-image: radial-gradient(circle at 50% 30%, rgba(0, 0, 0, 0.45), transparent 70%);
-  z-index: -1;
-}
-
 a {
   color: inherit;
 }
@@ -168,7 +155,9 @@ button:focus-visible,
 
 .content-shell {
   flex: 1 0 auto;
+  width: 100%;
   padding: 2.4rem 0 4.5rem;
+  background: var(--surface);
 }
 
 .hero-block {
@@ -232,12 +221,6 @@ p {
   white-space: pre-wrap;
 }
 
-.standard-page-card__text {
-  margin: 0;
-  color: var(--muted);
-  white-space: normal;
-}
-
 .section-stack {
   margin-top: 2rem;
   padding: 1.35rem 1.35rem 1.4rem;
@@ -262,7 +245,8 @@ p {
   background: linear-gradient(90deg, var(--accent), var(--accent-gold));
 }
 
-.section-stack:nth-of-type(even) {
+/* Alternate rows among .section-stack only (hero is not .section-stack, so no off-by-one) */
+.content-shell .wrapper > .section-stack:nth-child(2n + 2) {
   background: linear-gradient(165deg, #f6f5ef 0%, var(--surface) 55%);
 }
 
@@ -605,7 +589,7 @@ p {
 .site-footer {
   flex-shrink: 0;
   border-top: 1px solid var(--border);
-  background: #f8faf5;
+  background: var(--bg);
 }
 
 .footer-shell {

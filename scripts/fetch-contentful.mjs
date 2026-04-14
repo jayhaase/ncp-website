@@ -53,6 +53,7 @@ const FALLBACK_CONTENT = {
       title: 'About Nature Connected Professionals',
       intro:
         'Nature Connected Professionals is a member-powered network supporting people who use nature connection in counseling, education, health, and community practice.',
+      infoCards: [],
       sections: [
         {
           heading: 'Lorem ipsum',
@@ -71,6 +72,7 @@ const FALLBACK_CONTENT = {
       title: 'Connect With Others',
       intro:
         'Find clear pathways to connect with members, conversations, and collaboration opportunities across the community.',
+      infoCards: [],
       sections: [
         {
           heading: 'Member directory',
@@ -343,6 +345,19 @@ function mapSectionBlocks(pageItem, linkMap) {
   return sections.filter((section) => section.heading || section.bodyText || section.cards.length || section.listItems.length);
 }
 
+function mapInfoCards(pageItem, linkMap) {
+  const raw = pageItem?.fields?.infoCards ?? pageItem?.fields?.infoCard;
+  const field = Array.isArray(raw) ? raw : raw?.sys?.type === 'Link' ? [raw] : [];
+  const linked = resolveLinkedEntries(field, linkMap);
+  return linked
+    .map((entry) => ({
+      title: entry.fields?.title || entry.fields?.heading || '',
+      description: toPlainText(entry.fields?.description || entry.fields?.body),
+      href: entry.fields?.href || entry.fields?.url || ''
+    }))
+    .filter((card) => card.title || card.description);
+}
+
 function mapSiteSettings(siteResponse) {
   const siteItem = siteResponse?.items?.[0];
   if (!siteItem) {
@@ -398,6 +413,7 @@ function mapPages(pageResponse) {
       slug: item.fields?.slug,
       title: item.fields?.title,
       intro: toPlainText(item.fields?.intro || item.fields?.description),
+      infoCards: mapInfoCards(item, linkMap),
       sections: mapSectionBlocks(item, linkMap)
     }))
     .filter((page) => page.slug && page.title);

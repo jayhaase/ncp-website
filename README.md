@@ -45,7 +45,7 @@ If you want to rebuild Contentful from the local generated content (`src/data/co
 
 Notes:
 - `seed-contentful` is destructive by design: it deletes all entries, assets, and content types in the target environment first.
-- After clearing, it recreates and publishes these content types: `siteSettings`, `homePage`, `standardPage`, `event`.
+- After clearing, it recreates and publishes these content types: `siteSettings`, `homePage`, `infoCard`, `standardPage`, `event`.
 - Then it seeds and publishes entries from `src/data/content.generated.json`.
 - Home hero image comes from `homePage.heroImage` (Asset); the build output uses a resolved URL plus a static placeholder if no asset is set.
 
@@ -84,10 +84,16 @@ Navigation links are defined in code (`src/lib/navLinks.js`), not in Contentful.
 - `howItWorks` (list of short/long text)
 - `highlightCards` or `highlights` (references)
 
+### `infoCard` (multiple)
+- `title` (short text)
+- `description` (long text)
+- `href` (short text, optional) — internal path or external URL for an optional “Learn more” control
+
 ### `standardPage` (multiple)
 - `slug` (short text)
 - `title` (short text)
 - `intro` (long text)
+- `infoCards` (references to `infoCard`)
 - `sectionBlocks` (references)
 
 ### `event` (multiple)

@@ -45,8 +45,10 @@ function isActiveNavItem(href) {
         </div>
       </header>
 
-      <main id="main-content" class="wrapper content-shell">
-        <slot />
+      <main id="main-content" class="content-shell">
+        <div class="wrapper">
+          <slot />
+        </div>
       </main>
 
       <footer class="site-footer">

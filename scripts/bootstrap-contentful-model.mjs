@@ -66,6 +66,17 @@ const CONTENT_TYPES = [
     ]
   },
   {
+    id: 'infoCard',
+    name: 'Info Card',
+    description: 'Cards referenced from standard pages.',
+    displayField: 'title',
+    fields: [
+      { id: 'title', name: 'Title', type: 'Symbol', required: true },
+      { id: 'description', name: 'Description', type: 'Text', required: false },
+      { id: 'href', name: 'Link URL', type: 'Symbol', required: false }
+    ]
+  },
+  {
     id: 'standardPage',
     name: 'Standard Page',
     description: 'Reusable standard content pages.',
@@ -80,6 +91,17 @@ const CONTENT_TYPES = [
       },
       { id: 'title', name: 'Title', type: 'Symbol', required: true },
       { id: 'intro', name: 'Intro', type: 'Text', required: false },
+      {
+        id: 'infoCards',
+        name: 'Info Cards',
+        type: 'Array',
+        required: false,
+        items: {
+          type: 'Link',
+          linkType: 'Entry',
+          validations: [{ linkContentType: ['infoCard'] }]
+        }
+      },
       {
         id: 'sections',
         name: 'Sections',
