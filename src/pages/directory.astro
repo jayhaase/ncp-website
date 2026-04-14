@@ -5,14 +5,17 @@ import { getSiteSettings } from '../lib/content.js';
 const site = getSiteSettings();
 ---
 
-<BaseLayout title={`Directory | ${site.organizationName}`} description="Browse the member directory.">
+<BaseLayout
+  title={`Directory | ${site.organizationName}`}
+  description="Browse the member directory."
+  embedFillHeight
+>
   <section class="directory-embed" aria-label="Directory">
     <iframe
       class="airtable-embed"
       src="https://airtable.com/embed/appsMUuZqzzwwu4Wp/shrQIKbbvgCQdYeTz?viewControls=on"
       width="100%"
-      height="533"
-      style="background: transparent; border: 1px solid #ccc;"
+      style="background: transparent;"
       title="Member directory"
     ></iframe>
   </section>
