@@ -26,6 +26,28 @@ if (!page || slug === 'gatherings') {
   </section>
 
   {
+    slug === 'about' || slug === 'connect' ? (
+      <>
+        <section class="section-stack identity-section" aria-labelledby={`${slug}-static-card-1`}>
+          <h2 id={`${slug}-static-card-1`}>Lorem ipsum dolor</h2>
+          <p class="page-body standard-page-card__text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+          </p>
+        </section>
+        <section class="section-stack identity-section" aria-labelledby={`${slug}-static-card-2`}>
+          <h2 id={`${slug}-static-card-2`}>Sit amet consectetur</h2>
+          <p class="page-body standard-page-card__text">
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+            laborum.
+          </p>
+        </section>
+      </>
+    ) : null
+  }
+
+  {
     page.sections.map((section) => (
       <section class="section-stack" aria-label={section.heading || 'Page section'}>
         {section.heading ? <h2>{section.heading}</h2> : null}
