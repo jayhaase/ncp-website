@@ -18,11 +18,12 @@ const displayEvents = featuredEvents.length ? featuredEvents : upcomingEvents;
 ---
 
 <BaseLayout title={site.organizationName} description={home.description}>
-  <section class="hero-block" aria-labelledby="home-hero-title">
-    <p class="eyebrow">Nature Connected Professionals</p>
-    <h1 id="home-hero-title">{home.title}</h1>
-    <p class="lead-text">{home.description}</p>
-    <a class="button" href={site.primaryCta.url}>{site.primaryCta.label}</a>
+  <section class="hero-block hero-block--media" aria-labelledby="home-hero-title">
+    <div class="hero-copy">
+      <h1 id="home-hero-title">{home.title}</h1>
+      <p class="lead-text">{home.description}</p>
+      <a class="button" href={site.primaryCta.url}>{site.primaryCta.label}</a>
+    </div>
     <img
       class="placeholder-image placeholder-image--hero"
       src="/images/placeholders/hero-nature.svg"
