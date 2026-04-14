@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  getCommunityLinks,
+  getFeaturedEvents,
+  getHomeContent,
+  getSiteSettings,
+  getUpcomingEvents
+} from '../lib/content.js';
+
+const site = getSiteSettings();
+const home = getHomeContent();
+const featuredEvents = getFeaturedEvents();
+const upcomingEvents = getUpcomingEvents().slice(0, 3);
+const links = getCommunityLinks();
+
+const displayEvents = featuredEvents.length ? featuredEvents : upcomingEvents;
+---
+
+<BaseLayout title={site.organizationName} description={home.description}>
+  <section class="hero-block" aria-labelledby="home-hero-title">
+    <p class="eyebrow">Nature Connected Professionals</p>
+    <h1 id="home-hero-title">{home.title}</h1>
+    <p class="lead-text">{home.description}</p>
+    <a class="button" href={site.primaryCta.url}>{site.primaryCta.label}</a>
+    <img
+      class="placeholder-image placeholder-image--hero"
+      src="/images/placeholders/hero-nature.svg"
+      alt="Placeholder illustration for homepage hero"
+      loading="lazy"
+    />
+  </section>
+
+  <section class="section-stack" aria-labelledby="mission-title">
+    <h2 id="mission-title">Mission and value</h2>
+    <p>{home.mission}</p>
+  </section>
+
+  <section class="section-stack" aria-labelledby="how-title">
+    <h2 id="how-title">How this works</h2>
+    <ul class="list-flow">
+      {
+        home.howItWorks.map((item) => <li>{item}</li>)
+      }
+    </ul>
+  </section>
+
+  <section class="section-stack" aria-labelledby="highlights-title">
+    <h2 id="highlights-title">What you can expect</h2>
+    <div class="card-grid">
+      {
+        home.highlightCards.map((card) => (
+          <article class="card">
+            <h3>{card.title}</h3>
+            <p>{card.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section-stack" aria-labelledby="events-preview-title">
+    <div class="section-header-row">
+      <h2 id="events-preview-title">Upcoming gatherings</h2>
+      <a class="text-link" href="/gatherings">View all gatherings</a>
+    </div>
+    {
+      displayEvents.length ? (
+        <div class="event-list">
+          {displayEvents.map((event) => (
+            <article class="event-item">
+              <h3>{event.title}</h3>
+              <p class="meta-text">
+                <time datetime={event.startDate}>{new Date(event.startDate).toLocaleDateString()}</time>
+                {' · '}
+                {event.location}
+              </p>
+              <p>{event.summary}</p>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p>No upcoming gatherings are posted yet.</p>
+      )
+    }
+    <img
+      class="placeholder-image"
+      src="/images/placeholders/gathering-circle.svg"
+      alt="Placeholder illustration for gatherings"
+      loading="lazy"
+    />
+  </section>
+
+  <section class="section-stack" aria-labelledby="connect-title">
+    <h2 id="connect-title">Connect with others</h2>
+    <p>{home.connectIntro}</p>
+    <div class="card-grid">
+      {
+        links.map((link) => (
+          <article class="card">
+            <h3>{link.label}</h3>
+            <p>{link.description}</p>
+            {link.visibilityNote ? <p class="meta-text">{link.visibilityNote}</p> : null}
+            <a class="text-link" href={link.url}>Open</a>
+          </article>
+        ))
+      }
+    </div>
+    <img
+      class="placeholder-image"
+      src="/images/placeholders/community-path.svg"
+      alt="Placeholder illustration for community connections"
+      loading="lazy"
+    />
+  </section>
+
+  <section class="section-stack callout" aria-labelledby="join-title">
+    <h2 id="join-title">Join and participate</h2>
+    <p>{home.joinCtaText}</p>
+    <a class="button" href={site.primaryCta.url}>{site.primaryCta.label}</a>
+  </section>
+</BaseLayout>

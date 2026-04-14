@@ -1,0 +1,46 @@
+---
+import '../styles/global.css';
+import { getSiteSettings } from '../lib/content.js';
+
+const site = getSiteSettings();
+const {
+  title = `${site.organizationName}`,
+  description = site.organizationName
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="wrapper nav-shell">
+        <a href="/" class="brand">{site.organizationName}</a>
+        <nav aria-label="Main navigation">
+          <ul class="main-nav">
+            {
+              site.navLinks.map((item) => (
+                <li><a href={item.href}>{item.label}</a></li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content" class="wrapper content-shell">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrapper footer-shell">{site.footerText}</div>
+    </footer>
+  </body>
+</html>

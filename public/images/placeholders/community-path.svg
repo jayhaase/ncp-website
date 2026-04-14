@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Community pathway placeholder</title>
+  <desc id="desc">Abstract pathway through trees symbolizing connection and participation.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e7efe0" />
+      <stop offset="100%" stop-color="#f9faf5" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="700" fill="url(#bg)" />
+  <path d="M520 700C530 560 520 430 600 320C680 430 670 560 680 700Z" fill="#d6c5a5" />
+  <g fill="#6a9172">
+    <circle cx="180" cy="190" r="82" />
+    <circle cx="310" cy="130" r="68" />
+    <circle cx="1030" cy="190" r="82" />
+    <circle cx="900" cy="130" r="68" />
+    <circle cx="170" cy="380" r="96" />
+    <circle cx="1030" cy="380" r="96" />
+  </g>
+  <g fill="#3f5e4b">
+    <rect x="165" y="245" width="22" height="180" />
+    <rect x="300" y="190" width="22" height="170" />
+    <rect x="1018" y="245" width="22" height="180" />
+    <rect x="888" y="190" width="22" height="170" />
+  </g>
+</svg>

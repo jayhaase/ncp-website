@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Gathering illustration placeholder</title>
+  <desc id="desc">Stylized figures in a circle around a natural center as a placeholder.</desc>
+  <rect width="1200" height="700" fill="#edf3e6" />
+  <ellipse cx="600" cy="390" rx="330" ry="160" fill="#dce8d1" />
+  <circle cx="600" cy="390" r="90" fill="#87a36f" />
+  <g fill="#3f5e4b">
+    <circle cx="320" cy="310" r="34" />
+    <circle cx="420" cy="245" r="34" />
+    <circle cx="550" cy="220" r="34" />
+    <circle cx="680" cy="230" r="34" />
+    <circle cx="810" cy="270" r="34" />
+    <circle cx="885" cy="360" r="34" />
+    <circle cx="860" cy="465" r="34" />
+    <circle cx="770" cy="540" r="34" />
+    <circle cx="640" cy="565" r="34" />
+    <circle cx="510" cy="555" r="34" />
+    <circle cx="390" cy="510" r="34" />
+    <circle cx="315" cy="420" r="34" />
+  </g>
+</svg>

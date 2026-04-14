@@ -1,0 +1,93 @@
+# Nature Connected Professionals Website
+
+Static Astro website for Netlify deployment with Contentful-managed content fetched at build time.
+
+## Architecture
+
+- Runtime: static HTML/CSS/JS from Astro
+- CMS: Contentful Delivery API
+- Content sync: `scripts/fetch-contentful.mjs`
+- Generated data file: `src/data/content.generated.json`
+
+The deployed site does not call Contentful at runtime. Content is fetched during `sync-content` and rendered from local generated JSON.
+
+## Local development
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Configure environment variables:
+   ```bash
+   cp .env.example .env
+   ```
+3. Start dev server with file watching:
+   ```bash
+   npm run dev
+   ```
+4. Refresh generated content manually when needed:
+   ```bash
+   npm run sync-content
+   ```
+
+## Build and deploy
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+
+These are configured in `netlify.toml`.
+
+## Routes in v1
+
+- `/` Home
+- `/about` Standard page
+- `/gatherings` Events page with upcoming/past sections
+- `/connect` Standard page
+- `/join` Standard page
+
+## Contentful content model (v1)
+
+### `siteSettings` (single entry)
+- `organizationName` (short text)
+- `footerText` (short/long text)
+- `primaryCtaLabel` (short text)
+- `primaryCtaUrl` (short text)
+- `navLinks` (references or array-style objects with `label` + `href`)
+
+### `homePage` (single entry)
+- `heroTitle` (short text)
+- `heroSubtitle` (long text)
+- `mission` (long text)
+- `howItWorks` (list of short/long text)
+- `highlightCards` or `highlights` (references)
+- `featuredEvents` or `eventHighlights` (references to `event`)
+- `connectIntro` (long text)
+- `joinCtaText` (long text)
+
+### `standardPage` (multiple)
+- `slug` (short text)
+- `title` (short text)
+- `intro` (long text)
+- `sectionBlocks` (references)
+
+### `event` (multiple)
+- `slug` (short text)
+- `title` (short text)
+- `startDate` (date/time)
+- `endDate` (date/time, optional)
+- `location` (short/long text)
+- `summary` (long text)
+- `details` (long text)
+- `status` (`upcoming` or `past`)
+- `registrationUrl` (short text, optional)
+
+### `communityLink` (multiple)
+- `label` (short text)
+- `description` (long text)
+- `url` (short text)
+- `category` (`directory`, `slack`, `join`, `resources`)
+- `visibilityNote` (short/long text)
+
+## Fallback behavior
+
+If Contentful variables are missing or API calls fail, the sync script writes fallback content so local dev and production builds still succeed.

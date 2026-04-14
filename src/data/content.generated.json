@@ -1,0 +1,152 @@
+{
+  "siteSettings": {
+    "organizationName": "Nature Connected Professionals",
+    "footerText": "Nature Connected Professionals",
+    "primaryCta": {
+      "label": "Join the community",
+      "url": "/join"
+    },
+    "navLinks": [
+      {
+        "label": "Home",
+        "href": "/"
+      },
+      {
+        "label": "About",
+        "href": "/about"
+      },
+      {
+        "label": "Gatherings",
+        "href": "/gatherings"
+      },
+      {
+        "label": "Connect",
+        "href": "/connect"
+      },
+      {
+        "label": "Join",
+        "href": "/join"
+      }
+    ]
+  },
+  "homePage": {
+    "title": "Gathering people who help others reconnect with nature.",
+    "description": "Nature Connected Professionals builds depth through community, broadens impact through networking, and supports care for life through generous sharing of practice and wisdom.",
+    "mission": "We gather to cultivate depth through community building, engage broadly through networking, and steward care for life by generously sharing skills, knowledge, and lived experience.",
+    "howItWorks": [
+      "Seasonal gatherings convene members around practical themes and facilitated connection.",
+      "Unconference-style sessions create room for peer learning, collaboration, and emergent topics.",
+      "Members contribute resources, referrals, and lessons learned from real-world practice."
+    ],
+    "highlightCards": [
+      {
+        "title": "For practitioners and educators",
+        "description": "A professional community for people weaving nature connection into their work."
+      },
+      {
+        "title": "Rooted in practice",
+        "description": "Tools, stories, and methods are shared in plain language and grounded in experience."
+      },
+      {
+        "title": "Participation first",
+        "description": "Join events, contribute ideas, and help shape the direction of the community."
+      }
+    ],
+    "featuredEventSlugs": [
+      "spring-networking-walk"
+    ],
+    "connectIntro": "Build relationships through the online community, shared events, and introductions to peers in related fields.",
+    "joinCtaText": "Ready to take part? Start with the Join page to see the simplest path into gatherings, directory access, and community spaces."
+  },
+  "pages": [
+    {
+      "slug": "about",
+      "title": "About Nature Connected Professionals",
+      "intro": "Nature Connected Professionals is a member-powered network supporting people who use nature connection in counseling, education, health, and community practice.",
+      "sections": [
+        {
+          "heading": "Why this group exists",
+          "bodyText": "The group began as a graduate-school community project and continues as a collaborative space for practitioners who want meaningful, practical ways to connect people with the natural world."
+        },
+        {
+          "heading": "How this works",
+          "bodyText": "We host seasonal gatherings and unconference-style sessions where members share methods, challenges, and opportunities. Participation is encouraged at every level."
+        }
+      ]
+    },
+    {
+      "slug": "connect",
+      "title": "Connect With Others",
+      "intro": "Find clear pathways to connect with members, conversations, and collaboration opportunities across the community.",
+      "sections": [
+        {
+          "heading": "Member directory",
+          "bodyText": "The member directory is managed privately/off-site for participant safety and context. Use the directory access link below to request entry details."
+        },
+        {
+          "heading": "Online community",
+          "bodyText": "Our online community space supports ongoing collaboration between gatherings. Introduce yourself, ask for resources, and share events or opportunities."
+        }
+      ]
+    },
+    {
+      "slug": "join",
+      "title": "Join and Participate",
+      "intro": "Getting involved is straightforward. Follow these steps to join gatherings, access the directory pathway, and participate in the community.",
+      "sections": [
+        {
+          "heading": "Simple steps",
+          "listItems": [
+            "Review upcoming gatherings and choose one to attend.",
+            "Use the community links to request access to private spaces.",
+            "Introduce yourself and share how nature connection fits your work."
+          ]
+        },
+        {
+          "heading": "No barriers to starting",
+          "bodyText": "You do not need to wait for perfect timing. Start by attending one gathering, then expand into collaborative projects and ongoing participation."
+        }
+      ]
+    }
+  ],
+  "events": [
+    {
+      "slug": "spring-networking-walk",
+      "title": "Spring Networking Walk",
+      "startDate": "2026-05-16T10:00:00-05:00",
+      "endDate": "2026-05-16T12:00:00-05:00",
+      "location": "Woodlake Nature Center, Richfield, MN",
+      "summary": "A seasonal gathering to reconnect, share current work, and build new professional relationships.",
+      "details": "Participants will move through guided introductions, small-group exchange, and a closing reflection focused on practical collaboration opportunities.",
+      "status": "upcoming",
+      "registrationUrl": ""
+    },
+    {
+      "slug": "winter-solstice-gathering-2022",
+      "title": "Winter Solstice Gathering",
+      "startDate": "2022-12-21T18:00:00-06:00",
+      "endDate": "2022-12-21T21:00:00-06:00",
+      "location": "Spiritwoods, Stillwater, MN",
+      "summary": "A community evening focused on connection during the longest night.",
+      "details": "Included shared practice, reflection, and facilitated group activities.",
+      "status": "past",
+      "registrationUrl": ""
+    }
+  ],
+  "communityLinks": [
+    {
+      "label": "Request directory access",
+      "description": "Directory participation is managed off-site and shared with approved members.",
+      "url": "/join",
+      "category": "directory",
+      "visibilityNote": "Private/off-site access pathway"
+    },
+    {
+      "label": "Join the online community",
+      "description": "Connect with peers between gatherings for support and collaboration.",
+      "url": "/join",
+      "category": "slack",
+      "visibilityNote": "Access details shared after join request"
+    }
+  ]
+}
