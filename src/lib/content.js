@@ -10,7 +10,7 @@ import { NAV_LINKS } from './navLinks.js';
 /** @typedef {{slug: string, title: string, intro: string, sections: PageSection[], infoCards?: InfoCard[]}} PageContent */
 /** @typedef {{slug: string, title: string, startDate: string, endDate: string, location: string, summary: string, details: string, registrationUrl?: string, image?: string}} EventItem */
 
-const RESERVED_DYNAMIC_SLUGS = new Set(['gatherings', 'join']);
+const RESERVED_DYNAMIC_SLUGS = new Set(['gatherings', 'join', 'directory']);
 
 const PRIMARY_CTA = {
   label: 'Join the community',
