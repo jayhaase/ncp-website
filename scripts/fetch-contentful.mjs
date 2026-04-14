@@ -363,14 +363,6 @@ function mapDirectoryMembers(directoryResponse) {
     })
     .filter((m) => m.firstName || m.lastName || m.organization || m.email || m.website);
 
-  members.sort((a, b) => {
-    const byLast = a.lastName.localeCompare(b.lastName, undefined, { sensitivity: 'base' });
-    if (byLast !== 0) {
-      return byLast;
-    }
-    return a.firstName.localeCompare(b.firstName, undefined, { sensitivity: 'base' });
-  });
-
   return members;
 }
 
