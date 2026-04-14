@@ -123,6 +123,18 @@
       "imageUrl": "/images/placeholders/gathering-circle.svg"
     },
     {
+      "slug": "summer-field-practice-circle",
+      "title": "Summer Field Practice Circle",
+      "startDate": "2026-07-13T17:30:00-05:00",
+      "endDate": "2026-07-13T19:30:00-05:00",
+      "location": "Theodore Wirth Regional Park, Minneapolis, MN",
+      "summary": "A practical evening focused on peer exchange, reflection, and in-the-field facilitation techniques.",
+      "details": "Participants will explore guided prompts, partner dialogue, and shared skill-building around nature-based professional practice.",
+      "status": "upcoming",
+      "registrationUrl": "",
+      "imageUrl": "/images/placeholders/hero-nature.svg"
+    },
+    {
       "slug": "winter-solstice-gathering-2022",
       "title": "Winter Solstice Gathering",
       "startDate": "2022-12-21T18:00:00-06:00",

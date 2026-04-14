@@ -103,20 +103,21 @@ const displayEvents = featuredEvents.length ? featuredEvents : upcomingEvents;
                 ) : null}
                 <div>
                   <h3>{event.title}</h3>
-                  <p class="meta-text">
-                    <time datetime={event.startDate}>{new Date(event.startDate).toLocaleDateString()}</time>
-                    {' · '}
-                    {event.location}
-                  </p>
-                  <p>{event.summary}</p>
+                <p class="meta-text">
+                  <time datetime={event.startDate}>{new Date(event.startDate).toLocaleDateString()}</time>
+                  {' · '}
+                  {event.location}
+                </p>
+                <p>{event.summary}</p>
+                <div class="event-cta-row">
+                  <a class="button button--compact" href={event.registrationUrl || '/join'}>Register</a>
+                  <a class="button button--secondary button--compact" href="/gatherings">View all gatherings</a>
                 </div>
-              </article>
-            ))}
-          </div>
-          <div class="events-action-row">
-            <a class="how-action" href="/gatherings">View all gatherings</a>
-          </div>
+              </div>
+            </article>
+          ))}
         </div>
+      </div>
       ) : (
         <p>No upcoming gatherings are posted yet.</p>
       )
