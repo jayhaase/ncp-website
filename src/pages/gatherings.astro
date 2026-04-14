@@ -26,10 +26,10 @@ const upcoming = getUpcomingEvents().slice(0, 2);
   </section>
 
   <section class="section-stack" aria-labelledby="upcoming-title">
-    <h2 id="upcoming-title">Upcoming gatherings</h2>
+    <h2 id="upcoming-title">Upcoming</h2>
     {
       upcoming.length ? (
-        <div class="event-list">
+        <div class="event-list event-list--gatherings">
           {upcoming.map((event) => (
             <article class="event-item event-item--media event-item--plain">
               {event.imageUrl ? (
@@ -50,7 +50,7 @@ const upcoming = getUpcomingEvents().slice(0, 2);
                 {event.summary ? <p>{event.summary}</p> : null}
                 {event.details ? <p>{event.details}</p> : null}
                 <div class="event-cta-row">
-                  <a class="button button--compact" href={event.registrationUrl || '/join'}>Register</a>
+                  <a class="button button--compact" href={event.registrationUrl || '/connect'}>Register</a>
                 </div>
               </div>
             </article>

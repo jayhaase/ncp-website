@@ -22,7 +22,7 @@ const displayEvents = featuredEvents.length ? featuredEvents : upcomingEvents;
       {home.description ? <p class="lead-text">{home.description}</p> : null}
       <div class="button-row">
         <a class="button" href={site.primaryCta.url}>{site.primaryCta.label}</a>
-        <a class="button button--secondary" href="/gatherings">Explore events</a>
+        <a class="button button--secondary" href="/gatherings">Explore gatherings</a>
       </div>
     </div>
     <img
@@ -78,7 +78,7 @@ const displayEvents = featuredEvents.length ? featuredEvents : upcomingEvents;
       <article class="how-item">
         <h3><span aria-hidden="true">🤝</span> Participate &amp; Contribute</h3>
         <p>Propose a session, share your expertise, or simply show up and be present.</p>
-        <a class="how-action" href="/join">Participate</a>
+        <a class="how-action" href="/connect">Participate</a>
       </article>
     </div>
   </section>
@@ -110,7 +110,7 @@ const displayEvents = featuredEvents.length ? featuredEvents : upcomingEvents;
                 </p>
                 <p>{event.summary}</p>
                 <div class="event-cta-row">
-                  <a class="button button--compact" href={event.registrationUrl || '/join'}>Register</a>
+                  <a class="button button--compact" href={event.registrationUrl || '/connect'}>Register</a>
                   <a class="button button--secondary button--compact" href="/gatherings">View all gatherings</a>
                 </div>
               </div>

@@ -73,9 +73,13 @@ button:focus-visible,
 }
 
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
   border-bottom: 1px solid var(--border);
   background: rgba(252, 251, 245, 0.93);
   backdrop-filter: blur(7px);
+  box-shadow: 0 2px 10px rgba(18, 32, 24, 0.06);
 }
 
 .nav-shell {
@@ -410,6 +414,10 @@ p {
   gap: 0.9rem;
 }
 
+.event-list--gatherings {
+  gap: 1.35rem;
+}
+
 .gathering-preview-list {
   display: grid;
   gap: 0.9rem;
@@ -452,7 +460,8 @@ p {
   border-bottom: 1px solid var(--accent-gold);
   border-radius: 0;
   background: transparent;
-  padding: 0.3rem 0 0.9rem;
+  padding: 0.7rem 0 1.75rem;
+  margin-bottom: 0.75rem;
   box-shadow: none;
 }
 
@@ -511,12 +520,13 @@ p {
 .button {
   display: inline-block;
   text-decoration: none;
-  background: var(--accent);
+  background: #2d6a4a;
   color: #fff;
   border-radius: 999px;
-  font-weight: 700;
+  font-weight: 600;
   padding: 0.74rem 1.05rem;
-  box-shadow: 0 8px 20px rgba(20, 71, 50, 0.28);
+  border: 1px solid rgba(16, 54, 37, 0.45);
+  box-shadow: 0 4px 12px rgba(20, 71, 50, 0.16);
   transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
 }
 
@@ -542,9 +552,9 @@ p {
 }
 
 .button:hover {
-  background: var(--accent-strong);
+  background: #245a3f;
   transform: none;
-  box-shadow: 0 12px 26px rgba(20, 71, 50, 0.35);
+  box-shadow: 0 6px 14px rgba(20, 71, 50, 0.2);
 }
 
 .button.button--secondary:hover,

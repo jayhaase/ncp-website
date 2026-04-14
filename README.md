@@ -41,9 +41,8 @@ These are configured in `netlify.toml`.
 
 - `/` Home
 - `/about` Standard page
-- `/gatherings` Events page with upcoming/past sections
+- `/gatherings` Events page with upcoming sections
 - `/connect` Standard page
-- `/join` Standard page
 
 ## Contentful content model (v1)
 

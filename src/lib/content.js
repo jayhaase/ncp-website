@@ -9,7 +9,7 @@ import generated from '../data/content.generated.json';
 /** @typedef {{slug: string, title: string, startDate: string, endDate: string, location: string, summary: string, details: string, status: 'upcoming' | 'past', registrationUrl?: string, imageUrl?: string}} EventItem */
 /** @typedef {{label: string, description: string, url: string, category: string, visibilityNote?: string}} CommunityLink */
 
-const RESERVED_DYNAMIC_SLUGS = new Set(['gatherings']);
+const RESERVED_DYNAMIC_SLUGS = new Set(['gatherings', 'join']);
 
 function isValidDate(value) {
   const date = new Date(value);
@@ -26,7 +26,10 @@ function sortByDateDesc(a, b) {
 
 /** @returns {SiteSettings} */
 export function getSiteSettings() {
-  return generated.siteSettings;
+  return {
+    ...generated.siteSettings,
+    navLinks: (generated.siteSettings?.navLinks || []).filter((item) => item?.href !== '/join')
+  };
 }
 
 /** @returns {HomeContent} */

@@ -17,14 +17,13 @@ const FALLBACK_CONTENT = {
     footerText: 'Nature Connected Professionals',
     primaryCta: {
       label: 'Join the community',
-      url: '/join'
+      url: '/connect'
     },
     navLinks: [
       { label: 'Home', href: '/' },
       { label: 'About', href: '/about' },
       { label: 'Gatherings', href: '/gatherings' },
-      { label: 'Connect', href: '/connect' },
-      { label: 'Join', href: '/join' }
+      { label: 'Connect', href: '/connect' }
     ]
   },
   homePage: {
@@ -55,7 +54,7 @@ const FALLBACK_CONTENT = {
     connectIntro:
       'Build relationships through the online community, shared events, and introductions to peers in related fields.',
     joinCtaText:
-      'Ready to take part? Start with the Join page to see the simplest path into gatherings, directory access, and community spaces.'
+      'Ready to take part? Start with the Connect page to see the simplest path into gatherings, directory access, and community spaces.'
   },
   pages: [
     {
@@ -85,36 +84,16 @@ const FALLBACK_CONTENT = {
         {
           heading: 'Member directory',
           bodyText:
-            'The member directory is managed privately/off-site for participant safety and context. Use the directory access link below to request entry details.'
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.'
         },
         {
           heading: 'Online community',
           bodyText:
-            'Our online community space supports ongoing collaboration between gatherings. Introduce yourself, ask for resources, and share events or opportunities.'
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus mollis interdum, sed posuere consectetur est at lobortis.'
         }
       ]
     },
-    {
-      slug: 'join',
-      title: 'Join and Participate',
-      intro:
-        'Getting involved is straightforward. Follow these steps to join gatherings, access the directory pathway, and participate in the community.',
-      sections: [
-        {
-          heading: 'Simple steps',
-          listItems: [
-            'Review upcoming gatherings and choose one to attend.',
-            'Use the community links to request access to private spaces.',
-            'Introduce yourself and share how nature connection fits your work.'
-          ]
-        },
-        {
-          heading: 'No barriers to starting',
-          bodyText:
-            'You do not need to wait for perfect timing. Start by attending one gathering, then expand into collaborative projects and ongoing participation.'
-        }
-      ]
-    }
+    
   ],
   events: [
     {
@@ -160,14 +139,14 @@ const FALLBACK_CONTENT = {
     {
       label: 'Request directory access',
       description: 'Directory participation is managed off-site and shared with approved members.',
-      url: '/join',
+      url: '/connect',
       category: 'directory',
       visibilityNote: 'Private/off-site access pathway'
     },
     {
       label: 'Join the online community',
       description: 'Connect with peers between gatherings for support and collaboration.',
-      url: '/join',
+      url: '/connect',
       category: 'slack',
       visibilityNote: 'Access details shared after join request'
     }
