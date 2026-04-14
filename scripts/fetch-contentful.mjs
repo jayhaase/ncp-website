@@ -124,7 +124,8 @@ const FALLBACK_CONTENT = {
       registrationUrl: '',
       image: '/images/placeholders/hero-nature.svg'
     }
-  ]
+  ],
+  directoryMembers: []
 };
 
 function loadDotEnv(filePath) {
@@ -263,6 +264,114 @@ function extractAssetUrl(fieldValue, assetMap) {
   }
 
   return '';
+}
+
+function pickFieldString(fields, ...keys) {
+  for (const key of keys) {
+    const v = fields?.[key];
+    if (v != null && String(v).trim()) {
+      return String(v).trim();
+    }
+  }
+  return '';
+}
+
+function normalizeWebsiteUrl(raw) {
+  const s = typeof raw === 'string' ? raw.trim() : '';
+  if (!s) {
+    return '';
+  }
+  if (/^https?:\/\//i.test(s)) {
+    return s;
+  }
+  if (/^\/\//.test(s)) {
+    return `https:${s}`;
+  }
+  return `https://${s}`;
+}
+
+function normalizePhotoUrlString(raw) {
+  const s = typeof raw === 'string' ? raw.trim() : '';
+  if (!s) {
+    return '';
+  }
+  if (/^https?:\/\//i.test(s)) {
+    return s;
+  }
+  if (/^\/\//.test(s)) {
+    return `https:${s}`;
+  }
+  if (s.startsWith('/')) {
+    return s;
+  }
+  return '';
+}
+
+/**
+ * Maps Contentful `directoryMember` entries to the site's directory shape.
+ * Preferred field ids: firstName, lastName, email, organization, website, pronouns,
+ * services, natureBasedCertifications, photo (Asset).
+ */
+function mapDirectoryMembers(directoryResponse) {
+  const assetMap = getLinkedAssetMap(directoryResponse);
+  const members = toArray(directoryResponse?.items)
+    .map((item) => {
+      const f = item.fields || {};
+      let firstName = pickFieldString(f, 'firstName', 'givenName');
+      let lastName = pickFieldString(f, 'lastName', 'familyName', 'surname');
+      const combined = pickFieldString(f, 'name', 'displayName', 'fullName');
+      if (!firstName && !lastName && combined) {
+        const idx = combined.lastIndexOf(' ');
+        if (idx === -1) {
+          firstName = combined;
+        } else {
+          firstName = combined.slice(0, idx).trim();
+          lastName = combined.slice(idx + 1).trim();
+        }
+      }
+
+      const email = pickFieldString(f, 'email', 'emailAddress');
+      const organization = toPlainText(f.organization || f.companyName || f.orgName);
+      const websiteRaw = pickFieldString(f, 'website', 'websiteUrl', 'url', 'webSite');
+      const website = normalizeWebsiteUrl(websiteRaw) || '';
+      const pronouns = pickFieldString(f, 'pronouns');
+      const services = toPlainText(f.services || f.servicesOffered || f.aboutServices);
+      const certifications = toPlainText(
+        f.natureBasedCertifications || f.certifications || f.credentials || f.natureBasedCertification
+      );
+
+      const photoAssetUrl = extractAssetUrl(f.photo || f.headshot || f.image || f.profileImage, assetMap);
+      const photoString = normalizePhotoUrlString(
+        pickFieldString(f, 'photoUrl', 'imageUrl', 'headshotUrl')
+      );
+      const photoUrl = photoAssetUrl || photoString || null;
+
+      const displayName = [firstName, lastName].filter(Boolean).join(' ').trim() || combined || 'Member';
+
+      return {
+        email,
+        firstName,
+        lastName,
+        organization,
+        website: website || null,
+        pronouns,
+        services,
+        certifications,
+        displayName,
+        photoUrl
+      };
+    })
+    .filter((m) => m.firstName || m.lastName || m.organization || m.email || m.website);
+
+  members.sort((a, b) => {
+    const byLast = a.lastName.localeCompare(b.lastName, undefined, { sensitivity: 'base' });
+    if (byLast !== 0) {
+      return byLast;
+    }
+    return a.firstName.localeCompare(b.firstName, undefined, { sensitivity: 'base' });
+  });
+
+  return members;
 }
 
 function createClient() {
@@ -440,7 +549,7 @@ function mapEvents(eventResponse) {
   return events.length ? events : FALLBACK_CONTENT.events;
 }
 
-function normalizeContent(siteResponse, homeResponse, pageResponse, eventResponse) {
+function normalizeContent(siteResponse, homeResponse, pageResponse, eventResponse, directoryResponse) {
   const siteSettings = mapSiteSettings(siteResponse);
   const homePage = mapHomePage(homeResponse);
 
@@ -452,7 +561,8 @@ function normalizeContent(siteResponse, homeResponse, pageResponse, eventRespons
       howItWorks: homePage.howItWorks.length ? homePage.howItWorks : FALLBACK_CONTENT.homePage.howItWorks
     },
     pages: mapPages(pageResponse),
-    events: mapEvents(eventResponse)
+    events: mapEvents(eventResponse),
+    directoryMembers: mapDirectoryMembers(directoryResponse)
   };
 }
 
@@ -487,7 +597,7 @@ async function run() {
   }
 
   try {
-    const [siteResponse, homeResponse, pageResponse, eventResponse] = await Promise.all([
+    const [siteResponse, homeResponse, pageResponse, eventResponse, directoryResponse] = await Promise.all([
       client('/entries', {
         content_type: 'siteSettings',
         limit: '1',
@@ -507,10 +617,21 @@ async function run() {
         content_type: 'event',
         limit: '300',
         include: '2'
+      }),
+      client('/entries', {
+        content_type: 'directoryMember',
+        limit: '300',
+        include: '2'
       })
     ]);
 
-    const content = normalizeContent(siteResponse, homeResponse, pageResponse, eventResponse);
+    const content = normalizeContent(
+      siteResponse,
+      homeResponse,
+      pageResponse,
+      eventResponse,
+      directoryResponse
+    );
     const changed = await writeGenerated(content);
     console.log(
       changed

@@ -1,22 +1,107 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getSiteSettings } from '../lib/content.js';
+import { getDirectoryEntries } from '../lib/directory.js';
+import { assetUrl } from '../lib/sitePath.js';
 
 const site = getSiteSettings();
+const members = getDirectoryEntries();
+const placeholderPhoto = assetUrl('/images/placeholders/directory-avatar.svg');
+
+function resolveMemberPhoto(photoUrl) {
+  if (!photoUrl) return placeholderPhoto;
+  if (photoUrl.startsWith('/')) return assetUrl(photoUrl);
+  return photoUrl;
+}
 ---
 
 <BaseLayout
   title={`Directory | ${site.organizationName}`}
-  description="Browse the member directory."
-  embedFillHeight
+  description="Browse the member directory — nature-connected professionals across Minnesota and beyond."
 >
-  <section class="directory-embed" aria-label="Directory">
-    <iframe
-      class="airtable-embed"
-      src="https://airtable.com/embed/appsMUuZqzzwwu4Wp/shrQIKbbvgCQdYeTz?viewControls=on"
-      width="100%"
-      style="background: transparent;"
-      title="Member directory"
-    ></iframe>
+  <section class="hero-block hero-block--media" aria-labelledby="directory-title">
+    <div class="hero-copy">
+      <h1 id="directory-title">Member Directory</h1>
+      <p class="lead-text">
+        Connect with practitioners, guides, and professionals who integrate nature into their work. Listings are
+        sourced from our community roster.
+      </p>
+    </div>
+    <img
+      class="placeholder-image placeholder-image--hero"
+      src={assetUrl('/images/placeholders/hero-nature.svg')}
+      alt="Nature landscape illustration"
+      loading="lazy"
+    />
   </section>
+
+  <div class="directory-page">
+    <div class="directory-page__header">
+      <p class="meta-text directory-count">{members.length} listings</p>
+    </div>
+
+    <ul class="directory-list" aria-label="Directory listings">
+      {
+        members.map((member) => {
+          const photoSrc = resolveMemberPhoto(member.photoUrl);
+          const hasPhoto = Boolean(member.photoUrl);
+          return (
+            <li>
+              <article class="directory-card">
+                <div class="directory-card__layout">
+                  <img
+                    class="directory-card__photo"
+                    src={photoSrc}
+                    alt={hasPhoto ? `Photo of ${member.displayName}` : ''}
+                    loading="lazy"
+                    width="320"
+                    height="320"
+                  />
+                  <div class="directory-card__main">
+                    <header class="directory-card__header">
+                      <h3 class="directory-card__name">{member.displayName}</h3>
+                      {member.organization ? <p class="directory-card__org">{member.organization}</p> : null}
+                      {member.pronouns ? <p class="meta-text directory-card__pronouns">{member.pronouns}</p> : null}
+                    </header>
+
+                    <div class="directory-card__actions">
+                      {member.email ? (
+                        <a class="button button--compact" href={`mailto:${member.email}`}>
+                          Email
+                        </a>
+                      ) : null}
+                      {member.website ? (
+                        <a
+                          class="button button--secondary button--compact"
+                          href={member.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Website
+                        </a>
+                      ) : null}
+                    </div>
+
+                    {member.services ? (
+                      <div class="directory-card__field">
+                        <h4 class="directory-card__label">Services</h4>
+                        <p class="directory-card__body">{member.services}</p>
+                      </div>
+                    ) : null}
+
+                    {member.certifications && member.certifications.toLowerCase() !== 'na' ? (
+                      <div class="directory-card__field">
+                        <h4 class="directory-card__label">Nature-based certifications &amp; credentials</h4>
+                        <p class="directory-card__body">{member.certifications}</p>
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              </article>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </div>
 </BaseLayout>

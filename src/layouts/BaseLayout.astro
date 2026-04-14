@@ -4,11 +4,7 @@ import { getSiteSettings } from '../lib/content.js';
 import { pathMatchesNav, sitePath } from '../lib/sitePath.js';
 
 const site = getSiteSettings();
-const {
-  title = `${site.organizationName}`,
-  description = site.organizationName,
-  embedFillHeight = false
-} = Astro.props;
+const { title = `${site.organizationName}`, description = site.organizationName } = Astro.props;
 
 function isActiveNavItem(href) {
   return pathMatchesNav(Astro.url.pathname, href);
@@ -46,11 +42,8 @@ function isActiveNavItem(href) {
         </div>
       </header>
 
-      <main
-        id="main-content"
-        class:list={['content-shell', embedFillHeight && 'content-shell--embed-fill']}
-      >
-        <div class:list={['wrapper', embedFillHeight && 'wrapper--embed-fill']}>
+      <main id="main-content" class="content-shell">
+        <div class="wrapper">
           <slot />
         </div>
       </main>
