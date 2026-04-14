@@ -13,6 +13,26 @@ function resolveMemberPhoto(photoUrl) {
   if (photoUrl.startsWith('/')) return assetUrl(photoUrl);
   return photoUrl;
 }
+
+/** One list item per line; strips common leading markers from CSV/Airtable exports. */
+function splitIntoBulletItems(text) {
+  const raw = String(text || '').trim();
+  if (!raw) return [];
+
+  const items = raw
+    .split(/\r?\n+/)
+    .map((line) =>
+      line
+        .trim()
+        .replace(/^['\u2018\u2019]\s*/, '')
+        .replace(/^[-*•\u2022]\s+/, '')
+        .replace(/^\d+[.)]\s+/, '')
+        .trim()
+    )
+    .filter(Boolean);
+
+  return items.length ? items : [raw];
+}
 ---
 
 <BaseLayout
@@ -85,14 +105,22 @@ function resolveMemberPhoto(photoUrl) {
                     {member.services ? (
                       <div class="directory-card__field">
                         <h4 class="directory-card__label">Services</h4>
-                        <p class="directory-card__body">{member.services}</p>
+                        <ul class="directory-card__list">
+                          {splitIntoBulletItems(member.services).map((item) => (
+                            <li>{item}</li>
+                          ))}
+                        </ul>
                       </div>
                     ) : null}
 
                     {member.certifications && member.certifications.toLowerCase() !== 'na' ? (
                       <div class="directory-card__field">
                         <h4 class="directory-card__label">Nature-based certifications &amp; credentials</h4>
-                        <p class="directory-card__body">{member.certifications}</p>
+                        <ul class="directory-card__list">
+                          {splitIntoBulletItems(member.certifications).map((item) => (
+                            <li>{item}</li>
+                          ))}
+                        </ul>
                       </div>
                     ) : null}
                   </div>

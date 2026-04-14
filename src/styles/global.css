@@ -273,12 +273,22 @@ button:focus-visible,
   font-weight: 700;
 }
 
-.directory-card__body {
+.directory-card__list {
   margin: 0;
+  padding-left: 1.2rem;
   color: var(--muted);
   font-size: 0.98rem;
   line-height: 1.52;
-  white-space: pre-wrap;
+  list-style-type: disc;
+}
+
+.directory-card__list li {
+  margin: 0 0 0.45rem;
+  padding-left: 0.15rem;
+}
+
+.directory-card__list li:last-child {
+  margin-bottom: 0;
 }
 
 .hero-block {
