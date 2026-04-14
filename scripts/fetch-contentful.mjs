@@ -96,9 +96,8 @@ const FALLBACK_CONTENT = {
       summary: 'A seasonal gathering to reconnect, share current work, and build new professional relationships.',
       details:
         'Participants will move through guided introductions, small-group exchange, and a closing reflection focused on practical collaboration opportunities.',
-      status: 'upcoming',
       registrationUrl: '',
-      imageUrl: '/images/placeholders/gathering-circle.svg'
+      image: '/images/placeholders/gathering-circle.svg'
     },
     {
       slug: 'summer-field-practice-circle',
@@ -109,9 +108,8 @@ const FALLBACK_CONTENT = {
       summary: 'A practical evening focused on peer exchange, reflection, and in-the-field facilitation techniques.',
       details:
         'Participants will explore guided prompts, partner dialogue, and shared skill-building around nature-based professional practice.',
-      status: 'upcoming',
       registrationUrl: '',
-      imageUrl: '/images/placeholders/hero-nature.svg'
+      image: '/images/placeholders/hero-nature.svg'
     },
     {
       slug: 'winter-solstice-gathering-2022',
@@ -121,25 +119,8 @@ const FALLBACK_CONTENT = {
       location: 'Spiritwoods, Stillwater, MN',
       summary: 'A community evening focused on connection during the longest night.',
       details: 'Included shared practice, reflection, and facilitated group activities.',
-      status: 'past',
       registrationUrl: '',
-      imageUrl: '/images/placeholders/hero-nature.svg'
-    }
-  ],
-  communityLinks: [
-    {
-      label: 'Request directory access',
-      description: 'Directory participation is managed off-site and shared with approved members.',
-      url: '/connect',
-      category: 'directory',
-      visibilityNote: 'Private/off-site access pathway'
-    },
-    {
-      label: 'Join the online community',
-      description: 'Connect with peers between gatherings for support and collaboration.',
-      url: '/connect',
-      category: 'slack',
-      visibilityNote: 'Access details shared after join request'
+      image: '/images/placeholders/hero-nature.svg'
     }
   ]
 };
@@ -435,36 +416,15 @@ function mapEvents(eventResponse) {
       location: toPlainText(item.fields?.location),
       summary: toPlainText(item.fields?.summary),
       details: toPlainText(item.fields?.details),
-      status: item.fields?.status || 'upcoming',
       registrationUrl: item.fields?.registrationUrl || item.fields?.registrationLink || '',
-      imageUrl: extractAssetUrl(
-        item.fields?.image ||
-          item.fields?.featuredImage ||
-          item.fields?.eventImage ||
-          item.fields?.photo,
-        assetMap
-      )
+      image: extractAssetUrl(item.fields?.image, assetMap)
     }))
     .filter((event) => event.title && event.startDate);
 
   return events.length ? events : FALLBACK_CONTENT.events;
 }
 
-function mapCommunityLinks(communityResponse) {
-  const links = toArray(communityResponse?.items)
-    .map((item) => ({
-      label: item.fields?.label || item.fields?.title,
-      description: toPlainText(item.fields?.description),
-      url: item.fields?.url,
-      category: item.fields?.category || 'resources',
-      visibilityNote: toPlainText(item.fields?.visibilityNote)
-    }))
-    .filter((item) => item.label && item.url);
-
-  return links.length ? links : FALLBACK_CONTENT.communityLinks;
-}
-
-function normalizeContent(siteResponse, homeResponse, pageResponse, eventResponse, communityResponse) {
+function normalizeContent(siteResponse, homeResponse, pageResponse, eventResponse) {
   const siteSettings = mapSiteSettings(siteResponse);
   const homePage = mapHomePage(homeResponse);
 
@@ -476,8 +436,7 @@ function normalizeContent(siteResponse, homeResponse, pageResponse, eventRespons
       howItWorks: homePage.howItWorks.length ? homePage.howItWorks : FALLBACK_CONTENT.homePage.howItWorks
     },
     pages: mapPages(pageResponse),
-    events: mapEvents(eventResponse),
-    communityLinks: mapCommunityLinks(communityResponse)
+    events: mapEvents(eventResponse)
   };
 }
 
@@ -512,7 +471,7 @@ async function run() {
   }
 
   try {
-    const [siteResponse, homeResponse, pageResponse, eventResponse, communityResponse] = await Promise.all([
+    const [siteResponse, homeResponse, pageResponse, eventResponse] = await Promise.all([
       client('/entries', {
         content_type: 'siteSettings',
         limit: '1',
@@ -532,14 +491,10 @@ async function run() {
         content_type: 'event',
         limit: '300',
         include: '2'
-      }),
-      client('/entries', {
-        content_type: 'communityLink',
-        limit: '300'
       })
     ]);
 
-    const content = normalizeContent(siteResponse, homeResponse, pageResponse, eventResponse, communityResponse);
+    const content = normalizeContent(siteResponse, homeResponse, pageResponse, eventResponse);
     const changed = await writeGenerated(content);
     console.log(
       changed

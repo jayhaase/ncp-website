@@ -56,9 +56,8 @@
       "location": "Theodore Wirth Regional Park, Minneapolis, MN",
       "summary": "A practical evening focused on peer exchange, reflection, and in-the-field facilitation techniques.",
       "details": "Participants will explore guided prompts, partner dialogue, and shared skill-building around nature-based professional practice.",
-      "status": "upcoming",
       "registrationUrl": "",
-      "imageUrl": "https://images.ctfassets.net/ek9rx9938ifx/3G8Gu8iLbCEiPoERV0pj2a/8b6b36b4f814daef5e85548822cf4384/hero-nature.svg"
+      "image": "https://images.ctfassets.net/ek9rx9938ifx/3G8Gu8iLbCEiPoERV0pj2a/8b6b36b4f814daef5e85548822cf4384/hero-nature.svg"
     },
     {
       "slug": "winter-solstice-gathering-2022",
@@ -68,9 +67,8 @@
       "location": "Spiritwoods, Stillwater, MN",
       "summary": "A community evening focused on connection during the longest night.",
       "details": "Included shared practice, reflection, and facilitated group activities.",
-      "status": "past",
       "registrationUrl": "",
-      "imageUrl": "https://images.ctfassets.net/ek9rx9938ifx/3G8Gu8iLbCEiPoERV0pj2a/8b6b36b4f814daef5e85548822cf4384/hero-nature.svg"
+      "image": "https://images.ctfassets.net/ek9rx9938ifx/3G8Gu8iLbCEiPoERV0pj2a/8b6b36b4f814daef5e85548822cf4384/hero-nature.svg"
     },
     {
       "slug": "spring-networking-walk",
@@ -80,25 +78,8 @@
       "location": "Woodlake Nature Center, Richfield, MN",
       "summary": "A seasonal gathering to reconnect, share current work, and build new professional relationships.",
       "details": "Participants will move through guided introductions, small-group exchange, and a closing reflection focused on practical collaboration opportunities.",
-      "status": "upcoming",
       "registrationUrl": "",
-      "imageUrl": "https://images.ctfassets.net/ek9rx9938ifx/3G8Gu8iLbCEiPoERV0pj2a/8b6b36b4f814daef5e85548822cf4384/hero-nature.svg"
-    }
-  ],
-  "communityLinks": [
-    {
-      "label": "Join the online community",
-      "description": "Connect with peers between gatherings for support and collaboration.",
-      "url": "/connect",
-      "category": "slack",
-      "visibilityNote": "Access details shared after join request"
-    },
-    {
-      "label": "Request directory access",
-      "description": "Directory participation is managed off-site and shared with approved members.",
-      "url": "/connect",
-      "category": "directory",
-      "visibilityNote": "Private/off-site access pathway"
+      "image": "https://images.ctfassets.net/ek9rx9938ifx/3G8Gu8iLbCEiPoERV0pj2a/8b6b36b4f814daef5e85548822cf4384/hero-nature.svg"
     }
   ]
 }

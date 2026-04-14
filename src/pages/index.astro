@@ -36,10 +36,10 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
           <div class="gathering-preview-list">
             {displayEvents.map((event) => (
               <article class="gathering-preview-item gathering-preview-item--media">
-                {event.imageUrl ? (
+                {event.image ? (
                   <img
                     class="event-thumb"
-                    src={assetUrl(event.imageUrl)}
+                    src={assetUrl(event.image)}
                     alt={`Event image for ${event.title}`}
                     loading="lazy"
                   />

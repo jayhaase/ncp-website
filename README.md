@@ -45,7 +45,7 @@ If you want to rebuild Contentful from the local generated content (`src/data/co
 
 Notes:
 - `seed-contentful` is destructive by design: it deletes all entries, assets, and content types in the target environment first.
-- After clearing, it recreates and publishes these content types: `siteSettings`, `homePage`, `standardPage`, `event`, `communityLink`.
+- After clearing, it recreates and publishes these content types: `siteSettings`, `homePage`, `standardPage`, `event`.
 - Then it seeds and publishes entries from `src/data/content.generated.json`.
 - Home hero image comes from `homePage.heroImage` (Asset); the build output uses a resolved URL plus a static placeholder if no asset is set.
 
@@ -98,15 +98,10 @@ Navigation links are defined in code (`src/lib/navLinks.js`), not in Contentful.
 - `location` (short/long text)
 - `summary` (long text)
 - `details` (long text)
-- `status` (`upcoming` or `past`)
 - `registrationUrl` (short text, optional)
+- `image` (media / Asset)
 
-### `communityLink` (multiple)
-- `label` (short text)
-- `description` (long text)
-- `url` (short text)
-- `category` (`directory`, `slack`, `join`, `resources`)
-- `visibilityNote` (short/long text)
+Upcoming vs past in the app is derived from dates: an event is **past** after its end time (`endDate` if set, otherwise `startDate`).
 
 ## Fallback behavior
 

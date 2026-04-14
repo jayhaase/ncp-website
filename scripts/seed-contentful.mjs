@@ -105,15 +105,7 @@ const MODEL_CONTENT_TYPES = [
       { id: 'location', name: 'Location', type: 'Text', required: false },
       { id: 'summary', name: 'Summary', type: 'Text', required: false },
       { id: 'details', name: 'Details', type: 'Text', required: false },
-      {
-        id: 'status',
-        name: 'Status',
-        type: 'Symbol',
-        required: true,
-        validations: [{ in: ['upcoming', 'past'] }]
-      },
       { id: 'registrationUrl', name: 'Registration URL', type: 'Symbol', required: false },
-      { id: 'imageUrl', name: 'Image URL', type: 'Symbol', required: false },
       {
         id: 'image',
         name: 'Image',
@@ -121,25 +113,6 @@ const MODEL_CONTENT_TYPES = [
         required: false,
         linkType: 'Asset'
       }
-    ]
-  },
-  {
-    id: 'communityLink',
-    name: 'Community Link',
-    description: 'Community access pathways and off-site links.',
-    displayField: 'label',
-    fields: [
-      { id: 'label', name: 'Label', type: 'Symbol', required: true },
-      { id: 'description', name: 'Description', type: 'Text', required: false },
-      { id: 'url', name: 'URL', type: 'Symbol', required: true },
-      {
-        id: 'category',
-        name: 'Category',
-        type: 'Symbol',
-        required: true,
-        validations: [{ in: ['directory', 'slack', 'join', 'resources'] }]
-      },
-      { id: 'visibilityNote', name: 'Visibility Note', type: 'Text', required: false }
     ]
   }
 ];
@@ -584,32 +557,8 @@ async function seedEvents(events, locale) {
     assignIfPossible(fields, locale, fMap, 'location', event.location);
     assignIfPossible(fields, locale, fMap, 'summary', event.summary);
     assignIfPossible(fields, locale, fMap, 'details', event.details);
-    assignIfPossible(fields, locale, fMap, 'status', event.status);
     assignIfPossible(fields, locale, fMap, 'registrationUrl', event.registrationUrl);
     assignIfPossible(fields, locale, fMap, 'registrationLink', event.registrationUrl);
-    assignIfPossible(fields, locale, fMap, 'imageUrl', event.imageUrl);
-
-    await upsertEntry({
-      contentTypeId,
-      existingEntry: null,
-      fields
-    });
-  }
-}
-
-async function seedCommunityLinks(links, locale) {
-  const contentTypeId = 'communityLink';
-  const ct = await getContentType(contentTypeId);
-  const fMap = fieldMap(ct);
-
-  for (const link of links) {
-    const fields = {};
-    assignIfPossible(fields, locale, fMap, 'label', link.label);
-    assignIfPossible(fields, locale, fMap, 'title', link.label);
-    assignIfPossible(fields, locale, fMap, 'description', link.description);
-    assignIfPossible(fields, locale, fMap, 'url', link.url);
-    assignIfPossible(fields, locale, fMap, 'category', link.category);
-    assignIfPossible(fields, locale, fMap, 'visibilityNote', link.visibilityNote);
 
     await upsertEntry({
       contentTypeId,
@@ -632,7 +581,6 @@ async function main() {
   await seedHomePage(data.homePage || {}, locale);
   await seedStandardPages(data.pages || [], locale);
   await seedEvents(data.events || [], locale);
-  await seedCommunityLinks(data.communityLinks || [], locale);
 
   console.log('Seeding completed with full reset.');
   console.log(`Deleted entries: ${counters.deletedEntries}`);

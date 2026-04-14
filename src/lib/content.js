@@ -7,10 +7,14 @@ import { NAV_LINKS } from './navLinks.js';
 /** @typedef {{title: string, description: string, heroImageUrl: string, heroImageAlt: string, mission: string, howItWorks: string[], highlightCards: {title: string, description: string}[]}} HomeContent */
 /** @typedef {{heading: string, bodyText?: string, cards?: {title: string, description: string}[], listItems?: string[]}} PageSection */
 /** @typedef {{slug: string, title: string, intro: string, sections: PageSection[]}} PageContent */
-/** @typedef {{slug: string, title: string, startDate: string, endDate: string, location: string, summary: string, details: string, status: 'upcoming' | 'past', registrationUrl?: string, imageUrl?: string}} EventItem */
-/** @typedef {{label: string, description: string, url: string, category: string, visibilityNote?: string}} CommunityLink */
+/** @typedef {{slug: string, title: string, startDate: string, endDate: string, location: string, summary: string, details: string, registrationUrl?: string, image?: string}} EventItem */
 
 const RESERVED_DYNAMIC_SLUGS = new Set(['gatherings', 'join']);
+
+const PRIMARY_CTA = {
+  label: 'Join the community',
+  url: '/connect'
+};
 
 function isValidDate(value) {
   const date = new Date(value);
@@ -25,10 +29,23 @@ function sortByDateDesc(a, b) {
   return new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
 }
 
+/** End of event in ms (`endDate` when set, otherwise `startDate`). */
+function eventEndMs(event) {
+  if (event.endDate && isValidDate(event.endDate)) {
+    return new Date(event.endDate).getTime();
+  }
+  return new Date(event.startDate).getTime();
+}
+
+function isEventPast(event, nowMs) {
+  return eventEndMs(event) < nowMs;
+}
+
 /** @returns {SiteSettings} */
 export function getSiteSettings() {
   return {
     ...generated.siteSettings,
+    primaryCta: PRIMARY_CTA,
     navLinks: NAV_LINKS.filter((item) => item?.href !== '/join')
   };
 }
@@ -63,11 +80,7 @@ export function getAllEvents() {
 export function getUpcomingEvents() {
   const now = Date.now();
   return getAllEvents()
-    .filter((event) => {
-      const isPastFlag = event.status === 'past';
-      const isBeforeNow = new Date(event.startDate).getTime() < now;
-      return !isPastFlag && !isBeforeNow;
-    })
+    .filter((event) => !isEventPast(event, now))
     .sort(sortByDateAsc);
 }
 
@@ -75,15 +88,6 @@ export function getUpcomingEvents() {
 export function getPastEvents() {
   const now = Date.now();
   return getAllEvents()
-    .filter((event) => {
-      const isPastFlag = event.status === 'past';
-      const isBeforeNow = new Date(event.startDate).getTime() < now;
-      return isPastFlag || isBeforeNow;
-    })
+    .filter((event) => isEventPast(event, now))
     .sort(sortByDateDesc);
-}
-
-/** @returns {CommunityLink[]} */
-export function getCommunityLinks() {
-  return generated.communityLinks || [];
 }

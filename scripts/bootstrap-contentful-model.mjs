@@ -108,15 +108,7 @@ const CONTENT_TYPES = [
       { id: 'location', name: 'Location', type: 'Text', required: false },
       { id: 'summary', name: 'Summary', type: 'Text', required: false },
       { id: 'details', name: 'Details', type: 'Text', required: false },
-      {
-        id: 'status',
-        name: 'Status',
-        type: 'Symbol',
-        required: true,
-        validations: [{ in: ['upcoming', 'past'] }]
-      },
       { id: 'registrationUrl', name: 'Registration URL', type: 'Symbol', required: false },
-      { id: 'imageUrl', name: 'Image URL', type: 'Symbol', required: false },
       {
         id: 'image',
         name: 'Image',
@@ -124,25 +116,6 @@ const CONTENT_TYPES = [
         required: false,
         linkType: 'Asset'
       }
-    ]
-  },
-  {
-    id: 'communityLink',
-    name: 'Community Link',
-    description: 'Community access pathways and off-site links.',
-    displayField: 'label',
-    fields: [
-      { id: 'label', name: 'Label', type: 'Symbol', required: true },
-      { id: 'description', name: 'Description', type: 'Text', required: false },
-      { id: 'url', name: 'URL', type: 'Symbol', required: true },
-      {
-        id: 'category',
-        name: 'Category',
-        type: 'Symbol',
-        required: true,
-        validations: [{ in: ['directory', 'slack', 'join', 'resources'] }]
-      },
-      { id: 'visibilityNote', name: 'Visibility Note', type: 'Text', required: false }
     ]
   }
 ];
