@@ -7,6 +7,13 @@ const {
   title = `${site.organizationName}`,
   description = site.organizationName
 } = Astro.props;
+
+const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
+
+function isActiveNavItem(href) {
+  const normalizedHref = (href || '/').replace(/\/+$/, '') || '/';
+  return normalizedHref === currentPath;
+}
 ---
 
 <!doctype html>
@@ -27,7 +34,11 @@ const {
           <ul class="main-nav">
             {
               site.navLinks.map((item) => (
-                <li><a href={item.href}>{item.label}</a></li>
+                <li>
+                  <a href={item.href} aria-current={isActiveNavItem(item.href) ? 'page' : undefined}>
+                    {item.label}
+                  </a>
+                </li>
               ))
             }
           </ul>

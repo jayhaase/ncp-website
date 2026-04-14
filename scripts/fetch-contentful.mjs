@@ -28,9 +28,8 @@ const FALLBACK_CONTENT = {
     ]
   },
   homePage: {
-    title: 'Gathering people who help others reconnect with nature.',
-    description:
-      'Nature Connected Professionals builds depth through community, broadens impact through networking, and supports care for life through generous sharing of practice and wisdom.',
+    title: 'Gathering people who help others connect with nature.',
+    description: '',
     mission:
       'We gather to cultivate depth through community building, engage broadly through networking, and steward care for life by generously sharing skills, knowledge, and lived experience.',
     howItWorks: [
@@ -66,14 +65,14 @@ const FALLBACK_CONTENT = {
         'Nature Connected Professionals is a member-powered network supporting people who use nature connection in counseling, education, health, and community practice.',
       sections: [
         {
-          heading: 'Why this group exists',
+          heading: 'Lorem ipsum',
           bodyText:
-            'The group began as a graduate-school community project and continues as a collaborative space for practitioners who want meaningful, practical ways to connect people with the natural world.'
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.'
         },
         {
-          heading: 'How this works',
+          heading: 'Dolor sit amet',
           bodyText:
-            'We host seasonal gatherings and unconference-style sessions where members share methods, challenges, and opportunities. Participation is encouraged at every level.'
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus mollis interdum, sed posuere consectetur est at lobortis.'
         }
       ]
     },
@@ -128,7 +127,8 @@ const FALLBACK_CONTENT = {
       details:
         'Participants will move through guided introductions, small-group exchange, and a closing reflection focused on practical collaboration opportunities.',
       status: 'upcoming',
-      registrationUrl: ''
+      registrationUrl: '',
+      imageUrl: '/images/placeholders/gathering-circle.svg'
     },
     {
       slug: 'winter-solstice-gathering-2022',
@@ -139,7 +139,8 @@ const FALLBACK_CONTENT = {
       summary: 'A community evening focused on connection during the longest night.',
       details: 'Included shared practice, reflection, and facilitated group activities.',
       status: 'past',
-      registrationUrl: ''
+      registrationUrl: '',
+      imageUrl: '/images/placeholders/hero-nature.svg'
     }
   ],
   communityLinks: [
@@ -248,12 +249,54 @@ function getLinkedEntryMap(response) {
   return map;
 }
 
+function getLinkedAssetMap(response) {
+  const map = new Map();
+  for (const item of toArray(response?.includes?.Asset)) {
+    if (item?.sys?.id) {
+      map.set(item.sys.id, item);
+    }
+  }
+  return map;
+}
+
 function resolveLinkedEntries(fieldValue, map) {
   return toArray(fieldValue)
     .map((item) => item?.sys?.id)
     .filter(Boolean)
     .map((id) => map.get(id))
     .filter(Boolean);
+}
+
+function normalizeAssetUrl(url) {
+  if (!url || typeof url !== 'string') {
+    return '';
+  }
+  if (url.startsWith('//')) {
+    return `https:${url}`;
+  }
+  return url;
+}
+
+function extractAssetUrl(fieldValue, assetMap) {
+  if (!fieldValue) {
+    return '';
+  }
+
+  if (typeof fieldValue === 'string') {
+    return normalizeAssetUrl(fieldValue);
+  }
+
+  const directUrl = fieldValue?.fields?.file?.url;
+  if (directUrl) {
+    return normalizeAssetUrl(directUrl);
+  }
+
+  const linkedId = fieldValue?.sys?.id;
+  if (linkedId && assetMap.has(linkedId)) {
+    return normalizeAssetUrl(assetMap.get(linkedId)?.fields?.file?.url);
+  }
+
+  return '';
 }
 
 function createClient() {
@@ -430,6 +473,7 @@ function mapPages(pageResponse) {
 }
 
 function mapEvents(eventResponse) {
+  const assetMap = getLinkedAssetMap(eventResponse);
   const events = toArray(eventResponse?.items)
     .map((item) => ({
       slug: item.fields?.slug || item.sys?.id,
@@ -440,7 +484,14 @@ function mapEvents(eventResponse) {
       summary: toPlainText(item.fields?.summary),
       details: toPlainText(item.fields?.details),
       status: item.fields?.status || 'upcoming',
-      registrationUrl: item.fields?.registrationUrl || item.fields?.registrationLink || ''
+      registrationUrl: item.fields?.registrationUrl || item.fields?.registrationLink || '',
+      imageUrl: extractAssetUrl(
+        item.fields?.image ||
+          item.fields?.featuredImage ||
+          item.fields?.eventImage ||
+          item.fields?.photo,
+        assetMap
+      )
     }))
     .filter((event) => event.title && event.startDate);
 
@@ -527,7 +578,8 @@ async function run() {
       }),
       client('/entries', {
         content_type: 'event',
-        limit: '300'
+        limit: '300',
+        include: '2'
       }),
       client('/entries', {
         content_type: 'communityLink',

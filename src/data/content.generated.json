@@ -30,8 +30,8 @@
     ]
   },
   "homePage": {
-    "title": "Gathering people who help others reconnect with nature.",
-    "description": "Nature Connected Professionals builds depth through community, broadens impact through networking, and supports care for life through generous sharing of practice and wisdom.",
+    "title": "Gathering people who help others connect with nature.",
+    "description": "",
     "mission": "We gather to cultivate depth through community building, engage broadly through networking, and steward care for life by generously sharing skills, knowledge, and lived experience.",
     "howItWorks": [
       "Seasonal gatherings convene members around practical themes and facilitated connection.",
@@ -65,12 +65,12 @@
       "intro": "Nature Connected Professionals is a member-powered network supporting people who use nature connection in counseling, education, health, and community practice.",
       "sections": [
         {
-          "heading": "Why this group exists",
-          "bodyText": "The group began as a graduate-school community project and continues as a collaborative space for practitioners who want meaningful, practical ways to connect people with the natural world."
+          "heading": "Lorem ipsum",
+          "bodyText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet."
         },
         {
-          "heading": "How this works",
-          "bodyText": "We host seasonal gatherings and unconference-style sessions where members share methods, challenges, and opportunities. Participation is encouraged at every level."
+          "heading": "Dolor sit amet",
+          "bodyText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus mollis interdum, sed posuere consectetur est at lobortis."
         }
       ]
     },
@@ -119,7 +119,8 @@
       "summary": "A seasonal gathering to reconnect, share current work, and build new professional relationships.",
       "details": "Participants will move through guided introductions, small-group exchange, and a closing reflection focused on practical collaboration opportunities.",
       "status": "upcoming",
-      "registrationUrl": ""
+      "registrationUrl": "",
+      "imageUrl": "/images/placeholders/gathering-circle.svg"
     },
     {
       "slug": "winter-solstice-gathering-2022",
@@ -130,7 +131,8 @@
       "summary": "A community evening focused on connection during the longest night.",
       "details": "Included shared practice, reflection, and facilitated group activities.",
       "status": "past",
-      "registrationUrl": ""
+      "registrationUrl": "",
+      "imageUrl": "/images/placeholders/hero-nature.svg"
     }
   ],
   "communityLinks": [

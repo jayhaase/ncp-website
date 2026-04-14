@@ -6,7 +6,7 @@ import generated from '../data/content.generated.json';
 /** @typedef {{title: string, description: string, mission: string, howItWorks: string[], highlightCards: {title: string, description: string}[], featuredEventSlugs: string[], connectIntro: string, joinCtaText: string}} HomeContent */
 /** @typedef {{heading: string, bodyText?: string, cards?: {title: string, description: string}[], listItems?: string[]}} PageSection */
 /** @typedef {{slug: string, title: string, intro: string, sections: PageSection[]}} PageContent */
-/** @typedef {{slug: string, title: string, startDate: string, endDate: string, location: string, summary: string, details: string, status: 'upcoming' | 'past', registrationUrl?: string}} EventItem */
+/** @typedef {{slug: string, title: string, startDate: string, endDate: string, location: string, summary: string, details: string, status: 'upcoming' | 'past', registrationUrl?: string, imageUrl?: string}} EventItem */
 /** @typedef {{label: string, description: string, url: string, category: string, visibilityNote?: string}} CommunityLink */
 
 const RESERVED_DYNAMIC_SLUGS = new Set(['gatherings']);
