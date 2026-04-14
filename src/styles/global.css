@@ -376,6 +376,11 @@ p {
   background: linear-gradient(90deg, var(--accent), var(--accent-gold));
 }
 
+/* Extra vertical space between major section cards only (does not change padding inside them). */
+.content-shell .wrapper > .section-stack + .section-stack {
+  margin-top: 2.85rem;
+}
+
 /* Alternate rows among .section-stack only (hero is not .section-stack, so no off-by-one) */
 .content-shell .wrapper > .section-stack:nth-child(2n + 2) {
   background: linear-gradient(165deg, #f6f5ef 0%, var(--surface) 55%);
