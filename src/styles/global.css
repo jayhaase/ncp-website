@@ -18,8 +18,13 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
+  min-height: 100%;
   color: var(--text);
   font-family: 'DM Sans', system-ui, sans-serif;
   line-height: 1.55;
@@ -27,6 +32,13 @@ body {
     radial-gradient(circle at 84% -8%, #dfdfd3 0%, transparent 36%),
     radial-gradient(circle at -8% 42%, #e2e2d8 0%, transparent 31%),
     linear-gradient(180deg, #f8f7f0 0%, var(--bg) 100%);
+}
+
+.page-frame {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 body::before {
@@ -155,6 +167,7 @@ button:focus-visible,
 }
 
 .content-shell {
+  flex: 1 0 auto;
   padding: 2.4rem 0 4.5rem;
 }
 
@@ -590,6 +603,7 @@ p {
 }
 
 .site-footer {
+  flex-shrink: 0;
   border-top: 1px solid var(--border);
   background: #f8faf5;
 }

@@ -26,6 +26,47 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
     />
   </section>
 
+  <section class="section-stack" aria-labelledby="events-preview-title">
+    <div class="section-header-row">
+      <h2 id="events-preview-title">Our Next Gathering</h2>
+    </div>
+    {
+      displayEvents.length ? (
+        <div>
+          <div class="gathering-preview-list">
+            {displayEvents.map((event) => (
+              <article class="gathering-preview-item gathering-preview-item--media">
+                {event.imageUrl ? (
+                  <img
+                    class="event-thumb"
+                    src={assetUrl(event.imageUrl)}
+                    alt={`Event image for ${event.title}`}
+                    loading="lazy"
+                  />
+                ) : null}
+                <div>
+                  <h3>{event.title}</h3>
+                <p class="meta-text">
+                  <time datetime={event.startDate}>{new Date(event.startDate).toLocaleDateString()}</time>
+                  {' · '}
+                  {event.location}
+                </p>
+                <p>{event.summary}</p>
+                <div class="event-cta-row">
+                  <a class="button button--compact" href={resolveHref(event.registrationUrl || '/connect')}>Register</a>
+                  <a class="button button--secondary button--compact" href={sitePath('/gatherings')}>View all gatherings</a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+      ) : (
+        <p>No upcoming gatherings are posted yet.</p>
+      )
+    }
+  </section>
+
   <section class="section-stack identity-section" aria-labelledby="identity-title">
     <h2 id="identity-title">Who We Are &amp; Why We Exist</h2>
     <p class="lead-text">
@@ -74,47 +115,6 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
         <a class="how-action" href={sitePath('/connect')}>Participate</a>
       </article>
     </div>
-  </section>
-
-  <section class="section-stack" aria-labelledby="events-preview-title">
-    <div class="section-header-row">
-      <h2 id="events-preview-title">Our Next Gathering</h2>
-    </div>
-    {
-      displayEvents.length ? (
-        <div>
-          <div class="gathering-preview-list">
-            {displayEvents.map((event) => (
-              <article class="gathering-preview-item gathering-preview-item--media">
-                {event.imageUrl ? (
-                  <img
-                    class="event-thumb"
-                    src={assetUrl(event.imageUrl)}
-                    alt={`Event image for ${event.title}`}
-                    loading="lazy"
-                  />
-                ) : null}
-                <div>
-                  <h3>{event.title}</h3>
-                <p class="meta-text">
-                  <time datetime={event.startDate}>{new Date(event.startDate).toLocaleDateString()}</time>
-                  {' · '}
-                  {event.location}
-                </p>
-                <p>{event.summary}</p>
-                <div class="event-cta-row">
-                  <a class="button button--compact" href={resolveHref(event.registrationUrl || '/connect')}>Register</a>
-                  <a class="button button--secondary button--compact" href={sitePath('/gatherings')}>View all gatherings</a>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-      ) : (
-        <p>No upcoming gatherings are posted yet.</p>
-      )
-    }
   </section>
 
 </BaseLayout>
