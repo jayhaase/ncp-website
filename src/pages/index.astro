@@ -9,7 +9,7 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
 ---
 
 <BaseLayout title={site.organizationName} description={home.description}>
-  <section class="hero-block hero-block--media" aria-labelledby="home-hero-title">
+  <section class="hero-block hero-block--media hero-block--image-first-mobile" aria-labelledby="home-hero-title">
     <div class="hero-copy">
       <h1 id="home-hero-title">{home.title}</h1>
       {home.description ? <p class="lead-text">{home.description}</p> : null}
