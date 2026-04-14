@@ -51,7 +51,6 @@ const MODEL_CONTENT_TYPES = [
         required: false,
         linkType: 'Asset'
       },
-      { id: 'heroImageUrl', name: 'Hero Image URL', type: 'Symbol', required: false },
       { id: 'heroImageAlt', name: 'Hero Image Alt', type: 'Symbol', required: false },
       { id: 'mission', name: 'Mission', type: 'Text', required: false },
       {
@@ -543,7 +542,6 @@ async function seedHomePage(content, locale) {
   assignIfPossible(fields, locale, fMap, 'title', content.title);
   assignIfPossible(fields, locale, fMap, 'heroSubtitle', content.description);
   assignIfPossible(fields, locale, fMap, 'description', content.description);
-  assignIfPossible(fields, locale, fMap, 'heroImageUrl', content.heroImageUrl);
   assignIfPossible(fields, locale, fMap, 'heroImageAlt', content.heroImageAlt);
   assignIfPossible(fields, locale, fMap, 'mission', content.mission);
   assignIfPossible(fields, locale, fMap, 'howItWorks', content.howItWorks);

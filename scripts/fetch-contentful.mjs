@@ -409,7 +409,6 @@ function mapHomePage(homeResponse) {
       FALLBACK_CONTENT.homePage.description,
     heroImageUrl:
       extractAssetUrl(homeItem.fields?.heroImage, assetMap) ||
-      homeItem.fields?.heroImageUrl ||
       FALLBACK_CONTENT.homePage.heroImageUrl,
     heroImageAlt: homeItem.fields?.heroImageAlt || FALLBACK_CONTENT.homePage.heroImageAlt,
     mission: toPlainText(homeItem.fields?.mission) || FALLBACK_CONTENT.homePage.mission,

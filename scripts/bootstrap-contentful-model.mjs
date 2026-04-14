@@ -54,7 +54,6 @@ const CONTENT_TYPES = [
         required: false,
         linkType: 'Asset'
       },
-      { id: 'heroImageUrl', name: 'Hero Image URL', type: 'Symbol', required: false },
       { id: 'heroImageAlt', name: 'Hero Image Alt', type: 'Symbol', required: false },
       { id: 'mission', name: 'Mission', type: 'Text', required: false },
       {

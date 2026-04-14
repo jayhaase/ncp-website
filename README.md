@@ -47,7 +47,7 @@ Notes:
 - `seed-contentful` is destructive by design: it deletes all entries, assets, and content types in the target environment first.
 - After clearing, it recreates and publishes these content types: `siteSettings`, `homePage`, `standardPage`, `event`, `communityLink`.
 - Then it seeds and publishes entries from `src/data/content.generated.json`.
-- Home hero image is now CMS-driven via `homePage.heroImage` (Asset) with `homePage.heroImageUrl` as URL fallback.
+- Home hero image comes from `homePage.heroImage` (Asset); the build output uses a resolved URL plus a static placeholder if no asset is set.
 
 ## Build and deploy
 
@@ -76,6 +76,8 @@ Navigation links are defined in code (`src/lib/navLinks.js`), not in Contentful.
 ### `homePage` (single entry)
 - `heroTitle` (short text)
 - `heroSubtitle` (long text)
+- `heroImage` (media / Asset)
+- `heroImageAlt` (short text)
 - `mission` (long text)
 - `howItWorks` (list of short/long text)
 - `highlightCards` or `highlights` (references)
