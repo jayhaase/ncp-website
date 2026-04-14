@@ -30,6 +30,25 @@ The deployed site does not call Contentful at runtime. Content is fetched during
    npm run sync-content
    ```
 
+## Seed Contentful from fallback JSON
+
+If you want to rebuild Contentful from the local generated content (`src/data/content.generated.json`):
+
+1. Add a Contentful Management API token to `.env`:
+   ```bash
+   CONTENTFUL_MANAGEMENT_TOKEN=your_content_management_token
+   ```
+2. Run:
+   ```bash
+   npm run seed-contentful
+   ```
+
+Notes:
+- `seed-contentful` is destructive by design: it deletes all entries, assets, and content types in the target environment first.
+- After clearing, it recreates and publishes these content types: `siteSettings`, `homePage`, `standardPage`, `event`, `communityLink`.
+- Then it seeds and publishes entries from `src/data/content.generated.json`.
+- Home hero image is now CMS-driven via `homePage.heroImage` (Asset) with `homePage.heroImageUrl` as URL fallback.
+
 ## Build and deploy
 
 - Build command: `npm run build`

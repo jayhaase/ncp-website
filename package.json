@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "sync-content": "node scripts/fetch-contentful.mjs",
+    "bootstrap-contentful-model": "node scripts/bootstrap-contentful-model.mjs",
+    "seed-contentful": "node scripts/seed-contentful.mjs",
     "dev": "astro dev",
     "build": "npm run sync-content && astro build",
     "preview": "astro preview"

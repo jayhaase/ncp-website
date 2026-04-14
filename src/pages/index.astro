@@ -27,8 +27,8 @@ const displayEvents = featuredEvents.length ? featuredEvents : upcomingEvents;
     </div>
     <img
       class="placeholder-image placeholder-image--hero"
-      src="/images/placeholders/hero-nature.svg"
-      alt="Placeholder illustration for homepage hero"
+      src={home.heroImageUrl || '/images/placeholders/hero-nature.svg'}
+      alt={home.heroImageAlt || 'Homepage hero image'}
       loading="lazy"
     />
   </section>

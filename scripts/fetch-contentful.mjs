@@ -29,6 +29,8 @@ const FALLBACK_CONTENT = {
   homePage: {
     title: 'Gathering people who help others connect with nature.',
     description: '',
+    heroImageUrl: '/images/placeholders/hero-nature.svg',
+    heroImageAlt: 'Placeholder illustration for homepage hero',
     mission:
       'We gather to cultivate depth through community building, engage broadly through networking, and steward care for life by generously sharing skills, knowledge, and lived experience.',
     howItWorks: [
@@ -427,6 +429,7 @@ function mapHomePage(homeResponse) {
   }
 
   const linkMap = getLinkedEntryMap(homeResponse);
+  const assetMap = getLinkedAssetMap(homeResponse);
   const featuredEvents = resolveLinkedEntries(
     homeItem.fields?.featuredEvents || homeItem.fields?.eventHighlights,
     linkMap
@@ -437,6 +440,11 @@ function mapHomePage(homeResponse) {
     description:
       toPlainText(homeItem.fields?.heroSubtitle || homeItem.fields?.description) ||
       FALLBACK_CONTENT.homePage.description,
+    heroImageUrl:
+      extractAssetUrl(homeItem.fields?.heroImage, assetMap) ||
+      homeItem.fields?.heroImageUrl ||
+      FALLBACK_CONTENT.homePage.heroImageUrl,
+    heroImageAlt: homeItem.fields?.heroImageAlt || FALLBACK_CONTENT.homePage.heroImageAlt,
     mission: toPlainText(homeItem.fields?.mission) || FALLBACK_CONTENT.homePage.mission,
     howItWorks: toArray(homeItem.fields?.howItWorks)
       .map((item) => toPlainText(item))
