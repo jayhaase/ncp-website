@@ -257,6 +257,7 @@ p {
 
 .identity-section {
   background: linear-gradient(180deg, #fcfbf7 0%, #f8f7f2 100%);
+  padding: 1.75rem 2rem 2.1rem;
 }
 
 .identity-section .lead-text {
@@ -267,13 +268,22 @@ p {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.95rem;
-  margin-top: 0.7rem;
+  margin-top: 2rem;
 }
 
 .identity-item {
   margin-top: 0.4rem;
-  padding: 1rem 0 0.55rem;
-  border-top: 2px solid var(--accent-gold);
+  padding: 0 0 0.55rem;
+  border-top: none;
+}
+
+.identity-item::before {
+  content: '';
+  display: block;
+  width: 68%;
+  margin: 0 0 1rem;
+  height: 2px;
+  background: var(--accent-gold);
 }
 
 .identity-item h3 {
@@ -289,14 +299,13 @@ p {
 .how-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.35rem 1.1rem;
-  margin-top: 0.9rem;
+  column-gap: 1.25rem;
+  row-gap: 3.25rem;
+  margin-top: 3rem;
 }
 
 .how-item {
-  border-top: 2px solid var(--accent-gold);
-  padding-top: 1.15rem;
-  padding-bottom: 0.25rem;
+  padding: 0 0 0.35rem;
 }
 
 .how-item h3 {
@@ -644,6 +653,7 @@ p {
 
   .how-list {
     grid-template-columns: 1fr;
+    row-gap: 2.25rem;
   }
 
   .how-section {
