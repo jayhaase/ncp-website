@@ -664,18 +664,6 @@ p {
   object-fit: cover;
 }
 
-.hero-block--gatherings .placeholder-image--hero {
-  border: none;
-  background: transparent;
-  border-radius: 0;
-  width: 50%;
-  max-width: 50%;
-  height: auto;
-  min-height: 0;
-  align-self: center;
-  justify-self: center;
-}
-
 .meta-text {
   color: var(--muted);
   font-size: 0.95rem;
