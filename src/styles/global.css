@@ -557,13 +557,8 @@ p {
   margin: 0 0 0.65rem;
 }
 
-.event-list {
-  display: grid;
-  gap: 0.9rem;
-}
-
-.event-list--gatherings {
-  gap: 1.35rem;
+.gathering-event-section .gathering-event-body {
+  margin-top: 0.35rem;
 }
 
 .gathering-preview-list {

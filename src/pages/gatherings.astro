@@ -4,7 +4,7 @@ import { getSiteSettings, getUpcomingEvents } from '../lib/content.js';
 import { assetUrl, resolveHref } from '../lib/sitePath.js';
 
 const site = getSiteSettings();
-const upcoming = getUpcomingEvents().slice(0, 2);
+const upcoming = getUpcomingEvents();
 ---
 
 <BaseLayout
@@ -26,40 +26,37 @@ const upcoming = getUpcomingEvents().slice(0, 2);
     />
   </section>
 
-  <section class="section-stack" aria-labelledby="upcoming-title">
-    <h2 id="upcoming-title">Upcoming</h2>
-    {
-      upcoming.length ? (
-        <div class="event-list event-list--gatherings">
-          {upcoming.map((event) => (
-            <article class="event-item event-item--media event-item--plain">
-              {event.image ? (
-                <img
-                  class="event-thumb"
-                  src={assetUrl(event.image)}
-                  alt={`Event image for ${event.title}`}
-                  loading="lazy"
-                />
-              ) : null}
-              <div>
-                <h3>{event.title}</h3>
-                <p class="meta-text">
-                  <time datetime={event.startDate}>{new Date(event.startDate).toLocaleString()}</time>
-                  {event.endDate ? ` to ${new Date(event.endDate).toLocaleString()}` : ''}
-                </p>
-                {event.location ? <p class="meta-text">{event.location}</p> : null}
-                {event.summary ? <p>{event.summary}</p> : null}
-                {event.details ? <p>{event.details}</p> : null}
-                <div class="event-cta-row">
-                  <a class="button button--compact" href={resolveHref(event.registrationUrl || '/connect')}>Register</a>
-                </div>
+  {
+    upcoming.length ? (
+      upcoming.map((event, i) => (
+        <section class="section-stack gathering-event-section" aria-labelledby={`gathering-event-${i}-title`}>
+          <div class="gathering-event-body event-item--media">
+            {event.image ? (
+              <img
+                class="event-thumb"
+                src={assetUrl(event.image)}
+                alt={`Event image for ${event.title}`}
+                loading="lazy"
+              />
+            ) : null}
+            <div>
+              <h2 id={`gathering-event-${i}-title`}>{event.title}</h2>
+              <p class="meta-text">
+                <time datetime={event.startDate}>{new Date(event.startDate).toLocaleString()}</time>
+                {event.endDate ? ` to ${new Date(event.endDate).toLocaleString()}` : ''}
+              </p>
+              {event.location ? <p class="meta-text">{event.location}</p> : null}
+              {event.summary ? <p>{event.summary}</p> : null}
+              {event.details ? <p>{event.details}</p> : null}
+              <div class="event-cta-row">
+                <a class="button button--compact" href={resolveHref(event.registrationUrl || '/connect')}>Register</a>
               </div>
-            </article>
-          ))}
-        </div>
-      ) : (
-        <p>No upcoming gatherings are posted yet.</p>
-      )
-    }
-  </section>
+            </div>
+          </div>
+        </section>
+      ))
+    ) : (
+      <p class="lead-text">No upcoming gatherings are posted yet.</p>
+    )
+  }
 </BaseLayout>

@@ -108,6 +108,18 @@
   ],
   "directoryMembers": [
     {
+      "email": "jay@findingmeaningoutdoors.com",
+      "firstName": "Jay",
+      "lastName": "Haase",
+      "organization": "Finding Meaning Outdoors",
+      "website": "https://www.findingmeaningoutdoors.com/",
+      "pronouns": "he/him",
+      "services": "Outdoor guiding\nTeaching outdoor skills\nNature Immersion\nNature for All",
+      "certifications": "Wilderness First Aid",
+      "displayName": "Jay Haase",
+      "photoUrl": "https://images.ctfassets.net/ek9rx9938ifx/3cianRAr9EzJklEECm9Z4V/7006308182ccfec4bc7189b8b3bf35dd/Provider_Directory_Image.jpg"
+    },
+    {
       "email": "becca@intuitivetherapyclinic.com",
       "firstName": "Becca",
       "lastName": "Manthe",
@@ -142,18 +154,6 @@
       "certifications": "Advanced Nature-Based Therapist Certification from Human Nature Counseling",
       "displayName": "Annie Bunio Thompson",
       "photoUrl": "https://images.ctfassets.net/ek9rx9938ifx/4Op56y5SuAXkrIDi0n7FnM/f5f9b7d7345cbb7642fc320c305c8a0b/Annie_Bunio_Provider_Directory.jpeg"
-    },
-    {
-      "email": "jay@findingmeaningoutdoors.com",
-      "firstName": "Jay",
-      "lastName": "Haase",
-      "organization": "Finding Meaning Outdoors",
-      "website": "https://www.findingmeaningoutdoors.com/",
-      "pronouns": "he/him",
-      "services": "Outdoor guiding\nTeaching outdoor skills\nNature Immersion",
-      "certifications": "Wilderness First Aid",
-      "displayName": "Jay Haase",
-      "photoUrl": "https://images.ctfassets.net/ek9rx9938ifx/3cianRAr9EzJklEECm9Z4V/7006308182ccfec4bc7189b8b3bf35dd/Provider_Directory_Image.jpg"
     }
   ]
 }
