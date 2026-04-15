@@ -704,11 +704,11 @@ p {
 }
 
 .button:hover {
-  background: transparent;
-  color: #2d6a4a;
+  background: #e4efe8;
+  color: var(--accent-strong);
   border-color: #2d6a4a;
   transform: none;
-  box-shadow: 0 6px 14px rgba(20, 71, 50, 0.2);
+  box-shadow: 0 6px 14px rgba(20, 71, 50, 0.16);
 }
 
 .button.button--secondary:hover,
