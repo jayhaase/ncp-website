@@ -803,15 +803,15 @@ p {
 
   .hero-block--media.hero-block--image-first-mobile .placeholder-image--hero {
     order: -1;
-    justify-self: stretch;
+    justify-self: center;
   }
 
   .hero-block--media.hero-block--image-first-mobile .hero-copy {
     order: 1;
   }
 
-  .placeholder-image--hero {
-    justify-self: stretch;
+  .hero-block--media .placeholder-image--hero {
+    justify-self: center;
   }
 
   .section-stack {
