@@ -509,14 +509,27 @@ function mapHomePage(homeResponse) {
 
 function mapPages(pageResponse) {
   const linkMap = getLinkedEntryMap(pageResponse);
+  const assetMap = getLinkedAssetMap(pageResponse);
   const pages = toArray(pageResponse?.items)
-    .map((item) => ({
-      slug: item.fields?.slug,
-      title: item.fields?.title,
-      intro: toPlainText(item.fields?.intro || item.fields?.description),
-      infoCards: mapInfoCards(item, linkMap),
-      sections: mapSectionBlocks(item, linkMap)
-    }))
+    .map((item) => {
+      const heroImageUrl = extractAssetUrl(
+        item.fields?.image ?? item.fields?.heroImage,
+        assetMap
+      );
+      const title = item.fields?.title;
+      const heroImageAlt =
+        pickFieldString(item.fields, 'imageAlt', 'heroImageAlt') ||
+        (title ? `Hero image for ${title}` : 'Page hero image');
+
+      return {
+        slug: item.fields?.slug,
+        title,
+        intro: toPlainText(item.fields?.intro || item.fields?.description),
+        ...(heroImageUrl ? { heroImageUrl, heroImageAlt } : {}),
+        infoCards: mapInfoCards(item, linkMap),
+        sections: mapSectionBlocks(item, linkMap)
+      };
+    })
     .filter((page) => page.slug && page.title);
 
   return pages.length ? pages : FALLBACK_CONTENT.pages;

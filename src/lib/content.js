@@ -7,7 +7,7 @@ import { NAV_LINKS } from './navLinks.js';
 /** @typedef {{title: string, description: string, heroImageUrl: string, heroImageAlt: string, mission: string, howItWorks: string[], highlightCards: {title: string, description: string}[]}} HomeContent */
 /** @typedef {{heading: string, bodyText?: string, cards?: {title: string, description: string}[], listItems?: string[]}} PageSection */
 /** @typedef {{title: string, description: string, href?: string}} InfoCard */
-/** @typedef {{slug: string, title: string, intro: string, sections: PageSection[], infoCards?: InfoCard[]}} PageContent */
+/** @typedef {{slug: string, title: string, intro: string, sections: PageSection[], infoCards?: InfoCard[], heroImageUrl?: string, heroImageAlt?: string}} PageContent */
 /** @typedef {{slug: string, title: string, startDate: string, endDate: string, location: string, summary: string, details: string, registrationUrl?: string, image?: string}} EventItem */
 
 const RESERVED_DYNAMIC_SLUGS = new Set(['gatherings', 'join', 'directory']);
