@@ -674,7 +674,12 @@ p {
   padding: 0.74rem 1.05rem;
   border: 1px solid rgba(16, 54, 37, 0.45);
   box-shadow: 0 4px 12px rgba(20, 71, 50, 0.16);
-  transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease;
 }
 
 .button--compact {
@@ -699,7 +704,9 @@ p {
 }
 
 .button:hover {
-  background: #245a3f;
+  background: transparent;
+  color: #2d6a4a;
+  border-color: #2d6a4a;
   transform: none;
   box-shadow: 0 6px 14px rgba(20, 71, 50, 0.2);
 }
