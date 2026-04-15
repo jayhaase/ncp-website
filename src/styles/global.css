@@ -616,6 +616,8 @@ p {
 
 .event-item--plain:last-child {
   border-bottom: 0;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0;
 }
 
 .event-item--media {
