@@ -77,37 +77,15 @@
   ],
   "events": [
     {
-      "slug": "summer-field-practice-circle",
-      "title": "Summer Field Practice Circle",
-      "startDate": "2026-07-13T17:30:00-05:00",
-      "endDate": "2026-07-13T19:30:00-05:00",
-      "location": "Theodore Wirth Regional Park, Minneapolis, MN",
-      "summary": "A practical evening focused on peer exchange, reflection, and in-the-field facilitation techniques.",
-      "details": "Participants will explore guided prompts, partner dialogue, and shared skill-building around nature-based professional practice.",
-      "registrationUrl": "",
-      "image": "https://images.ctfassets.net/ek9rx9938ifx/3G8Gu8iLbCEiPoERV0pj2a/8b6b36b4f814daef5e85548822cf4384/hero-nature.svg"
-    },
-    {
-      "slug": "winter-solstice-gathering-2022",
-      "title": "Winter Solstice Gathering",
-      "startDate": "2022-12-21T18:00:00-06:00",
-      "endDate": "2022-12-21T21:00:00-06:00",
-      "location": "Spiritwoods, Stillwater, MN",
-      "summary": "A community evening focused on connection during the longest night.",
-      "details": "Included shared practice, reflection, and facilitated group activities.",
-      "registrationUrl": "",
-      "image": "https://images.ctfassets.net/ek9rx9938ifx/3G8Gu8iLbCEiPoERV0pj2a/8b6b36b4f814daef5e85548822cf4384/hero-nature.svg"
-    },
-    {
-      "slug": "spring-networking-walk",
-      "title": "Spring Networking Walk",
-      "startDate": "2026-05-16T10:00:00-05:00",
-      "endDate": "2026-05-16T12:00:00-05:00",
-      "location": "Woodlake Nature Center, Richfield, MN",
-      "summary": "A seasonal gathering to reconnect, share current work, and build new professional relationships.",
-      "details": "Participants will move through guided introductions, small-group exchange, and a closing reflection focused on practical collaboration opportunities.",
-      "registrationUrl": "",
-      "image": "https://images.ctfassets.net/ek9rx9938ifx/3G8Gu8iLbCEiPoERV0pj2a/8b6b36b4f814daef5e85548822cf4384/hero-nature.svg"
+      "title": "Spring Gathering 2026",
+      "startDate": "2026-04-24T14:00",
+      "endDate": "2026-04-24T16:30",
+      "location": "[Boom Island Park](https://www.google.com/maps/place/724+Sibley+St+NE,+Minneapolis,+MN+55413/@44.9927359,-93.2692605,16z/data=!3m1!4b1!4m6!3m5!1s0x52b3327db5d698c7:0xaa11c30f709b8269!8m2!3d44.9927359!4d-93.2692605!16s%2Fg%2F11c43y1dg1?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D) (entrance/parking furthest north, near picnic pavilions and Paddle Bridge Kayak Tours - 724 Sibley St NE, Minneapolis, MN 55413",
+      "summary": "We'll gather by the water for a stewardship river clean up and networking while we work at [Boom Island Park](https://www.google.com/maps/place/724+Sibley+St+NE,+Minneapolis,+MN+55413/@44.9927359,-93.2692605,16z/data=!3m1!4b1!4m6!3m5!1s0x52b3327db5d698c7:0xaa11c30f709b8269!8m2!3d44.9927359!4d-93.2692605!16s%2Fg%2F11c43y1dg1?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D) to nurture our growing professional community, with a social hour afterward.",
+      "details": "__Our intention is to:__\n\n- Engage in collective action to develop our Nature-Connected Professionals community with the river as a guide.\n- Develop waste-awareness because it’s not just about picking up the trash and shuffling it off to another place.\n- Build self-efficacy with small actions that make a difference.\n- We’ve partnered with Fresh Water and their Adopt a River toolkit. Supplies provided include gloves, bags, buckets, grabbers, and safety vests.\n\n__Arrive prepared:__ Wear long pants, rubber boots/appropriate footwear and bring gloves if you have them. Also consider sun protection, snacks, and water.\n\n__Accessibility:__ Limited parking nearby, accessible by bus. Trails and restrooms located within walking distance.",
+      "specialInfo": "🎉 Social gathering follows at [Pryes Brewing Company](https://www.pryesbrewing.com/) until 6:30 PM",
+      "registrationUrl": "https://www.eventbrite.com/e/nature-connected-professionals-spring-gathering-2026-tickets-1985214740730?aff=oddtdtcreator&keep_tld=true",
+      "image": "https://images.ctfassets.net/ek9rx9938ifx/3G8Gu8iLbCEiPoERV0pj2a/c3f78bfec6faa6a9fb4cd6c45d5ad48b/image.png"
     }
   ],
   "directoryMembers": [

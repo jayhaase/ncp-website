@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getHomeContent, getSiteSettings, getUpcomingEvents } from '../lib/content.js';
 import { assetUrl, resolveHref, sitePath } from '../lib/sitePath.js';
+import { renderMarkdown } from '../lib/markdown.js';
+import Lightbox from '../components/Lightbox.astro';
 
 const site = getSiteSettings();
 const home = getHomeContent();
@@ -37,21 +39,29 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
             {displayEvents.map((event) => (
               <article class="gathering-preview-item gathering-preview-item--media">
                 {event.image ? (
-                  <img
-                    class="event-thumb"
-                    src={assetUrl(event.image)}
-                    alt={`Event image for ${event.title}`}
-                    loading="lazy"
-                  />
+                  <a
+                    class="event-thumb-link"
+                    href={assetUrl(event.image)}
+                    data-lightbox
+                    data-lightbox-alt={`Event image for ${event.title}`}
+                    aria-label={`View larger image for ${event.title}`}
+                  >
+                    <img
+                      class="event-thumb"
+                      src={assetUrl(event.image)}
+                      alt={`Event image for ${event.title}`}
+                      loading="lazy"
+                    />
+                  </a>
                 ) : null}
                 <div>
                   <h3>{event.title}</h3>
                 <p class="meta-text">
                   <time datetime={event.startDate}>{new Date(event.startDate).toLocaleDateString()}</time>
-                  {' · '}
-                  {event.location}
                 </p>
-                <p>{event.summary}</p>
+                {event.summary ? (
+                  <div class="markdown" set:html={renderMarkdown(event.summary)} />
+                ) : null}
                 <div class="event-cta-row">
                   <a class="button button--compact" href={resolveHref(event.registrationUrl || '/connect')}>Register</a>
                   <a class="button button--secondary button--compact" href={sitePath('/gatherings')}>View all gatherings</a>
@@ -117,4 +127,5 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
     </div>
   </section>
 
+  <Lightbox />
 </BaseLayout>

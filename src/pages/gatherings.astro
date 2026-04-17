@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getSiteSettings, getUpcomingEvents } from '../lib/content.js';
 import { assetUrl, resolveHref } from '../lib/sitePath.js';
+import { renderMarkdown, renderMarkdownInline } from '../lib/markdown.js';
+import Lightbox from '../components/Lightbox.astro';
 
 const site = getSiteSettings();
 const upcoming = getUpcomingEvents();
@@ -31,26 +33,57 @@ const upcoming = getUpcomingEvents();
       upcoming.map((event, i) => (
         <section class="section-stack gathering-event-section" aria-labelledby={`gathering-event-${i}-title`}>
           <div class="gathering-event-body event-item--media">
-            {event.image ? (
-              <img
-                class="event-thumb"
-                src={assetUrl(event.image)}
-                alt={`Event image for ${event.title}`}
-                loading="lazy"
-              />
-            ) : null}
+            <div class="gathering-event-media">
+              {event.image ? (
+                <a
+                  class="event-thumb-link"
+                  href={assetUrl(event.image)}
+                  data-lightbox
+                  data-lightbox-alt={`Event image for ${event.title}`}
+                  aria-label={`View larger image for ${event.title}`}
+                >
+                  <img
+                    class="event-thumb"
+                    src={assetUrl(event.image)}
+                    alt={`Event image for ${event.title}`}
+                    loading="lazy"
+                  />
+                </a>
+              ) : null}
+              <div class="event-cta-row event-cta-row--media">
+                <a class="button button--compact" href={resolveHref(event.registrationUrl || '/connect')}>Register</a>
+              </div>
+            </div>
             <div>
               <h2 id={`gathering-event-${i}-title`}>{event.title}</h2>
               <p class="meta-text">
                 <time datetime={event.startDate}>{new Date(event.startDate).toLocaleString()}</time>
                 {event.endDate ? ` to ${new Date(event.endDate).toLocaleString()}` : ''}
               </p>
-              {event.location ? <p class="meta-text">{event.location}</p> : null}
-              {event.summary ? <p>{event.summary}</p> : null}
-              {event.details ? <p>{event.details}</p> : null}
-              <div class="event-cta-row">
-                <a class="button button--compact" href={resolveHref(event.registrationUrl || '/connect')}>Register</a>
-              </div>
+              {event.location ? (
+                <div class="event-location" aria-label="Location">
+                  <span class="event-location__icon" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 21s-7-7.5-7-12a7 7 0 1 1 14 0c0 4.5-7 12-7 12z" />
+                      <circle cx="12" cy="9" r="2.5" />
+                    </svg>
+                  </span>
+                  <span class="event-location__text markdown markdown--inline" set:html={renderMarkdownInline(event.location)} />
+                </div>
+              ) : null}
+              {event.details ? (
+                <div class="markdown" set:html={renderMarkdown(event.details)} />
+              ) : null}
+              {event.specialInfo ? (
+                <aside class="event-special-info" aria-label="Special note">
+                  <span class="event-special-info__rule" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="14" height="14" focusable="false">
+                      <path fill="currentColor" d="M8 0l1.9 6.1L16 8l-6.1 1.9L8 16l-1.9-6.1L0 8l6.1-1.9z" />
+                    </svg>
+                  </span>
+                  <div class="event-special-info__text markdown" set:html={renderMarkdown(event.specialInfo)} />
+                </aside>
+              ) : null}
             </div>
           </div>
         </section>
@@ -59,4 +92,6 @@ const upcoming = getUpcomingEvents();
       <p class="lead-text">No upcoming gatherings are posted yet.</p>
     )
   }
+
+  <Lightbox />
 </BaseLayout>

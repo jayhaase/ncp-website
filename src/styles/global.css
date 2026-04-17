@@ -361,6 +361,79 @@ p {
   white-space: pre-wrap;
 }
 
+/* Rendered Markdown content (e.g. event descriptions from Contentful). */
+.markdown {
+  max-width: 76ch;
+}
+
+.markdown > :first-child {
+  margin-top: 0;
+}
+
+.markdown > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown p {
+  margin: 0 0 0.9rem;
+}
+
+.markdown ul,
+.markdown ol {
+  margin: 0 0 0.9rem;
+  padding-left: 1.35rem;
+}
+
+.markdown li {
+  margin-bottom: 0.35rem;
+}
+
+.markdown li > p {
+  margin: 0 0 0.35rem;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4 {
+  margin: 1.1rem 0 0.5rem;
+}
+
+.markdown strong {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.markdown a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.markdown a:hover,
+.markdown a:focus {
+  text-decoration: none;
+}
+
+.markdown code {
+  background: rgba(18, 32, 24, 0.06);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+
+.markdown blockquote {
+  margin: 0 0 0.9rem;
+  padding: 0.25rem 0 0.25rem 0.9rem;
+  border-left: 3px solid var(--accent-gold);
+  color: var(--muted);
+}
+
+.markdown--inline,
+.markdown--inline p {
+  display: inline;
+  margin: 0;
+}
+
 .section-stack {
   margin-top: 2rem;
   padding: 1.35rem 1.35rem 1.4rem;
@@ -589,7 +662,25 @@ p {
   gap: 0.55rem;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: 0.65rem;
+  margin-top: 1.6rem;
+}
+
+.gathering-event-media {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  align-items: stretch;
+}
+
+.event-cta-row--media {
+  margin-top: 0;
+  justify-content: center;
+}
+
+.event-cta-row--media .button {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
 }
 
 .gathering-preview-item--media {
@@ -639,6 +730,220 @@ p {
   border: 1px solid var(--border);
   object-fit: cover;
   background: #ece9df;
+  display: block;
+}
+
+.event-thumb-link {
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: zoom-in;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  box-shadow: 0 1px 0 rgba(18, 32, 24, 0.04);
+}
+
+.event-thumb-link:hover,
+.event-thumb-link:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(18, 32, 24, 0.12);
+  outline: none;
+}
+
+.event-thumb-link:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.event-location {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  margin: 0.25rem 0 0.9rem;
+  padding: 0.6rem 0.85rem;
+  border-left: 3px solid var(--accent-gold);
+  background: rgba(163, 117, 34, 0.07);
+  border-radius: 0 8px 8px 0;
+  font-size: 1rem;
+  line-height: 1.4;
+  color: var(--text);
+}
+
+.event-location__icon {
+  color: var(--accent);
+  flex-shrink: 0;
+  display: inline-flex;
+  margin-top: 0.1rem;
+}
+
+.event-location__text {
+  font-weight: 600;
+}
+
+.event-location__text a {
+  color: var(--accent-strong);
+  text-decoration: underline;
+}
+
+.event-location__text a:hover,
+.event-location__text a:focus {
+  text-decoration: none;
+}
+
+/* Editorial-style treatment for the Contentful `specialInfo` field:
+   a centered serif note framed by thin gold rules with a small star ornament. */
+.event-special-info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin: 1.5rem 0 0.5rem;
+  padding: 0.25rem 0;
+  width: 100%;
+  text-align: left;
+}
+
+.event-special-info__rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  width: 100%;
+  color: var(--accent-gold);
+  line-height: 0;
+}
+
+.event-special-info__rule::before,
+.event-special-info__rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(163, 117, 34, 0) 0%,
+    rgba(163, 117, 34, 0.55) 50%,
+    rgba(163, 117, 34, 0) 100%
+  );
+}
+
+.event-special-info__rule svg {
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.6));
+}
+
+.event-special-info__text {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--accent-strong);
+  letter-spacing: 0.005em;
+}
+
+.event-special-info__text > :first-child {
+  margin-top: 0;
+}
+
+.event-special-info__text > :last-child {
+  margin-bottom: 0;
+}
+
+.event-special-info__text strong {
+  color: var(--accent-strong);
+  font-weight: 700;
+}
+
+.event-special-info__text a {
+  color: var(--accent-strong);
+  text-decoration: underline;
+  text-decoration-color: rgba(163, 117, 34, 0.55);
+  text-underline-offset: 3px;
+  font-weight: 600;
+}
+
+.event-special-info__text a:hover,
+.event-special-info__text a:focus {
+  text-decoration-color: var(--accent-gold);
+}
+
+/* Image lightbox overlay. */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background: rgba(18, 32, 24, 0.88);
+  backdrop-filter: blur(4px);
+  animation: lightbox-fade 160ms ease-out;
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox__figure {
+  margin: 0;
+  max-width: min(100%, 1200px);
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox__image {
+  max-width: 100%;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  background: #000;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.lightbox__close:hover,
+.lightbox__close:focus-visible {
+  background: #fff;
+  transform: scale(1.05);
+  outline: none;
+}
+
+.lightbox__close:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+@keyframes lightbox-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .placeholder-image {

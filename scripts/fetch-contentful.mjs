@@ -90,7 +90,6 @@ const FALLBACK_CONTENT = {
   ],
   events: [
     {
-      slug: 'spring-networking-walk',
       title: 'Spring Networking Walk',
       startDate: '2026-05-16T10:00:00-05:00',
       endDate: '2026-05-16T12:00:00-05:00',
@@ -102,7 +101,6 @@ const FALLBACK_CONTENT = {
       image: '/images/placeholders/gathering-circle.svg'
     },
     {
-      slug: 'summer-field-practice-circle',
       title: 'Summer Field Practice Circle',
       startDate: '2026-07-13T17:30:00-05:00',
       endDate: '2026-07-13T19:30:00-05:00',
@@ -114,7 +112,6 @@ const FALLBACK_CONTENT = {
       image: '/images/placeholders/hero-nature.svg'
     },
     {
-      slug: 'winter-solstice-gathering-2022',
       title: 'Winter Solstice Gathering',
       startDate: '2022-12-21T18:00:00-06:00',
       endDate: '2022-12-21T21:00:00-06:00',
@@ -539,13 +536,13 @@ function mapEvents(eventResponse) {
   const assetMap = getLinkedAssetMap(eventResponse);
   const events = toArray(eventResponse?.items)
     .map((item) => ({
-      slug: item.fields?.slug || item.sys?.id,
       title: item.fields?.title,
       startDate: item.fields?.startDate || item.fields?.start || '',
       endDate: item.fields?.endDate || item.fields?.end || '',
       location: toPlainText(item.fields?.location),
       summary: toPlainText(item.fields?.summary),
       details: toPlainText(item.fields?.details),
+      specialInfo: toPlainText(item.fields?.specialInfo),
       registrationUrl: item.fields?.registrationUrl || item.fields?.registrationLink || '',
       image: extractAssetUrl(item.fields?.image, assetMap)
     }))

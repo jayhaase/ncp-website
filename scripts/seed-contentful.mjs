@@ -114,13 +114,6 @@ const MODEL_CONTENT_TYPES = [
     description: 'Community gatherings and event listings.',
     displayField: 'title',
     fields: [
-      {
-        id: 'slug',
-        name: 'Slug',
-        type: 'Symbol',
-        required: true,
-        validations: [{ unique: true }]
-      },
       { id: 'title', name: 'Title', type: 'Symbol', required: true },
       { id: 'startDate', name: 'Start Date', type: 'Date', required: true },
       { id: 'endDate', name: 'End Date', type: 'Date', required: false },
@@ -596,7 +589,6 @@ async function seedEvents(events, locale) {
 
   for (const event of events) {
     const fields = {};
-    assignIfPossible(fields, locale, fMap, 'slug', event.slug);
     assignIfPossible(fields, locale, fMap, 'title', event.title);
     assignIfPossible(fields, locale, fMap, 'startDate', event.startDate);
     assignIfPossible(fields, locale, fMap, 'endDate', event.endDate);

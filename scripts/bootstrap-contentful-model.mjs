@@ -117,13 +117,6 @@ const CONTENT_TYPES = [
     description: 'Community gatherings and event listings.',
     displayField: 'title',
     fields: [
-      {
-        id: 'slug',
-        name: 'Slug',
-        type: 'Symbol',
-        required: true,
-        validations: [{ unique: true }]
-      },
       { id: 'title', name: 'Title', type: 'Symbol', required: true },
       { id: 'startDate', name: 'Start Date', type: 'Date', required: true },
       { id: 'endDate', name: 'End Date', type: 'Date', required: false },

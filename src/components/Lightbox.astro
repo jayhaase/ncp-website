@@ -1,0 +1,87 @@
+---
+// Reusable image lightbox. Any element on the page with the `data-lightbox`
+// attribute (typically an <a href="..."> wrapping an <img>) will open its
+// target image in an overlay when clicked.
+---
+
+<div
+  class="lightbox"
+  data-lightbox-overlay
+  role="dialog"
+  aria-modal="true"
+  aria-label="Image viewer"
+  hidden
+>
+  <button
+    type="button"
+    class="lightbox__close"
+    data-lightbox-close
+    aria-label="Close image viewer"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 6l12 12" />
+      <path d="M18 6L6 18" />
+    </svg>
+  </button>
+  <figure class="lightbox__figure">
+    <img class="lightbox__image" data-lightbox-image src="" alt="" />
+  </figure>
+</div>
+
+<script is:inline>
+  (function initLightbox() {
+    if (window.__ncpLightboxInit) return;
+    window.__ncpLightboxInit = true;
+
+    const overlay = document.querySelector('[data-lightbox-overlay]');
+    if (!overlay) return;
+
+    const image = overlay.querySelector('[data-lightbox-image]');
+    const closeBtn = overlay.querySelector('[data-lightbox-close]');
+    let previouslyFocused = null;
+
+    function open(src, alt) {
+      if (!src) return;
+      image.src = src;
+      image.alt = alt || '';
+      overlay.hidden = false;
+      document.body.classList.add('lightbox-open');
+      previouslyFocused = document.activeElement;
+      closeBtn.focus();
+    }
+
+    function close() {
+      overlay.hidden = true;
+      image.src = '';
+      image.alt = '';
+      document.body.classList.remove('lightbox-open');
+      if (previouslyFocused && typeof previouslyFocused.focus === 'function') {
+        previouslyFocused.focus();
+      }
+    }
+
+    document.addEventListener('click', (event) => {
+      const trigger = event.target.closest('[data-lightbox]');
+      if (!trigger) return;
+      event.preventDefault();
+      const src = trigger.getAttribute('href') || trigger.getAttribute('data-lightbox-src');
+      const alt =
+        trigger.getAttribute('data-lightbox-alt') ||
+        (trigger.querySelector('img') && trigger.querySelector('img').alt) ||
+        '';
+      open(src, alt);
+    });
+
+    overlay.addEventListener('click', (event) => {
+      if (event.target === overlay || event.target.closest('[data-lightbox-close]')) {
+        close();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !overlay.hidden) {
+        close();
+      }
+    });
+  })();
+</script>
