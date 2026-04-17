@@ -5,6 +5,20 @@ const marked = new Marked({
   breaks: false
 });
 
+/** Open external links rendered from Markdown in a new tab. Skips in-page
+ *  anchors (`#foo`) and `mailto:` / `tel:` links where a new tab is wrong. */
+marked.use({
+  renderer: {
+    link({ href, title, tokens }) {
+      const text = this.parser.parseInline(tokens);
+      const titleAttr = title ? ` title="${title}"` : '';
+      const isExternal = /^https?:\/\//i.test(href) || href?.startsWith('//');
+      const targetAttrs = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+      return `<a href="${href}"${titleAttr}${targetAttrs}>${text}</a>`;
+    }
+  }
+});
+
 /**
  * Render Markdown as block HTML (paragraphs, lists, headings, etc.).
  * Returns an empty string for empty input.
