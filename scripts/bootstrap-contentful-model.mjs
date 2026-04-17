@@ -118,11 +118,14 @@ const CONTENT_TYPES = [
     displayField: 'title',
     fields: [
       { id: 'title', name: 'Title', type: 'Symbol', required: true },
-      { id: 'startDate', name: 'Start Date', type: 'Date', required: true },
+      { id: 'startDate', name: 'Start Date', type: 'Date', required: false },
       { id: 'endDate', name: 'End Date', type: 'Date', required: false },
+      { id: 'season', name: 'Season', type: 'Symbol', required: false },
+      { id: 'year', name: 'Year', type: 'Symbol', required: false },
       { id: 'location', name: 'Location', type: 'Text', required: false },
       { id: 'summary', name: 'Summary', type: 'Text', required: false },
       { id: 'details', name: 'Details', type: 'Text', required: false },
+      { id: 'specialInfo', name: 'Special Info', type: 'Text', required: false },
       { id: 'registrationUrl', name: 'Registration URL', type: 'Symbol', required: false },
       {
         id: 'image',

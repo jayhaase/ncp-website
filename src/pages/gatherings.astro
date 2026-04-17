@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getSiteSettings, getUpcomingEvents } from '../lib/content.js';
+import { formatEventWhen, getSiteSettings, getUpcomingEvents } from '../lib/content.js';
 import { assetUrl, resolveHref } from '../lib/sitePath.js';
 import { renderMarkdown, renderMarkdownInline } from '../lib/markdown.js';
 import Lightbox from '../components/Lightbox.astro';
@@ -50,15 +50,20 @@ const upcoming = getUpcomingEvents();
                   />
                 </a>
               ) : null}
-              <div class="event-cta-row event-cta-row--media">
-                <a class="button button--compact" href={resolveHref(event.registrationUrl || '/connect')}>Register</a>
-              </div>
+              {event.registrationUrl ? (
+                <div class="event-cta-row event-cta-row--media">
+                  <a class="button button--compact" href={resolveHref(event.registrationUrl)}>Register</a>
+                </div>
+              ) : null}
             </div>
             <div>
               <h2 id={`gathering-event-${i}-title`}>{event.title}</h2>
               <p class="meta-text">
-                <time datetime={event.startDate}>{new Date(event.startDate).toLocaleString()}</time>
-                {event.endDate ? ` to ${new Date(event.endDate).toLocaleString()}` : ''}
+                {event.startDate ? (
+                  <time datetime={event.startDate}>{formatEventWhen(event)}</time>
+                ) : (
+                  <span class="event-when--tbd">{formatEventWhen(event)}</span>
+                )}
               </p>
               {event.location ? (
                 <div class="event-location" aria-label="Location">

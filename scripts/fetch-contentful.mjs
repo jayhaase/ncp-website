@@ -539,6 +539,11 @@ function mapEvents(eventResponse) {
       title: item.fields?.title,
       startDate: item.fields?.startDate || item.fields?.start || '',
       endDate: item.fields?.endDate || item.fields?.end || '',
+      season: pickFieldString(item.fields, 'season'),
+      year: (() => {
+        const y = item.fields?.year;
+        return y == null || y === '' ? '' : String(y).trim();
+      })(),
       location: toPlainText(item.fields?.location),
       summary: toPlainText(item.fields?.summary),
       details: toPlainText(item.fields?.details),
@@ -546,7 +551,7 @@ function mapEvents(eventResponse) {
       registrationUrl: item.fields?.registrationUrl || item.fields?.registrationLink || '',
       image: extractAssetUrl(item.fields?.image, assetMap)
     }))
-    .filter((event) => event.title && event.startDate);
+    .filter((event) => event.title);
 
   return events.length ? events : FALLBACK_CONTENT.events;
 }

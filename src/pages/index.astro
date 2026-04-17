@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getHomeContent, getSiteSettings, getUpcomingEvents } from '../lib/content.js';
+import { formatEventWhen, getHomeContent, getSiteSettings, getUpcomingEvents } from '../lib/content.js';
 import { assetUrl, resolveHref, sitePath } from '../lib/sitePath.js';
 import { renderMarkdown } from '../lib/markdown.js';
 import Lightbox from '../components/Lightbox.astro';
@@ -57,13 +57,19 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
                 <div>
                   <h3>{event.title}</h3>
                 <p class="meta-text">
-                  <time datetime={event.startDate}>{new Date(event.startDate).toLocaleDateString()}</time>
+                  {event.startDate ? (
+                    <time datetime={event.startDate}>{formatEventWhen(event, { dateStyle: 'short' })}</time>
+                  ) : (
+                    <span class="event-when--tbd">{formatEventWhen(event)}</span>
+                  )}
                 </p>
                 {event.summary ? (
                   <div class="markdown" set:html={renderMarkdown(event.summary)} />
                 ) : null}
                 <div class="event-cta-row">
-                  <a class="button button--compact" href={resolveHref(event.registrationUrl || '/connect')}>Register</a>
+                  {event.registrationUrl ? (
+                    <a class="button button--compact" href={resolveHref(event.registrationUrl)}>Register</a>
+                  ) : null}
                   <a class="button button--secondary button--compact" href={sitePath('/gatherings')}>View all gatherings</a>
                 </div>
               </div>

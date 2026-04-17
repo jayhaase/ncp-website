@@ -115,11 +115,14 @@ const MODEL_CONTENT_TYPES = [
     displayField: 'title',
     fields: [
       { id: 'title', name: 'Title', type: 'Symbol', required: true },
-      { id: 'startDate', name: 'Start Date', type: 'Date', required: true },
+      { id: 'startDate', name: 'Start Date', type: 'Date', required: false },
       { id: 'endDate', name: 'End Date', type: 'Date', required: false },
+      { id: 'season', name: 'Season', type: 'Symbol', required: false },
+      { id: 'year', name: 'Year', type: 'Symbol', required: false },
       { id: 'location', name: 'Location', type: 'Text', required: false },
       { id: 'summary', name: 'Summary', type: 'Text', required: false },
       { id: 'details', name: 'Details', type: 'Text', required: false },
+      { id: 'specialInfo', name: 'Special Info', type: 'Text', required: false },
       { id: 'registrationUrl', name: 'Registration URL', type: 'Symbol', required: false },
       {
         id: 'image',
@@ -592,9 +595,12 @@ async function seedEvents(events, locale) {
     assignIfPossible(fields, locale, fMap, 'title', event.title);
     assignIfPossible(fields, locale, fMap, 'startDate', event.startDate);
     assignIfPossible(fields, locale, fMap, 'endDate', event.endDate);
+    assignIfPossible(fields, locale, fMap, 'season', event.season);
+    assignIfPossible(fields, locale, fMap, 'year', event.year);
     assignIfPossible(fields, locale, fMap, 'location', event.location);
     assignIfPossible(fields, locale, fMap, 'summary', event.summary);
     assignIfPossible(fields, locale, fMap, 'details', event.details);
+    assignIfPossible(fields, locale, fMap, 'specialInfo', event.specialInfo);
     assignIfPossible(fields, locale, fMap, 'registrationUrl', event.registrationUrl);
     assignIfPossible(fields, locale, fMap, 'registrationLink', event.registrationUrl);
 

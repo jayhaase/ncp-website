@@ -1,0 +1,247 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getSiteSettings } from '../../lib/content.js';
+import { assetUrl, sitePath } from '../../lib/sitePath.js';
+
+const site = getSiteSettings();
+
+const pillars = [
+  {
+    title: 'Connection',
+    body:
+      'The primary reason we are here. We gather to begin feelings of belonging within the community of nature-connected professionals — and to undo aloneness in the field.'
+  },
+  {
+    title: 'Reciprocity',
+    body:
+      'Our gatherings are meant to be good for us and good for the land — through presence, stewardship, and the positive energy of being together with intention.'
+  },
+  {
+    title: 'Justice',
+    body:
+      'Many of us are working to decolonize our practices. We hold space for that work in how we gather, what we offer, and who we invite into the circle.'
+  }
+];
+
+const streams = [
+  {
+    icon: '🌳',
+    name: 'Oak Tree Anchored',
+    kind: 'Formal presentations and workshops',
+    body:
+      "Completely formed ideas — facilitated, often experiential. Participants receive the facilitator's generous offering; giving and receiving together."
+  },
+  {
+    icon: '🔥',
+    name: 'Campfire Conversations',
+    kind: 'Facilitated conversations',
+    body:
+      'A shared conversation on a topic without a fixed agenda. We gather around what matters and let the thinking find its shape.'
+  },
+  {
+    icon: '☕',
+    name: 'Community Cafe',
+    kind: 'Lightning talks, posters, and tabling',
+    body:
+      'A third-space for brief introductions, encounters, and explorations. Short-form offerings for anyone with something to share.'
+  }
+];
+
+const schedule = [
+  { time: '9:00 – 10:00 am', title: 'Opening Circle', body: 'Grounding together and welcoming the land.' },
+  { time: '10:00 – 11:00 am', title: 'Session Block 1', body: 'Three streams running in parallel.' },
+  { time: '11:00 am – 12:00 pm', title: 'Session Block 2', body: 'Three streams running in parallel.' },
+  { time: '12:00 – 1:00 pm', title: 'Lunch', body: 'Food trucks and open time together.' },
+  { time: '1:00 – 2:00 pm', title: 'Session Block 3', body: 'Three streams running in parallel.' },
+  { time: '2:00 – 3:00 pm', title: 'Session Block 4', body: 'Three streams running in parallel.' },
+  { time: '3:00 – 4:00 pm', title: 'Session Block 5', body: 'Three streams running in parallel.' },
+  { time: '4:00 – 5:00 pm', title: 'Closing Circle', body: 'What we carry forward.' }
+];
+
+const audience = [
+  'Health and wellness professionals',
+  'Educators and researchers',
+  'Scientists and environmental advocates',
+  'Public-service workers — emergency response, land stewards, and others in community service',
+  'Facilitators — Work that Reconnects, Climate Cafes, forest bathing guides, and kindred practices',
+  'Faith communities and contemplative practitioners',
+  'Artists, organizers, and culture-makers whose work touches the land'
+];
+---
+
+<BaseLayout
+  title={`The (Un)Conference · Fall 2026 | ${site.organizationName}`}
+  description="A day-long gathering of nature-connected professionals — building intentional community in relationship with nature."
+>
+  <section
+    class="hero-block hero-block--media hero-block--image-first-mobile"
+    aria-labelledby="unconference-title"
+  >
+    <div class="hero-copy">
+      <p class="eyebrow">Fall 2026 · Date to be announced</p>
+      <h1 id="unconference-title">The (Un)Conference</h1>
+      <p class="lead-text">
+        A day-long gathering of nature-connected professionals — building intentional community in relationship with nature, in place of our fall seasonal gathering. Our three central pillars: <strong>Reciprocity</strong>, <strong>Connection</strong>, and <strong>Justice</strong>.
+      </p>
+      <div class="button-row">
+        <a class="button" href="#call-for-sessions">Propose a session</a>
+        <a class="button button--secondary" href="#get-involved">Get involved</a>
+      </div>
+    </div>
+    <img
+      class="placeholder-image placeholder-image--hero"
+      src={assetUrl('/images/placeholders/hero-nature.svg')}
+      alt="A grove of trees at the edge of a prairie"
+      loading="lazy"
+    />
+  </section>
+
+  <section class="section-stack" aria-labelledby="pillars-title">
+    <h2 id="pillars-title">Our three pillars</h2>
+    <p class="lead-text">
+      The pillars shape what we offer, what we ask of each other, and how we hold the day.
+    </p>
+    <div class="identity-grid">
+      {pillars.map((p) => (
+        <article class="identity-item">
+          <h3>{p.title}</h3>
+          <p>{p.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-stack" aria-labelledby="why-title">
+    <h2 id="why-title">Why we're gathering</h2>
+    <p class="page-body">
+      For years, people in this community have said they want a conference. The (Un)Conference isn't quite that. It's what we want to make together — a full day in the field with peers, built on peer learning rather than keynote spotlights. Less broadcast, more circle.
+    </p>
+    <blockquote class="pull-quote">Undo aloneness in the field.</blockquote>
+    <p class="page-body">
+      This year the (Un)Conference takes the place of our fall seasonal gathering, while the spring, summer, and winter rhythms continue. We'll hold the day outdoors — under sky and canopy — with time for formal offerings, unhurried conversation, and the small encounters that turn a crowd into a community.
+    </p>
+  </section>
+
+  <section class="section-stack" aria-labelledby="streams-title">
+    <h2 id="streams-title">A day in three streams</h2>
+    <p class="lead-text">
+      Each session block runs three streams in parallel. Attendees move between them freely.
+    </p>
+    <div class="identity-grid">
+      {streams.map((s) => (
+        <article class="identity-item stream-card">
+          <h3>
+            <span class="stream-card__icon" aria-hidden="true">{s.icon}</span>
+            {s.name}
+          </h3>
+          <p class="stream-card__kind">{s.kind}</p>
+          <p>{s.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section-stack" aria-labelledby="schedule-title">
+    <h2 id="schedule-title">Schedule at a glance</h2>
+    <p class="lead-text">
+      A single-day arc, anchored by an opening and closing circle. Times are approximate and may shift as details firm up.
+    </p>
+    <ol class="schedule-list">
+      {schedule.map((row) => (
+        <li class="schedule-item">
+          <p class="schedule-item__time">{row.time}</p>
+          <div class="schedule-item__body">
+            <h3>{row.title}</h3>
+            <p>{row.body}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="section-stack" aria-labelledby="place-title">
+    <h2 id="place-title">Place &amp; logistics</h2>
+    <div class="event-location" aria-label="Location">
+      <span class="event-location__icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21s-7-7.5-7-12a7 7 0 1 1 14 0c0 4.5-7 12-7 12z" />
+          <circle cx="12" cy="9" r="2.5" />
+        </svg>
+      </span>
+      <span class="event-location__text">RecuperAcres — outdoor gathering land. Full address and directions to be announced with registration.</span>
+    </div>
+    <ul class="list-flow">
+      <li><strong>Outdoors by default</strong>, with a large barn as a weather backup in early October.</li>
+      <li><strong>Tent camping welcome</strong> the night before for anyone who wants to land early. Portable stoves are fine; we'll gather around the fire pit by the lake.</li>
+      <li><strong>Food trucks</strong> for lunch, with an emphasis on partnering with BIPOC-owned vendors.</li>
+      <li><strong>Registration via Eventbrite</strong>, with a sliding-scale ticket and scholarship option so cost is not a barrier.</li>
+      <li><strong>Accessibility</strong>: the land has uneven terrain and is not fully wheelchair-accessible. We're mapping access routes and will share details with registration.</li>
+      <li><strong>Waiver</strong> signed as part of registration — this is a volunteer-organized event.</li>
+    </ul>
+  </section>
+
+  <section class="section-stack" id="call-for-sessions" aria-labelledby="call-title">
+    <h2 id="call-title">Call for sessions</h2>
+    <p class="page-body">
+      This is a co-creative process, not a grant proposal. If you have something you'd like to offer — a workshop, a conversation you want to host, a short talk, a tabled resource — we want to hear from you. If you aren't sure it fits, submit anyway and we'll talk.
+    </p>
+    <p class="page-body">
+      The submission form opens closer to summer. When it goes live, expect to tell us:
+    </p>
+    <ul class="list-flow">
+      <li>A <strong>title</strong> and short <strong>description</strong> of your offering.</li>
+      <li>Preferred <strong>length</strong>: one session block or two.</li>
+      <li>Preferred <strong>stream</strong>: Oak Tree Anchored, Campfire Conversations, or Community Cafe.</li>
+      <li><strong>Physicality</strong>: how active participants will be.</li>
+      <li>Anything we should know to help you show up well.</li>
+    </ul>
+  </section>
+
+  <section class="section-stack" aria-labelledby="audience-title">
+    <h2 id="audience-title">Who this is for</h2>
+    <p class="lead-text">
+      Anyone whose professional life is woven with the natural world — or wants to be.
+    </p>
+    <ul class="highlight-list">
+      {audience.map((a) => (
+        <li class="highlight-item">
+          <p>{a}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section-stack how-section" id="get-involved" aria-labelledby="get-involved-title">
+    <h2 id="get-involved-title">Get involved</h2>
+    <p class="lead-text">
+      A few simple ways to step in, at whatever level feels right.
+    </p>
+    <div class="how-list">
+      <article class="how-item">
+        <h3><span aria-hidden="true">✍️</span> Propose a session</h3>
+        <p>Offer a workshop, host a Campfire Conversation, or bring a short talk to the Community Cafe.</p>
+        <a class="how-action" href="#call-for-sessions">Read the call</a>
+      </article>
+      <article class="how-item">
+        <h3><span aria-hidden="true">🤲</span> Volunteer for the day</h3>
+        <p>Day-of support, logistics, registration, setup, tear-down, and welcoming newcomers.</p>
+        <a class="how-action" href={sitePath('/connect')}>Get in touch</a>
+      </article>
+      <article class="how-item">
+        <h3><span aria-hidden="true">📬</span> Stay in the loop</h3>
+        <p>We'll announce the date, location, and registration as details are confirmed.</p>
+        <a class="how-action" href={sitePath('/connect')}>Join the list</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-stack" aria-labelledby="story-title">
+    <h2 id="story-title">Our story so far</h2>
+    <p class="page-body">
+      Nature-Connected Professionals began in 2022 as a graduate-school community project, sparked by a Nature in Counseling course at Adler Graduate School. What started as a small circle pulling garlic mustard at Woodlake Nature Center grew into seasonal gatherings — forest bathing at French Regional Park, a winter solstice coming-together at Spiritwoods — and a steady rhythm of showing up for one another.
+    </p>
+    <p class="page-body">
+      Since late 2024, a committee has been meeting to shape this first (Un)Conference. Many voices, meeting by meeting, have brought it this far. The invitation now is yours.
+    </p>
+  </section>
+</BaseLayout>
