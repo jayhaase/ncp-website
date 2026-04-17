@@ -68,7 +68,12 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
                 ) : null}
                 <div class="event-cta-row">
                   {event.registrationUrl ? (
-                    <a class="button button--compact" href={resolveHref(event.registrationUrl)}>Register</a>
+                    <a
+                      class="button button--compact"
+                      href={resolveHref(event.registrationUrl)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >Register</a>
                   ) : null}
                   <a class="button button--secondary button--compact" href={sitePath('/gatherings')}>View all gatherings</a>
                 </div>

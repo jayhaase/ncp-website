@@ -182,8 +182,21 @@ export function formatEventWhen(event, options = {}) {
       return start.toLocaleDateString();
     }
 
-    const startLabel = start.toLocaleString();
-    return end ? `${startLabel} to ${end.toLocaleString()}` : startLabel;
+    const dateTimeFormatter = new Intl.DateTimeFormat(undefined, {
+      dateStyle: 'long',
+      timeStyle: 'short'
+    });
+    const timeFormatter = new Intl.DateTimeFormat(undefined, { timeStyle: 'short' });
+
+    const startLabel = dateTimeFormatter.format(start);
+    if (!end) return startLabel;
+
+    const sameDay =
+      start.getFullYear() === end.getFullYear() &&
+      start.getMonth() === end.getMonth() &&
+      start.getDate() === end.getDate();
+    const endLabel = sameDay ? timeFormatter.format(end) : dateTimeFormatter.format(end);
+    return `${startLabel} to ${endLabel}`;
   }
 
   const season = (event.season || '').trim();

@@ -52,7 +52,12 @@ const upcoming = getUpcomingEvents();
               ) : null}
               {event.registrationUrl ? (
                 <div class="event-cta-row event-cta-row--media">
-                  <a class="button button--compact" href={resolveHref(event.registrationUrl)}>Register</a>
+                  <a
+                    class="button button--compact"
+                    href={resolveHref(event.registrationUrl)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >Register</a>
                 </div>
               ) : null}
             </div>
