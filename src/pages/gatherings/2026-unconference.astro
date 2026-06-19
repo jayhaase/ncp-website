@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getSiteSettings } from '../../lib/content.js';
-import { assetUrl, sitePath } from '../../lib/sitePath.js';
+import { assetUrl } from '../../lib/sitePath.js';
 
 const site = getSiteSettings();
 
@@ -58,15 +58,6 @@ const schedule = [
   { time: '4:00 – 5:00 pm', title: 'Closing Circle', body: 'What we carry forward.' }
 ];
 
-const audience = [
-  'Health and wellness professionals',
-  'Educators and researchers',
-  'Scientists and environmental advocates',
-  'Public-service workers — emergency response, land stewards, and others in community service',
-  'Facilitators — Work that Reconnects, Climate Cafes, forest bathing guides, and kindred practices',
-  'Faith communities and contemplative practitioners',
-  'Artists, organizers, and culture-makers whose work touches the land'
-];
 ---
 
 <BaseLayout
