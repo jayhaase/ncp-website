@@ -8,9 +8,9 @@
     }
   },
   "homePage": {
-    "title": "Gathering people who help others connect with nature.",
+    "title": "Gathering people who connect others with nature.",
     "description": "",
-    "heroImageUrl": "https://images.ctfassets.net/ek9rx9938ifx/2d1iOfIjrG6vVOPKDzNWA4/2c3c9170cfce1a8c40d8b8bd739a2f6d/Abstract_Landscape_Moon_Trees_Hero_Image.png",
+    "heroImageUrl": "https://images.ctfassets.net/ek9rx9938ifx/6tkTCrMB4kaTs0kDf7XAh2/d5b9572a6928c9414f2e804ec625b12a/Cottonwood_tree.jpg",
     "heroImageAlt": "Placeholder illustration for homepage hero",
     "mission": "We gather to cultivate depth through community building, engage broadly through networking, and steward care for life by generously sharing skills, knowledge, and lived experience.",
     "howItWorks": [
@@ -20,8 +20,8 @@
     ],
     "highlightCards": [
       {
-        "title": "For practitioners and educators",
-        "description": "A professional community for people weaving nature connection into their work."
+        "title": "For Everyone",
+        "description": "A professional community for people weaving nature connection into their work or volunteerism."
       },
       {
         "title": "Rooted in practice",

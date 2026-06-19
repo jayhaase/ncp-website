@@ -37,6 +37,8 @@ Target runtime: Node `24.17.0` LTS via [.nvmrc](/Users/jayhaase/dev/ncp-website/
 ### Local sync behavior
 
 - If Contentful credentials are present and valid, `pnpm run sync-content` updates `src/data/content.generated.json`.
+- `pnpm run dev` runs a one-time Contentful sync before starting Astro.
+- Contentful changes made after the dev server is already running still require rerunning `pnpm run sync-content` or restarting `pnpm run dev`.
 - If credentials are missing or Contentful is temporarily unavailable, local sync preserves the checked-in snapshot instead of overwriting it.
 - If no snapshot exists yet, local sync bootstraps fallback content so the site can still start.
 - To make local sync fail hard like CI, set `CONTENT_SYNC_STRICT=true`.
@@ -64,6 +66,42 @@ GitHub Pages deploys from `.github/workflows/deploy-pages.yml`.
 - CI runs `pnpm run sync-content` as a separate step.
 - CI fails if Contentful credentials are missing or the sync request fails.
 - CI then runs `pnpm run build:site` and uploads `dist/` to GitHub Pages on `main`.
+
+### Contentful-triggered rebuilds
+
+Published content can trigger a GitHub Pages rebuild without a code push.
+
+1. Create a fine-grained GitHub personal access token with access to this repository.
+2. Give the token `Contents: read/write` access for the repository so it can call the repository dispatch endpoint.
+3. In Contentful, create a webhook for publish and unpublish topics such as:
+   - `Entry.publish`
+   - `Entry.unpublish`
+   - `Asset.publish`
+   - `Asset.unpublish`
+   - `ContentType.publish`
+   - `ContentType.unpublish`
+4. Point the webhook URL at:
+   ```text
+   https://api.github.com/repos/jayhaase/ncp-website/dispatches
+   ```
+5. Configure these custom headers in the Contentful webhook:
+   ```text
+   Accept: application/vnd.github+json
+   Authorization: Bearer <YOUR_GITHUB_TOKEN>
+   X-GitHub-Api-Version: 2026-03-10
+   Content-Type: application/json
+   ```
+6. Set the webhook body to:
+   ```json
+   {
+     "event_type": "contentful-publish",
+     "client_payload": {
+       "source": "contentful"
+     }
+   }
+   ```
+
+The GitHub Actions workflow listens for `repository_dispatch` events with `event_type: contentful-publish` and performs the same build/deploy flow used for `main` pushes.
 
 `astro.config.mjs` sets `site` and `base` so the site works for both the production domain and GitHub Pages project-site paths. Internal links and asset URLs should go through `src/lib/sitePath.js`.
 

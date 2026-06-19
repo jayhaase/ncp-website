@@ -4,6 +4,8 @@ on:
   push:
     branches: ["main"]
   pull_request:
+  repository_dispatch:
+    types: [contentful-publish]
   workflow_dispatch:
 
 permissions:
@@ -70,13 +72,13 @@ jobs:
         run: pnpm run build:site
 
       - name: Upload artifact
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'repository_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
   deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'repository_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
