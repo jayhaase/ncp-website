@@ -109,6 +109,8 @@ The GitHub Actions workflow listens for `repository_dispatch` events with `event
 
 - Contentful is the source of truth for homepage copy, CTA content, standard pages, and events.
 - Navigation links remain code-owned in `src/lib/navLinks.js`.
+- The `/gatherings` route uses the `standardPage` entry with slug `gatherings` for its non-event content, then appends the event feed from `event` entries.
+- `gatherings` remains a reserved slug and is not served by the generic standard-page route.
 - Markdown from Contentful is sanitized before rendering.
 - JavaScript package installs are managed by pnpm, not npm.
 - Linting is provided by ESLint with `eslint-plugin-astro`.
@@ -135,7 +137,7 @@ Notes:
 
 - `/` Home
 - `/about` Standard page
-- `/gatherings` Events page
+- `/gatherings` Standard page shell plus events feed
 - `/gatherings/2026-unconference` Standalone event page
 - `/directory` Member directory
 - `/connect` Standard page
@@ -167,10 +169,14 @@ Notes:
 - `title`
 - `intro`
 - `infoCards`
-- `sectionBlocks`
+- `sections`
+
+Reserved slug behavior:
+- `slug = gatherings` provides the editorial page content for `/gatherings`
+- the route still appends event listings from `event` entries in code
+- `gatherings` is excluded from the generic `[slug]` standard-page route
 
 ### `event`
-- `slug`
 - `title`
 - `whenText`
 - `season`

@@ -31,11 +31,20 @@
   },
   "pages": [
     {
+      "slug": "gatherings",
+      "title": "Seasonal Gatherings",
+      "intro": "Partnering with nature's rhythms to nuture community and connection.",
+      "heroImageUrl": "https://images.ctfassets.net/ek9rx9938ifx/2d1iOfIjrG6vVOPKDzNWA4/2c3c9170cfce1a8c40d8b8bd739a2f6d/Abstract_Landscape_Moon_Trees_Hero_Image.png",
+      "heroImageAlt": "Hero image for Seasonal Gatherings",
+      "infoCards": [],
+      "sections": []
+    },
+    {
       "slug": "about",
-      "title": "About Nature Connected Professionals",
+      "title": "About Our Community",
       "intro": "Nature Connected Professionals is a member-powered network supporting people who use nature connection in counseling, education, health, and community practice.",
-      "heroImageUrl": "https://images.ctfassets.net/ek9rx9938ifx/79qTgaxTLVPN8C7WZOmcpr/8d4dfacb61114d2bf94f43c1e7d12658/Font_Recommendations_Calm_Site_Apr_15_2026.png",
-      "heroImageAlt": "Hero image for About Nature Connected Professionals",
+      "heroImageUrl": "https://images.ctfassets.net/ek9rx9938ifx/6jtVAhLVsal1W1TVGooZZH/8456daf4a136b920f177816a4d1ef295/GM_networking_event_2022.jpg",
+      "heroImageAlt": "Hero image for About Our Community",
       "infoCards": [
         {
           "title": "Lorem Ipsum Dolor",
@@ -73,6 +82,18 @@
   ],
   "events": [
     {
+      "title": "Summer Gathering 2026",
+      "whenText": "Either the fourth or fifth Friday in July from 4:00 PM - 6:30 PM",
+      "season": "Summer",
+      "year": "2026",
+      "location": "[Bush Lake  Izaak Walton League](https://maps.app.goo.gl/URWKwhop87QKtW7FA)",
+      "summary": "__Theme:__ Working in Relationship with Nature Amid a Changing Climate and an Atmosphere of Unrest",
+      "details": "The NCP Summer Gathering will address issues related to climate change. There will be facilitated nature immersion, climate-aware eco-art therapy to process climate anxiety and grief, and community conversation with the facilitators. The facilitators represent several archetypes within the NCP community, including:\n1) A Citizen Naturalist and Ecological Steward\n2) Climate-Aware Eco-Art Therapist\n3) Environmental Leadership Professional\n4) Climate Scientist\n\n__Theme:__ Working in Relationship with Nature Amid a Changing Climate and an Atmosphere of Unrest\n\n__Goals:__ \n1) Connection with nature and community\n2) Emotional processing\n3) Meaningful discussion about climate change and how it impacts our lives\n",
+      "specialInfo": "🎉 There is an optional social time afterward for picnicking and swimming at Bush Lake.",
+      "registrationUrl": "",
+      "image": "https://images.ctfassets.net/ek9rx9938ifx/50v6YQouAmqHlymQkWvjCE/ce6e808aa52c727d40f4c7f87ae972a6/imagejpeg_0_26_.jpg"
+    },
+    {
       "title": "Fall Gathering: NCP Unconference 2026",
       "whenText": "",
       "season": "Fall",
@@ -83,18 +104,6 @@
       "specialInfo": "This is a co-creative process. If you’re not sure it’s going to work, it’s OK. Submit your idea, and we’ll talk to you. Click the Registration button to learn more!",
       "registrationUrl": "/gatherings/2026-unconference",
       "image": "https://images.ctfassets.net/ek9rx9938ifx/5op2ytdUT1OQVSMvY3uktX/dc1b36a54525c845bb9136121b55f2d8/20191116_130345.jpg"
-    },
-    {
-      "title": "Summer Gathering 2026",
-      "whenText": "Either the fourth or fifth Friday in July from 4:00 PM - 6:30 PM",
-      "season": "Summer",
-      "year": "2026",
-      "location": "[Bush Lake  Izaak Walton League](https://maps.app.goo.gl/URWKwhop87QKtW7FA)",
-      "summary": "__Theme:__ Working in Relationship with Nature Amid a Changing Climate and an Atmosphere of Unrest",
-      "details": "The NCP Summer Gathering will address issues related to climate change. There will be facilitated nature immersion, climate-aware eco-art therapy to process climate anxiety and grief, and community conversation with the facilitators. The facilitators represent several archetypes within the NCP community, including:\n1) A Citizen Naturalist and Ecological Steward\n2) Climate-Aware Eco-Art Therapist\n3) Environmental Leadership Professional\n4) Climate Scientist\n\n__Theme:__ Working in Relationship with Nature Amid a Changing Climate and an Atmosphere of Unrest\n\n__Goals:__ \n1) Connection with nature and community\n2) Emotional processing\n3) Meaningful discussion about climate change and how it impacts our lives\n",
-      "specialInfo": "🎉There is an optional social time afterward for picnicking and swimming at Bush Lake.",
-      "registrationUrl": "",
-      "image": "https://images.ctfassets.net/ek9rx9938ifx/50v6YQouAmqHlymQkWvjCE/ce6e808aa52c727d40f4c7f87ae972a6/imagejpeg_0_26_.jpg"
     },
     {
       "title": "Spring Gathering 2026",

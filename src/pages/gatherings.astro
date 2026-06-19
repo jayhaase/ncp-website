@@ -1,33 +1,99 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { formatEventWhen, getSiteSettings, getUpcomingEvents } from '../lib/content.js';
+import {
+  formatEventWhen,
+  getPageBySlug,
+  getSiteSettings,
+  getUpcomingEvents
+} from '../lib/content.js';
 import { assetUrl, resolveHref } from '../lib/sitePath.js';
 import { renderMarkdown, renderMarkdownInline } from '../lib/markdown.js';
 import Lightbox from '../components/Lightbox.astro';
 
 const site = getSiteSettings();
+const page = getPageBySlug('gatherings');
 const upcoming = getUpcomingEvents();
+
+if (!page) {
+  throw new Error('Missing required standard page content for slug "gatherings".');
+}
 ---
 
 <BaseLayout
-  title={`Gatherings | ${site.organizationName}`}
-  description="Seasonal gatherings and unconference-style events"
-  image="/images/placeholders/hero-nature.svg"
+  title={`${page.title} | ${site.organizationName}`}
+  description={page.intro || page.title}
+  image={page.heroImageUrl || '/images/placeholders/hero-nature.svg'}
 >
-  <section class="hero-block hero-block--media hero-block--image-first-mobile" aria-labelledby="gatherings-title">
-    <div class="hero-copy hero-copy--vcenter">
-      <h1 id="gatherings-title">Seasonal Gatherings</h1>
-      <p class="lead-text">
-        Partnering with nature's rhythms to nuture community and connection.
-      </p>
-    </div>
-    <img
-      class="placeholder-image placeholder-image--hero"
-      src={assetUrl('/images/placeholders/hero-nature.svg')}
-      alt="Nature landscape illustration"
-      loading="lazy"
-    />
-  </section>
+  {
+    page.heroImageUrl ? (
+      <section
+        class="hero-block hero-block--media hero-block--image-first-mobile"
+        aria-labelledby="gatherings-title"
+      >
+        <div class="hero-copy hero-copy--vcenter">
+          <h1 id="gatherings-title">{page.title}</h1>
+          {page.intro ? <p class="lead-text">{page.intro}</p> : null}
+        </div>
+        <img
+          class="placeholder-image placeholder-image--hero"
+          src={assetUrl(page.heroImageUrl)}
+          alt={page.heroImageAlt || `${page.title} hero image`}
+          loading="lazy"
+        />
+      </section>
+    ) : (
+      <section class="hero-block" aria-labelledby="gatherings-title">
+        <h1 id="gatherings-title">{page.title}</h1>
+        {page.intro ? <p class="lead-text">{page.intro}</p> : null}
+      </section>
+    )
+  }
+
+  {
+    (page.infoCards ?? []).map((card, i) => (
+      <section
+        class="section-stack"
+        aria-labelledby={card.title ? `gatherings-info-card-${i}` : undefined}
+        aria-label={card.title ? undefined : 'Information'}
+      >
+        {card.title ? <h2 id={`gatherings-info-card-${i}`}>{card.title}</h2> : null}
+        {card.description ? <p class="page-body">{card.description}</p> : null}
+        {card.href ? (
+          <p>
+            <a class="button button--compact" href={resolveHref(card.href)}>
+              Learn more
+            </a>
+          </p>
+        ) : null}
+      </section>
+    ))
+  }
+
+  {
+    page.sections.map((section) => (
+      <section class="section-stack" aria-label={section.heading || 'Page section'}>
+        {section.heading ? <h2>{section.heading}</h2> : null}
+        {section.bodyText ? <p class="page-body">{section.bodyText}</p> : null}
+
+        {section.cards?.length ? (
+          <div class="card-grid">
+            {section.cards.map((card) => (
+              <article class="card">
+                <h3>{card.title}</h3>
+                <p>{card.description}</p>
+              </article>
+            ))}
+          </div>
+        ) : null}
+
+        {section.listItems?.length ? (
+          <ul class="list-flow">
+            {section.listItems.map((item) => <li>{item}</li>)}
+          </ul>
+        ) : null}
+      </section>
+    ))
+  }
 
   {
     upcoming.length ? (
