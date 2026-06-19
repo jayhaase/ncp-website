@@ -80,7 +80,9 @@ jobs:
           path: ./dist
 
   deploy:
-    if: github.event_name != 'pull_request' && needs.build.result == 'success'
+    # repository_dispatch skips the gitleaks job by design; always() prevents that
+    # skipped ancestor from short-circuiting the Pages deploy after a successful build.
+    if: always() && github.event_name != 'pull_request' && needs.build.result == 'success'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
