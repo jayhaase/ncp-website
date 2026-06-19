@@ -18,7 +18,8 @@ const FALLBACK_CONTENT = {
     primaryCta: {
       label: 'Join the community',
       url: '/gatherings'
-    }
+    },
+    directorySubmitUrl: ''
   },
   homePage: {
     title: 'Gathering people who help others connect with nature.',
@@ -46,7 +47,7 @@ const FALLBACK_CONTENT = {
       title: 'Join our newsletter',
       description:
         'Get occasional updates on seasonal gatherings, community news, and ways to connect with fellow nature-connected professionals.',
-      ctaLabel: 'Subscribe to our newsletter',
+      ctaLabel: 'Subscribe',
       url: ''
     }
   },
@@ -426,7 +427,8 @@ function mapSiteSettings(siteResponse) {
         siteItem.fields?.ctaLabel ||
         FALLBACK_CONTENT.siteSettings.primaryCta.label,
       url: primaryCtaUrl === '/connect' ? '/gatherings' : primaryCtaUrl
-    }
+    },
+    directorySubmitUrl: String(siteItem.fields?.directorySubmitUrl || '').trim()
   };
 }
 

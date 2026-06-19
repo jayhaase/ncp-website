@@ -33,7 +33,13 @@ const MODEL_CONTENT_TYPES = [
       { id: 'organizationName', name: 'Organization Name', type: 'Symbol', required: true },
       { id: 'footerText', name: 'Footer Text', type: 'Text', required: false },
       { id: 'primaryCtaLabel', name: 'Primary CTA Label', type: 'Symbol', required: false },
-      { id: 'primaryCtaUrl', name: 'Primary CTA URL', type: 'Symbol', required: false }
+      { id: 'primaryCtaUrl', name: 'Primary CTA URL', type: 'Symbol', required: false },
+      {
+        id: 'directorySubmitUrl',
+        name: 'Directory Submit Entry URL',
+        type: 'Symbol',
+        required: false
+      }
     ]
   },
   {
@@ -509,6 +515,7 @@ async function seedSiteSettings(content, locale) {
   assignIfPossible(fields, locale, fMap, 'ctaLabel', content.primaryCta?.label);
   assignIfPossible(fields, locale, fMap, 'primaryCtaUrl', content.primaryCta?.url);
   assignIfPossible(fields, locale, fMap, 'ctaUrl', content.primaryCta?.url);
+  assignIfPossible(fields, locale, fMap, 'directorySubmitUrl', content.directorySubmitUrl);
 
   await upsertEntry({ contentTypeId, existingEntry: existing, fields });
 }

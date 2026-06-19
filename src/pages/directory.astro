@@ -45,30 +45,42 @@ function splitIntoBulletItems(text: string) {
   description={page.intro || page.title}
   image={page.heroImageUrl || '/images/placeholders/hero-nature.svg'}
 >
-  {
-    page.heroImageUrl ? (
-      <section
-        class="hero-block hero-block--media hero-block--image-first-mobile"
-        aria-labelledby="directory-title"
-      >
-        <div class="hero-copy hero-copy--vcenter">
-          <h1 id="directory-title">{page.title}</h1>
-          {page.intro ? <p class="lead-text">{page.intro}</p> : null}
-        </div>
+  <section
+    class:list={[
+      'hero-block',
+      page.heroImageUrl && 'hero-block--media hero-block--image-first-mobile'
+    ]}
+    aria-labelledby="directory-title"
+  >
+    <div class:list={['hero-copy', page.heroImageUrl && 'hero-copy--vcenter']}>
+      <h1 id="directory-title">{page.title}</h1>
+      {page.intro ? <p class="lead-text">{page.intro}</p> : null}
+      {
+        site.directorySubmitUrl ? (
+          <div class="button-row">
+            <a
+              class="button"
+              href={resolveHref(site.directorySubmitUrl)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Submit an entry
+            </a>
+          </div>
+        ) : null
+      }
+    </div>
+    {
+      page.heroImageUrl ? (
         <img
           class="placeholder-image placeholder-image--hero"
           src={assetUrl(page.heroImageUrl)}
           alt={page.heroImageAlt || `${page.title} hero image`}
           loading="lazy"
         />
-      </section>
-    ) : (
-      <section class="hero-block" aria-labelledby="directory-title">
-        <h1 id="directory-title">{page.title}</h1>
-        {page.intro ? <p class="lead-text">{page.intro}</p> : null}
-      </section>
-    )
-  }
+      ) : null
+    }
+  </section>
 
   {
     page.infoCards?.length ? (
