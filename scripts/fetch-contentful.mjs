@@ -17,7 +17,7 @@ const FALLBACK_CONTENT = {
     footerText: 'Nature Connected Professionals',
     primaryCta: {
       label: 'Join the community',
-      url: '/connect'
+      url: '/gatherings'
     }
   },
   homePage: {
@@ -405,6 +405,11 @@ function mapSiteSettings(siteResponse) {
     return FALLBACK_CONTENT.siteSettings;
   }
 
+  const primaryCtaUrl =
+    siteItem.fields?.primaryCtaUrl ||
+    siteItem.fields?.ctaUrl ||
+    FALLBACK_CONTENT.siteSettings.primaryCta.url;
+
   return {
     organizationName: siteItem.fields?.organizationName || siteItem.fields?.siteName || FALLBACK_CONTENT.siteSettings.organizationName,
     footerText: toPlainText(siteItem.fields?.footerText) || FALLBACK_CONTENT.siteSettings.footerText,
@@ -413,10 +418,7 @@ function mapSiteSettings(siteResponse) {
         siteItem.fields?.primaryCtaLabel ||
         siteItem.fields?.ctaLabel ||
         FALLBACK_CONTENT.siteSettings.primaryCta.label,
-      url:
-        siteItem.fields?.primaryCtaUrl ||
-        siteItem.fields?.ctaUrl ||
-        FALLBACK_CONTENT.siteSettings.primaryCta.url
+      url: primaryCtaUrl === '/connect' ? '/gatherings' : primaryCtaUrl
     }
   };
 }
@@ -470,7 +472,7 @@ function mapPages(pageResponse) {
         sections: mapSectionBlocks(item, linkMap)
       };
     })
-    .filter((page) => page.slug && page.title);
+    .filter((page) => page.slug && page.title && page.slug !== 'connect');
 
   return pages;
 }

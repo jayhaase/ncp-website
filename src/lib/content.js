@@ -10,7 +10,7 @@ import { NAV_LINKS } from './navLinks.js';
 /** @typedef {{slug: string, title: string, intro: string, sections: PageSection[], infoCards?: InfoCard[], heroImageUrl?: string, heroImageAlt?: string}} PageContent */
 /** @typedef {{title: string, whenText?: string, season?: string, year?: string, location: string, summary: string, details: string, specialInfo?: string, registrationUrl?: string, image?: string}} EventItem */
 
-const RESERVED_DYNAMIC_SLUGS = new Set(['gatherings', 'join', 'directory']);
+const RESERVED_DYNAMIC_SLUGS = new Set(['gatherings', 'join', 'directory', 'connect']);
 
 /** Canonical month index (0–11) for a season label, or null if unrecognized.
  *  Chosen to match this community's seasonal gathering rhythm

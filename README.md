@@ -142,7 +142,6 @@ Notes:
 - `/gatherings` Standard page shell plus events feed
 - `/gatherings/2026-unconference` Standalone event page
 - `/directory` Standard page shell plus member directory
-- `/connect` Standard page
 
 ## Contentful content model
 

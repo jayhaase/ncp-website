@@ -4,7 +4,7 @@
     "footerText": "Nature-Connected Professionals",
     "primaryCta": {
       "label": "Join the community",
-      "url": "/connect"
+      "url": "/gatherings"
     }
   },
   "homePage": {
@@ -30,26 +30,6 @@
     ]
   },
   "pages": [
-    {
-      "slug": "connect",
-      "title": "Connect Online",
-      "intro": "Continue conversations online between in-person gatherings. Connect, collaborate, and support your professional growth in community.",
-      "heroImageUrl": "https://images.ctfassets.net/ek9rx9938ifx/2d1iOfIjrG6vVOPKDzNWA4/73d0a3676789a9d444d1ad325819356d/Pulling_GM_2022.jpg",
-      "heroImageAlt": "Hero image for Connect Online",
-      "infoCards": [
-        {
-          "title": "Join our Slack Group",
-          "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "href": ""
-        },
-        {
-          "title": "Get Listed in our Directory",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-          "href": ""
-        }
-      ],
-      "sections": []
-    },
     {
       "slug": "directory",
       "title": "Member Directory",
