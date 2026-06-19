@@ -65,11 +65,7 @@ const upcoming = getUpcomingEvents();
             <div>
               <h2 id={`gathering-event-${i}-title`}>{event.title}</h2>
               <p class="meta-text">
-                {event.startDate ? (
-                  <time datetime={event.startDate}>{formatEventWhen(event)}</time>
-                ) : (
-                  <span class="event-when--tbd">{formatEventWhen(event)}</span>
-                )}
+                <span class="event-when--tbd">{formatEventWhen(event)}</span>
               </p>
               {event.location ? (
                 <div class="event-location" aria-label="Location">

@@ -8,22 +8,9 @@ import { NAV_LINKS } from './navLinks.js';
 /** @typedef {{heading: string, bodyText?: string, cards?: {title: string, description: string}[], listItems?: string[]}} PageSection */
 /** @typedef {{title: string, description: string, href?: string}} InfoCard */
 /** @typedef {{slug: string, title: string, intro: string, sections: PageSection[], infoCards?: InfoCard[], heroImageUrl?: string, heroImageAlt?: string}} PageContent */
-/** @typedef {{title: string, startDate: string, endDate: string, season?: string, year?: string, location: string, summary: string, details: string, specialInfo?: string, registrationUrl?: string, image?: string}} EventItem */
+/** @typedef {{title: string, whenText?: string, season?: string, year?: string, location: string, summary: string, details: string, specialInfo?: string, registrationUrl?: string, image?: string}} EventItem */
 
 const RESERVED_DYNAMIC_SLUGS = new Set(['gatherings', 'join', 'directory']);
-
-function isValidDate(value) {
-  if (!value) {
-    return false;
-  }
-  const date = new Date(value);
-  return !Number.isNaN(date.getTime());
-}
-
-/** True if the event has any valid start date. */
-function hasStartDate(event) {
-  return isValidDate(event.startDate);
-}
 
 /** Canonical month index (0–11) for a season label, or null if unrecognized.
  *  Chosen to match this community's seasonal gathering rhythm
@@ -38,16 +25,7 @@ function seasonToMonth(season) {
   return null;
 }
 
-/** Best-effort sort timestamp for an event:
- *  1. Real `startDate` when present.
- *  2. Mid-season of `year` when season+year are known (e.g. Summer 2026 → Jul 15 2026).
- *  3. Mid-year (Jul 1) of `year` when only `year` is known.
- *  4. `null` when no temporal signal exists at all.
- */
 function eventSortMs(event) {
-  if (hasStartDate(event)) {
-    return new Date(event.startDate).getTime();
-  }
   const yearNum = parseInt(String(event.year || '').trim(), 10);
   if (!Number.isFinite(yearNum)) {
     return null;
@@ -68,42 +46,6 @@ function compareBySortMs(a, b, direction) {
   if (am == null) return 1;
   if (bm == null) return -1;
   return direction === 'desc' ? bm - am : am - bm;
-}
-
-function sortByDateAsc(a, b) {
-  return compareBySortMs(a, b, 'asc');
-}
-
-function sortByDateDesc(a, b) {
-  return compareBySortMs(a, b, 'desc');
-}
-
-/** Best-effort end timestamp for "is this past yet?" checks:
- *  - explicit `endDate` when set;
- *  - `startDate` when that's all we have;
- *  - end-of-season (~3 months after season start) for season+year events;
- *  - end-of-year for year-only events;
- *  - `+Infinity` (never past) for events with no temporal signal at all. */
-function eventEndMs(event) {
-  if (event.endDate && isValidDate(event.endDate)) {
-    return new Date(event.endDate).getTime();
-  }
-  if (hasStartDate(event)) {
-    return new Date(event.startDate).getTime();
-  }
-  const yearNum = parseInt(String(event.year || '').trim(), 10);
-  if (!Number.isFinite(yearNum)) {
-    return Number.POSITIVE_INFINITY;
-  }
-  const seasonMonth = seasonToMonth(event.season);
-  if (seasonMonth != null) {
-    return new Date(yearNum, seasonMonth + 3, 1).getTime();
-  }
-  return new Date(yearNum + 1, 0, 1).getTime();
-}
-
-function isEventPast(event, nowMs) {
-  return eventEndMs(event) < nowMs;
 }
 
 /** @returns {SiteSettings} */
@@ -142,55 +84,22 @@ export function getAllEvents() {
 
 /** @returns {EventItem[]} */
 export function getUpcomingEvents() {
-  const now = Date.now();
   return getAllEvents()
-    .filter((event) => !isEventPast(event, now))
-    .sort(sortByDateAsc);
-}
-
-/** @returns {EventItem[]} */
-export function getPastEvents() {
-  const now = Date.now();
-  return getAllEvents()
-    .filter((event) => isEventPast(event, now))
-    .sort(sortByDateDesc);
+    .sort((a, b) => compareBySortMs(a, b, 'asc'));
 }
 
 /**
  * Human-readable label for when an event happens.
- * Prefers actual start/end datetimes; falls back to `Season Year`
+ * Prefers explicit freeform display text, then falls back to `Season Year`
  * (e.g. "Summer 2026") and finally a "date to be determined" message.
  *
  * @param {EventItem} event
- * @param {{dateStyle?: 'short' | 'long'}} [options]
  * @returns {string}
  */
-export function formatEventWhen(event, options = {}) {
-  const { dateStyle = 'long' } = options;
-
-  if (hasStartDate(event)) {
-    const start = new Date(event.startDate);
-    const end = event.endDate && isValidDate(event.endDate) ? new Date(event.endDate) : null;
-
-    if (dateStyle === 'short') {
-      return start.toLocaleDateString();
-    }
-
-    const dateTimeFormatter = new Intl.DateTimeFormat(undefined, {
-      dateStyle: 'long',
-      timeStyle: 'short'
-    });
-    const timeFormatter = new Intl.DateTimeFormat(undefined, { timeStyle: 'short' });
-
-    const startLabel = dateTimeFormatter.format(start);
-    if (!end) return startLabel;
-
-    const sameDay =
-      start.getFullYear() === end.getFullYear() &&
-      start.getMonth() === end.getMonth() &&
-      start.getDate() === end.getDate();
-    const endLabel = sameDay ? timeFormatter.format(end) : dateTimeFormatter.format(end);
-    return `${startLabel} to ${endLabel}`;
+export function formatEventWhen(event) {
+  const explicit = String(event.whenText || '').trim();
+  if (explicit) {
+    return explicit;
   }
 
   const season = (event.season || '').trim();

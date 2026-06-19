@@ -115,8 +115,7 @@ const MODEL_CONTENT_TYPES = [
     displayField: 'title',
     fields: [
       { id: 'title', name: 'Title', type: 'Symbol', required: true },
-      { id: 'startDate', name: 'Start Date', type: 'Date', required: false },
-      { id: 'endDate', name: 'End Date', type: 'Date', required: false },
+      { id: 'whenText', name: 'When Text', type: 'Text', required: false },
       { id: 'season', name: 'Season', type: 'Symbol', required: false },
       { id: 'year', name: 'Year', type: 'Symbol', required: false },
       { id: 'location', name: 'Location', type: 'Text', required: false },
@@ -593,8 +592,7 @@ async function seedEvents(events, locale) {
   for (const event of events) {
     const fields = {};
     assignIfPossible(fields, locale, fMap, 'title', event.title);
-    assignIfPossible(fields, locale, fMap, 'startDate', event.startDate);
-    assignIfPossible(fields, locale, fMap, 'endDate', event.endDate);
+    assignIfPossible(fields, locale, fMap, 'whenText', event.whenText);
     assignIfPossible(fields, locale, fMap, 'season', event.season);
     assignIfPossible(fields, locale, fMap, 'year', event.year);
     assignIfPossible(fields, locale, fMap, 'location', event.location);

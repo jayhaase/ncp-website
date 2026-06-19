@@ -172,12 +172,13 @@ Notes:
 ### `event`
 - `slug`
 - `title`
-- `startDate`
-- `endDate`
+- `whenText`
+- `season`
+- `year`
 - `location`
 - `summary`
 - `details`
 - `registrationUrl`
 - `image`
 
-Upcoming vs. past in the app is derived from dates: an event is past after its `endDate`, or `startDate` when no end date exists.
+Events are sorted by `year` and `season`. The displayed timing label comes from `whenText`, with `Season Year` used as a fallback when `whenText` is blank.

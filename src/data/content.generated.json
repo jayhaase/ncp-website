@@ -13,11 +13,7 @@
     "heroImageUrl": "https://images.ctfassets.net/ek9rx9938ifx/6tkTCrMB4kaTs0kDf7XAh2/d5b9572a6928c9414f2e804ec625b12a/Cottonwood_tree.jpg",
     "heroImageAlt": "Placeholder illustration for homepage hero",
     "mission": "We gather to cultivate depth through community building, engage broadly through networking, and steward care for life by generously sharing skills, knowledge, and lived experience.",
-    "howItWorks": [
-      "Seasonal gatherings convene members around practical themes and facilitated connection.",
-      "Unconference-style sessions create room for peer learning, collaboration, and emergent topics.",
-      "Members contribute resources, referrals, and lessons learned from real-world practice."
-    ],
+    "howItWorks": [],
     "highlightCards": [
       {
         "title": "For everyone",
@@ -47,7 +43,7 @@
           "href": ""
         },
         {
-          "title": "Sit Amet Consecteturerer",
+          "title": "Sit Amet Consecteturererer",
           "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           "href": ""
         }
@@ -77,35 +73,32 @@
   ],
   "events": [
     {
+      "title": "Fall Gathering: NCP Unconference 2026",
+      "whenText": "",
+      "season": "Fall",
+      "year": "2026",
+      "location": "[Recuperacres](https://share.google/v5sQJrEoG4kagCzzS) Watertown, MN.",
+      "summary": "The NCP Fall *Un*conference will begin with an evening of camping, followed by a day filled with meaningful and creative experiences to build community.",
+      "details": "The NCP Fall *Un*conference will begin on Friday, October 2nd, with an evening of camping. Presentations, workshops, facilitated conversations, and lightning talks will be held on Saturday, October 3rd, from 9:00 am to 5:00 pm. More details and sign up to follow!\n\n__Theme:__ *Building Intentional Community in Relationship with Nature.*\n\n__The guiding roots for our growth:__ *Reciprocity, Connection, & Justice*\n\nWe have created three containers for engagement.\n\n__Plot A:__ The Great Tree - Offering ideas and practices on a topic through a presentation or workshop. (Submission requested for planning purposes.)\n\n__Plot B:__ Campfire Conversations - Facilitating a shared conversation about a topic without a specific agenda. (Submission requested for planning purposes.)\n\n__Plot C:__ Community Cafe Lightening Talks - Spontaneous sparks that must be shared. (No submission necessary.)",
+      "specialInfo": "This is a co-creative process. If you’re not sure it’s going to work, it’s OK. Submit your idea, and we’ll talk to you. Click the Registration button to learn more!",
+      "registrationUrl": "/gatherings/2026-unconference",
+      "image": "https://images.ctfassets.net/ek9rx9938ifx/5op2ytdUT1OQVSMvY3uktX/dc1b36a54525c845bb9136121b55f2d8/20191116_130345.jpg"
+    },
+    {
       "title": "Summer Gathering 2026",
-      "startDate": "",
-      "endDate": "",
+      "whenText": "Either the fourth or fifth Friday in July from 4:00 PM - 6:30 PM",
       "season": "Summer",
       "year": "2026",
       "location": "[Bush Lake  Izaak Walton League](https://maps.app.goo.gl/URWKwhop87QKtW7FA)",
       "summary": "__Theme:__ Working in Relationship with Nature Amid a Changing Climate and an Atmosphere of Unrest",
       "details": "The NCP Summer Gathering will address issues related to climate change. There will be facilitated nature immersion, climate-aware eco-art therapy to process climate anxiety and grief, and community conversation with the facilitators. The facilitators represent several archetypes within the NCP community, including:\n1) A Citizen Naturalist and Ecological Steward\n2) Climate-Aware Eco-Art Therapist\n3) Environmental Leadership Professional\n4) Climate Scientist\n\n__Theme:__ Working in Relationship with Nature Amid a Changing Climate and an Atmosphere of Unrest\n\n__Goals:__ \n1) Connection with nature and community\n2) Emotional processing\n3) Meaningful discussion about climate change and how it impacts our lives\n",
-      "specialInfo": "",
-      "registrationUrl": "Coming Soon!",
+      "specialInfo": "🎉There is an optional social time afterward for picnicking and swimming at Bush Lake.",
+      "registrationUrl": "",
       "image": "https://images.ctfassets.net/ek9rx9938ifx/50v6YQouAmqHlymQkWvjCE/ce6e808aa52c727d40f4c7f87ae972a6/imagejpeg_0_26_.jpg"
     },
     {
-      "title": "Fall Gathering: NCP Unconference 2026",
-      "startDate": "2026-10-02T14:00",
-      "endDate": "2026-10-04T17:00",
-      "season": "Fall",
-      "year": "2026",
-      "location": "[Recuperacres](https://share.google/v5sQJrEoG4kagCzzS) Watertown, MN.",
-      "summary": "The NCP Fall *Un*conference will begin with an evening of camping, followed by a day filled with meaningful and creative experiences to build community.",
-      "details": "The NCP Fall *Un*conference will begin on Friday, October 2nd, with an evening of camping. Presentations, workshops, facilitated conversations, and lightning talks will be held on Saturday, October 3rd, from 9:00 am to 5:00 pm. More details and sign up to follow!\n\n__Theme:__ *Building Intentional Community in Relationship with Nature.*\n\n__The guiding roots for our growth:__ *Reciprocity, Connection, & Justice*\n\nWe have created three containers for engagement.\n\n__Plot A:__ The Great Tree - Offering ideas and practices on a topic through a presentation or workshop. (Submission requested for planning purposes.)\n\n__Plot B:__ Campfire Conversations - Facilitating a shared conversation about a topic without a specific agenda. (Submission requested for planning purposes.)\n\n__Plot C:__ Community Cafe Lightening Talks - Spontaneous sparks that must be shared. (No submission necessary.)\n\nThis is a co-creative process. If you’re not sure it’s going to work, it’s OK. Submit your idea, and we’ll talk to you.",
-      "specialInfo": "",
-      "registrationUrl": "/gatherings/2026-unconference",
-      "image": "https://images.ctfassets.net/ek9rx9938ifx/5op2ytdUT1OQVSMvY3uktX/dc1b36a54525c845bb9136121b55f2d8/20191116_130345.jpg"
-    },
-    {
       "title": "Spring Gathering 2026",
-      "startDate": "2026-04-24T14:00",
-      "endDate": "2026-04-24T16:30",
+      "whenText": "",
       "season": "",
       "year": "",
       "location": "[Boom Island Park](https://www.google.com/maps/place/724+Sibley+St+NE,+Minneapolis,+MN+55413/@44.9927359,-93.2692605,16z/data=!3m1!4b1!4m6!3m5!1s0x52b3327db5d698c7:0xaa11c30f709b8269!8m2!3d44.9927359!4d-93.2692605!16s%2Fg%2F11c43y1dg1?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D) (entrance/parking furthest north, near picnic pavilions and Paddle Bridge Kayak Tours - 724 Sibley St NE, Minneapolis, MN 55413",

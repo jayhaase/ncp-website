@@ -27,11 +27,7 @@ const FALLBACK_CONTENT = {
     heroImageAlt: 'Placeholder illustration for homepage hero',
     mission:
       'We gather to cultivate depth through community building, engage broadly through networking, and steward care for life by generously sharing skills, knowledge, and lived experience.',
-    howItWorks: [
-      'Seasonal gatherings convene members around practical themes and facilitated connection.',
-      'Unconference-style sessions create room for peer learning, collaboration, and emergent topics.',
-      'Members contribute resources, referrals, and lessons learned from real-world practice.'
-    ],
+    howItWorks: [],
     highlightCards: [
       {
         title: 'For everyone',
@@ -47,81 +43,8 @@ const FALLBACK_CONTENT = {
       }
     ]
   },
-  pages: [
-    {
-      slug: 'about',
-      title: 'About Nature Connected Professionals',
-      intro:
-        'Nature Connected Professionals is a member-powered network supporting people who use nature connection in counseling, education, health, and community practice.',
-      infoCards: [],
-      sections: [
-        {
-          heading: 'Lorem ipsum',
-          bodyText:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.'
-        },
-        {
-          heading: 'Dolor sit amet',
-          bodyText:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus mollis interdum, sed posuere consectetur est at lobortis.'
-        }
-      ]
-    },
-    {
-      slug: 'connect',
-      title: 'Connect With Others',
-      intro:
-        'Find clear pathways to connect with members, conversations, and collaboration opportunities across the community.',
-      infoCards: [],
-      sections: [
-        {
-          heading: 'Member directory',
-          bodyText:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.'
-        },
-        {
-          heading: 'Online community',
-          bodyText:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus mollis interdum, sed posuere consectetur est at lobortis.'
-        }
-      ]
-    },
-    
-  ],
-  events: [
-    {
-      title: 'Spring Networking Walk',
-      startDate: '2026-05-16T10:00:00-05:00',
-      endDate: '2026-05-16T12:00:00-05:00',
-      location: 'Woodlake Nature Center, Richfield, MN',
-      summary: 'A seasonal gathering to reconnect, share current work, and build new professional relationships.',
-      details:
-        'Participants will move through guided introductions, small-group exchange, and a closing reflection focused on practical collaboration opportunities.',
-      registrationUrl: '',
-      image: '/images/placeholders/gathering-circle.svg'
-    },
-    {
-      title: 'Summer Field Practice Circle',
-      startDate: '2026-07-13T17:30:00-05:00',
-      endDate: '2026-07-13T19:30:00-05:00',
-      location: 'Theodore Wirth Regional Park, Minneapolis, MN',
-      summary: 'A practical evening focused on peer exchange, reflection, and in-the-field facilitation techniques.',
-      details:
-        'Participants will explore guided prompts, partner dialogue, and shared skill-building around nature-based professional practice.',
-      registrationUrl: '',
-      image: '/images/placeholders/hero-nature.svg'
-    },
-    {
-      title: 'Winter Solstice Gathering',
-      startDate: '2022-12-21T18:00:00-06:00',
-      endDate: '2022-12-21T21:00:00-06:00',
-      location: 'Spiritwoods, Stillwater, MN',
-      summary: 'A community evening focused on connection during the longest night.',
-      details: 'Included shared practice, reflection, and facilitated group activities.',
-      registrationUrl: '',
-      image: '/images/placeholders/hero-nature.svg'
-    }
-  ],
+  pages: [],
+  events: [],
   directoryMembers: []
 };
 
@@ -549,7 +472,7 @@ function mapPages(pageResponse) {
     })
     .filter((page) => page.slug && page.title);
 
-  return pages.length ? pages : FALLBACK_CONTENT.pages;
+  return pages;
 }
 
 function mapEvents(eventResponse) {
@@ -557,8 +480,7 @@ function mapEvents(eventResponse) {
   const events = toArray(eventResponse?.items)
     .map((item) => ({
       title: item.fields?.title,
-      startDate: item.fields?.startDate || item.fields?.start || '',
-      endDate: item.fields?.endDate || item.fields?.end || '',
+      whenText: toPlainText(item.fields?.whenText || item.fields?.whenDisplay || item.fields?.dateText),
       season: pickFieldString(item.fields, 'season'),
       year: (() => {
         const y = item.fields?.year;
@@ -573,7 +495,7 @@ function mapEvents(eventResponse) {
     }))
     .filter((event) => event.title);
 
-  return events.length ? events : FALLBACK_CONTENT.events;
+  return events;
 }
 
 function normalizeContent(siteResponse, homeResponse, pageResponse, eventResponse, directoryResponse) {
@@ -584,8 +506,7 @@ function normalizeContent(siteResponse, homeResponse, pageResponse, eventRespons
     siteSettings,
     homePage: {
       ...FALLBACK_CONTENT.homePage,
-      ...homePage,
-      howItWorks: homePage.howItWorks.length ? homePage.howItWorks : FALLBACK_CONTENT.homePage.howItWorks
+      ...homePage
     },
     pages: mapPages(pageResponse),
     events: mapEvents(eventResponse),

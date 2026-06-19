@@ -56,13 +56,9 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
                 ) : null}
                 <div>
                   <h3>{event.title}</h3>
-                <p class="meta-text">
-                  {event.startDate ? (
-                    <time datetime={event.startDate}>{formatEventWhen(event, { dateStyle: 'short' })}</time>
-                  ) : (
+                  <p class="meta-text">
                     <span class="event-when--tbd">{formatEventWhen(event)}</span>
-                  )}
-                </p>
+                  </p>
                 {event.summary ? (
                   <div class="markdown" set:html={renderMarkdown(event.summary)} />
                 ) : null}
