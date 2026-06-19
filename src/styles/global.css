@@ -181,11 +181,13 @@ button:focus-visible,
   margin: 1.25rem 0 0;
   padding: 0;
   display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
 }
 
 .directory-card {
   margin: 0;
+  height: 100%;
   padding: 1.35rem 1.35rem 1.4rem;
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -464,18 +466,16 @@ p {
   background: linear-gradient(90deg, var(--accent), var(--accent-gold));
 }
 
-.standard-page-panel {
-  max-width: 780px;
-  margin-left: auto;
-  margin-right: auto;
+.info-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-.directory-page__header,
-.directory-list > li {
-  max-width: 780px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
+.info-card-grid .section-stack {
+  margin-top: 0;
+  height: 100%;
 }
 
 /* Extra vertical space between major section cards only (does not change padding inside them). */
@@ -1239,6 +1239,11 @@ body.lightbox-open {
 
   .section-stack {
     padding: 1rem;
+  }
+
+  .info-card-grid,
+  .directory-list {
+    grid-template-columns: 1fr;
   }
 
   .button-row {

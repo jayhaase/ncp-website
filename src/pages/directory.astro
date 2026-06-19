@@ -71,23 +71,27 @@ function splitIntoBulletItems(text: string) {
   }
 
   {
-    (page.infoCards ?? []).map((card, i) => (
-      <section
-        class="section-stack standard-page-panel"
-        aria-labelledby={card.title ? `directory-info-card-${i}` : undefined}
-        aria-label={card.title ? undefined : 'Information'}
-      >
-        {card.title ? <h2 id={`directory-info-card-${i}`}>{card.title}</h2> : null}
-        {card.description ? <p class="page-body">{card.description}</p> : null}
-        {card.href ? (
-          <p>
-            <a class="button button--compact" href={resolveHref(card.href)}>
-              Learn more
-            </a>
-          </p>
-        ) : null}
-      </section>
-    ))
+    page.infoCards?.length ? (
+      <div class="info-card-grid" aria-label="Information">
+        {(page.infoCards ?? []).map((card, i) => (
+          <section
+            class="section-stack"
+            aria-labelledby={card.title ? `directory-info-card-${i}` : undefined}
+            aria-label={card.title ? undefined : 'Information'}
+          >
+            {card.title ? <h2 id={`directory-info-card-${i}`}>{card.title}</h2> : null}
+            {card.description ? <p class="page-body">{card.description}</p> : null}
+            {card.href ? (
+              <p>
+                <a class="button button--compact" href={resolveHref(card.href)}>
+                  Learn more
+                </a>
+              </p>
+            ) : null}
+          </section>
+        ))}
+      </div>
+    ) : null
   }
 
   {
