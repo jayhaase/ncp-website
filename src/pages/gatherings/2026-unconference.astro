@@ -9,12 +9,12 @@ const pillars = [
   {
     title: 'Connection',
     body:
-      'The primary reason we are here. We gather to begin feelings of belonging within the community of nature-connected professionals — and to undo aloneness in the field.'
+      'The primary reason we are here. We gather to belong within the community and to undo aloneness in the field.'
   },
   {
     title: 'Reciprocity',
     body:
-      'Our gatherings are meant to be good for us and good for the land — through presence, stewardship, and the positive energy of being together with intention.'
+      'The intent is to foster relational reciprocity with humans and the more-than-human world.'
   },
   {
     title: 'Justice',
@@ -26,24 +26,24 @@ const pillars = [
 const streams = [
   {
     icon: '🌳',
-    name: 'Oak Tree Anchored',
+    name: 'The Great Tree',
     kind: 'Formal presentations and workshops',
     body:
-      "Completely formed ideas — facilitated, often experiential. Participants receive the facilitator's generous offering; giving and receiving together."
+      "Offering ideas and practices on a topic through a presentation or workshop."
   },
   {
     icon: '🔥',
     name: 'Campfire Conversations',
     kind: 'Facilitated conversations',
     body:
-      'A shared conversation on a topic without a fixed agenda. We gather around what matters and let the thinking find its shape.'
+      'Facilitating a shared conversation about a topic without a specific agenda.'
   },
   {
     icon: '☕',
     name: 'Community Cafe',
     kind: 'Lightning talks, posters, and tabling',
     body:
-      'A third-space for brief introductions, encounters, and explorations. Short-form offerings for anyone with something to share.'
+      'A third-space for encounters and explorations. Spontaneous sparks that must be shared.'
   }
 ];
 
@@ -70,8 +70,8 @@ const audience = [
 ---
 
 <BaseLayout
-  title={`The (Un)Conference · Fall 2026 | ${site.organizationName}`}
-  description="A day-long gathering of nature-connected professionals — building intentional community in relationship with nature."
+  title={`The Unconference · Fall 2026 | ${site.organizationName}`}
+  description="A day-long gathering of nature-connected professionals building intentional community in relationship with nature."
   image="/images/placeholders/hero-nature.svg"
 >
   <section
@@ -80,13 +80,13 @@ const audience = [
   >
     <div class="hero-copy">
       <p class="eyebrow">Fall 2026 · Date to be announced</p>
-      <h1 id="unconference-title">The (Un)Conference</h1>
+      <h1 id="unconference-title">The Unconference</h1>
       <p class="lead-text">
-        A day-long gathering of nature-connected professionals — building intentional community in relationship with nature, in place of our fall seasonal gathering. Our three central pillars: <strong>Reciprocity</strong>, <strong>Connection</strong>, and <strong>Justice</strong>.
+        A day-long gathering of nature-connected professionals building intentional community in relationship with nature, for our Fall gathering.
       </p>
       <div class="button-row">
-        <a class="button" href="#call-for-sessions">Propose a session</a>
-        <a class="button button--secondary" href="#get-involved">Get involved</a>
+        <a class="button" href="https://docs.google.com/forms/d/1Lndw4FCqr-VXUObaYDGUdmATL2TZClI0_Sd6CXyCDA0/edit">Propose a session</a>
+        <a class="button button--secondary" href="https://docs.google.com/forms/d/1qcOjkU347HF8yNMVCpQeDqeiUmH1Vv4ERj5MNyOALF0/edit">Get involved</a>
       </div>
     </div>
     <img
@@ -99,7 +99,7 @@ const audience = [
 
   <section class="section-stack" aria-labelledby="pillars-title">
     <h2 id="pillars-title">Our three pillars</h2>
-    <p class="lead-text">
+    <p>
       The pillars shape what we offer, what we ask of each other, and how we hold the day.
     </p>
     <div class="identity-grid">
@@ -112,21 +112,10 @@ const audience = [
     </div>
   </section>
 
-  <section class="section-stack" aria-labelledby="why-title">
-    <h2 id="why-title">Why we're gathering</h2>
-    <p class="page-body">
-      For years, people in this community have said they want a conference. The (Un)Conference isn't quite that. It's what we want to make together — a full day in the field with peers, built on peer learning rather than keynote spotlights. Less broadcast, more circle.
-    </p>
-    <blockquote class="pull-quote">Undo aloneness in the field.</blockquote>
-    <p class="page-body">
-      This year the (Un)Conference takes the place of our fall seasonal gathering, while the spring, summer, and winter rhythms continue. We'll hold the day outdoors — under sky and canopy — with time for formal offerings, unhurried conversation, and the small encounters that turn a crowd into a community.
-    </p>
-  </section>
-
   <section class="section-stack" aria-labelledby="streams-title">
     <h2 id="streams-title">A day in three streams</h2>
-    <p class="lead-text">
-      Each session block runs three streams in parallel. Attendees move between them freely.
+    <p>
+      Each hour has three streams running in parallel. Attendees move between them freely.
     </p>
     <div class="identity-grid">
       {streams.map((s) => (
@@ -174,75 +163,9 @@ const audience = [
     <ul class="list-flow">
       <li><strong>Outdoors by default</strong>, with a large barn as a weather backup in early October.</li>
       <li><strong>Tent camping welcome</strong> the night before for anyone who wants to land early. Portable stoves are fine; we'll gather around the fire pit by the lake.</li>
-      <li><strong>Food trucks</strong> for lunch, with an emphasis on partnering with BIPOC-owned vendors.</li>
       <li><strong>Registration via Eventbrite</strong>, with a sliding-scale ticket and scholarship option so cost is not a barrier.</li>
       <li><strong>Accessibility</strong>: the land has uneven terrain and is not fully wheelchair-accessible. We're mapping access routes and will share details with registration.</li>
       <li><strong>Waiver</strong> signed as part of registration — this is a volunteer-organized event.</li>
     </ul>
-  </section>
-
-  <section class="section-stack" id="call-for-sessions" aria-labelledby="call-title">
-    <h2 id="call-title">Call for sessions</h2>
-    <p class="page-body">
-      This is a co-creative process, not a grant proposal. If you have something you'd like to offer — a workshop, a conversation you want to host, a short talk, a tabled resource — we want to hear from you. If you aren't sure it fits, submit anyway and we'll talk.
-    </p>
-    <p class="page-body">
-      The submission form opens closer to summer. When it goes live, expect to tell us:
-    </p>
-    <ul class="list-flow">
-      <li>A <strong>title</strong> and short <strong>description</strong> of your offering.</li>
-      <li>Preferred <strong>length</strong>: one session block or two.</li>
-      <li>Preferred <strong>stream</strong>: Oak Tree Anchored, Campfire Conversations, or Community Cafe.</li>
-      <li><strong>Physicality</strong>: how active participants will be.</li>
-      <li>Anything we should know to help you show up well.</li>
-    </ul>
-  </section>
-
-  <section class="section-stack" aria-labelledby="audience-title">
-    <h2 id="audience-title">Who this is for</h2>
-    <p class="lead-text">
-      Anyone whose professional life is woven with the natural world — or wants to be.
-    </p>
-    <ul class="highlight-list">
-      {audience.map((a) => (
-        <li class="highlight-item">
-          <p>{a}</p>
-        </li>
-      ))}
-    </ul>
-  </section>
-
-  <section class="section-stack how-section" id="get-involved" aria-labelledby="get-involved-title">
-    <h2 id="get-involved-title">Get involved</h2>
-    <p class="lead-text">
-      A few simple ways to step in, at whatever level feels right.
-    </p>
-    <div class="how-list">
-      <article class="how-item">
-        <h3><span aria-hidden="true">✍️</span> Propose a session</h3>
-        <p>Offer a workshop, host a Campfire Conversation, or bring a short talk to the Community Cafe.</p>
-        <a class="how-action" href="#call-for-sessions">Read the call</a>
-      </article>
-      <article class="how-item">
-        <h3><span aria-hidden="true">🤲</span> Volunteer for the day</h3>
-        <p>Day-of support, logistics, registration, setup, tear-down, and welcoming newcomers.</p>
-        <a class="how-action" href={sitePath('/directory')}>View directory</a>
-      </article>
-      <article class="how-item">
-        <h3><span aria-hidden="true">📬</span> Stay in the loop</h3>
-        <p>We'll announce the date, location, and registration as details are confirmed.</p>
-        <a class="how-action" href={sitePath('/gatherings')}>View gatherings</a>
-      </article>
-    </div>
-  </section>
-
-  <section class="section-stack" aria-labelledby="story-title">
-    <h2 id="story-title">Our story so far</h2>
-    <p class="page-body">
-      Nature-Connected Professionals began in 2022 as a graduate-school community project, sparked by a Nature in Counseling course at Adler Graduate School. What started as a small circle pulling garlic mustard at Woodlake Nature Center grew into seasonal gatherings — forest bathing at French Regional Park, a winter solstice coming-together at Spiritwoods — and a steady rhythm of showing up for one another.
-    </p>
-    <p class="page-body">
-      Since late 2024, a committee has been meeting to shape this first (Un)Conference. Many voices, meeting by meeting, have brought it this far. The invitation now is yours.
-    </p>
   </section>
 </BaseLayout>

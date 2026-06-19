@@ -15,10 +15,6 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
     <div class="hero-copy">
       <h1 id="home-hero-title">{home.title}</h1>
       {home.description ? <p class="lead-text">{home.description}</p> : null}
-      <div class="button-row">
-        <a class="button" href={resolveHref(site.primaryCta.url)}>{site.primaryCta.label}</a>
-        <a class="button button--secondary" href={sitePath('/gatherings')}>Explore gatherings</a>
-      </div>
     </div>
     <img
       class="placeholder-image placeholder-image--hero"
@@ -96,6 +92,27 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
       ))}
     </div>
   </section>
+
+  {
+    home.newsletter ? (
+      <section class="section-stack callout newsletter-section" aria-labelledby="newsletter-title">
+        <h2 id="newsletter-title">{home.newsletter.title}</h2>
+        {home.newsletter.description ? <p class="lead-text">{home.newsletter.description}</p> : null}
+        {home.newsletter.url ? (
+          <div class="button-row">
+            <a
+              class="button"
+              href={resolveHref(home.newsletter.url)}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {home.newsletter.ctaLabel || 'Subscribe'}
+            </a>
+          </div>
+        ) : null}
+      </section>
+    ) : null
+  }
 
   <Lightbox />
 </BaseLayout>

@@ -27,16 +27,28 @@
         "title": "Participation first",
         "description": "Join gatherings, contribute ideas, and help shape the direction of the community."
       }
-    ]
+    ],
+    "newsletter": {
+      "title": "Join our newsletter",
+      "description": "Get occasional updates on seasonal gatherings, community news, and ways to connect with fellow nature-connected professionals.",
+      "ctaLabel": "Subscribe to our newsletter",
+      "url": "https://www.google.com"
+    }
   },
   "pages": [
     {
       "slug": "directory",
       "title": "Member Directory",
-      "intro": "Connect with practitioners, guides, and professionals who integrate nature into their work. Listings are sourced from our community roster.",
+      "intro": "Connect with practitioners, guides, and professionals who integrate nature into their work.",
       "heroImageUrl": "https://images.ctfassets.net/ek9rx9938ifx/2d1iOfIjrG6vVOPKDzNWA4/73d0a3676789a9d444d1ad325819356d/Pulling_GM_2022.jpg",
       "heroImageAlt": "Hero image for Member Directory",
-      "infoCards": [],
+      "infoCards": [
+        {
+          "title": "Join Our Member Directory",
+          "description": "Follow the link to submit your information to the NCP Member Directory.\nThe NCP is a community built on trust and autonomy. Services are not verified or rated. The directory was generously built and curated in response to the dreams of the community.",
+          "href": ""
+        }
+      ],
       "sections": []
     },
     {

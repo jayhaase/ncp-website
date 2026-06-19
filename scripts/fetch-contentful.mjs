@@ -41,7 +41,14 @@ const FALLBACK_CONTENT = {
         title: 'Participation first',
         description: 'Join gatherings, contribute ideas, and help shape the direction of the community.'
       }
-    ]
+    ],
+    newsletter: {
+      title: 'Join our newsletter',
+      description:
+        'Get occasional updates on seasonal gatherings, community news, and ways to connect with fellow nature-connected professionals.',
+      ctaLabel: 'Subscribe to our newsletter',
+      url: ''
+    }
   },
   pages: [],
   events: [],
@@ -445,8 +452,25 @@ function mapHomePage(homeResponse) {
     howItWorks: toArray(homeItem.fields?.howItWorks)
       .map((item) => toPlainText(item))
       .filter(Boolean),
-    highlightCards: mapHighlightCards(homeItem, linkMap)
+    highlightCards: mapHighlightCards(homeItem, linkMap),
+    newsletter: mapNewsletter(homeItem)
   };
+}
+
+function mapNewsletter(homeItem) {
+  const title = homeItem.fields?.newsletterTitle || homeItem.fields?.newsletterHeading || FALLBACK_CONTENT.homePage.newsletter.title;
+  const description =
+    toPlainText(homeItem.fields?.newsletterDescription || homeItem.fields?.newsletterBody) ||
+    FALLBACK_CONTENT.homePage.newsletter.description;
+  const ctaLabel =
+    homeItem.fields?.newsletterCtaLabel || homeItem.fields?.newsletterButtonLabel || FALLBACK_CONTENT.homePage.newsletter.ctaLabel;
+  const url = homeItem.fields?.newsletterUrl || homeItem.fields?.newsletterSignupUrl || FALLBACK_CONTENT.homePage.newsletter.url;
+
+  if (!title && !description && !url) {
+    return FALLBACK_CONTENT.homePage.newsletter;
+  }
+
+  return { title, description, ctaLabel, url };
 }
 
 function mapPages(pageResponse) {

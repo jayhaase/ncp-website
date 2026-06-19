@@ -4,7 +4,8 @@ import { NAV_LINKS } from './navLinks.js';
 /** @typedef {{label: string, href: string}} NavLink */
 /** @typedef {{label: string, url: string}} PrimaryCta */
 /** @typedef {{organizationName: string, footerText: string, primaryCta: PrimaryCta, navLinks: NavLink[]}} SiteSettings */
-/** @typedef {{title: string, description: string, heroImageUrl: string, heroImageAlt: string, mission: string, howItWorks: string[], highlightCards: {title: string, description: string}[]}} HomeContent */
+/** @typedef {{title: string, description: string, url?: string, ctaLabel?: string}} NewsletterContent */
+/** @typedef {{title: string, description: string, heroImageUrl: string, heroImageAlt: string, mission: string, howItWorks: string[], highlightCards: {title: string, description: string}[], newsletter?: NewsletterContent}} HomeContent */
 /** @typedef {{heading: string, bodyText?: string, cards?: {title: string, description: string}[], listItems?: string[]}} PageSection */
 /** @typedef {{title: string, description: string, href?: string}} InfoCard */
 /** @typedef {{slug: string, title: string, intro: string, sections: PageSection[], infoCards?: InfoCard[], heroImageUrl?: string, heroImageAlt?: string}} PageContent */
