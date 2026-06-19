@@ -8,14 +8,14 @@ const site = getSiteSettings();
 const members = getDirectoryEntries();
 const placeholderPhoto = assetUrl('/images/placeholders/directory-avatar.svg');
 
-function resolveMemberPhoto(photoUrl) {
+function resolveMemberPhoto(photoUrl: string | null) {
   if (!photoUrl) return placeholderPhoto;
   if (photoUrl.startsWith('/')) return assetUrl(photoUrl);
   return photoUrl;
 }
 
 /** One list item per line; strips common leading markers from CSV/Airtable exports. */
-function splitIntoBulletItems(text) {
+function splitIntoBulletItems(text: string) {
   const raw = String(text || '').trim();
   if (!raw) return [];
 
@@ -38,6 +38,7 @@ function splitIntoBulletItems(text) {
 <BaseLayout
   title={`Directory | ${site.organizationName}`}
   description="Browse the member directory — nature-connected professionals across Minnesota and beyond."
+  image="/images/placeholders/hero-nature.svg"
 >
   <section class="hero-block hero-block--media hero-block--image-first-mobile" aria-labelledby="directory-title">
     <div class="hero-copy">

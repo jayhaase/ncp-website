@@ -30,12 +30,18 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build site
+      - name: Run Astro check
+        run: npm run check
+
+      - name: Sync Contentful content
         env:
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
           CONTENTFUL_DELIVERY_TOKEN: ${{ secrets.CONTENTFUL_DELIVERY_TOKEN }}
           CONTENTFUL_ENVIRONMENT: ${{ secrets.CONTENTFUL_ENVIRONMENT }}
-        run: npm run build
+        run: npm run sync-content
+
+      - name: Build site
+        run: npm run build:site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

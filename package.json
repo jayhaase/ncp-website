@@ -8,11 +8,16 @@
     "bootstrap-contentful-model": "node scripts/bootstrap-contentful-model.mjs",
     "seed-contentful": "node scripts/seed-contentful.mjs",
     "dev": "astro dev",
-    "build": "npm run sync-content && astro build",
+    "build": "npm run sync-content && npm run build:site",
+    "build:site": "astro build",
+    "check": "astro check",
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.9",
     "astro": "^5.7.4",
-    "marked": "^18.0.1"
+    "marked": "^18.0.1",
+    "sanitize-html": "^2.17.5",
+    "typescript": "^5.9.3"
   }
 }

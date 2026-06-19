@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSiteSettings } from '../lib/content.js';
+import { sitePath } from '../lib/sitePath.js';
+
+const site = getSiteSettings();
+---
+
+<BaseLayout
+  title={`Page not found | ${site.organizationName}`}
+  description="The page you requested could not be found."
+  image="/images/placeholders/hero-nature.svg"
+>
+  <section class="hero-block" aria-labelledby="not-found-title">
+    <p class="eyebrow">404</p>
+    <h1 id="not-found-title">Page not found</h1>
+    <p class="lead-text">
+      This page does not exist or may have moved. Use the main navigation or go back to the homepage.
+    </p>
+    <div class="button-row">
+      <a class="button" href={sitePath('/')}>Return home</a>
+      <a class="button button--secondary" href={sitePath('/gatherings')}>View gatherings</a>
+    </div>
+  </section>
+</BaseLayout>

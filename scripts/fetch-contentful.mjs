@@ -162,6 +162,26 @@ function env(name, fallback = '') {
   return process.env[name] || fallback;
 }
 
+function hasGeneratedSnapshot() {
+  return existsSync(outFile);
+}
+
+function isStrictSyncMode() {
+  return (
+    env('CONTENT_SYNC_STRICT') === 'true' ||
+    env('GITHUB_ACTIONS') === 'true' ||
+    env('CI') === 'true'
+  );
+}
+
+async function ensureBootstrapFallback() {
+  if (hasGeneratedSnapshot()) {
+    return false;
+  }
+
+  return writeGenerated(FALLBACK_CONTENT);
+}
+
 function toPlainText(value) {
   if (!value) {
     return '';
@@ -592,13 +612,18 @@ async function writeGenerated(content) {
 
 async function run() {
   const client = createClient();
+  const strictSync = isStrictSyncMode();
 
   if (!client) {
-    const changed = await writeGenerated(FALLBACK_CONTENT);
+    if (strictSync) {
+      throw new Error('Contentful credentials are required for strict builds.');
+    }
+
+    const changed = await ensureBootstrapFallback();
     console.log(
       changed
-        ? 'Contentful credentials missing. Wrote fallback content.'
-        : 'Contentful credentials missing. Fallback content unchanged.'
+        ? 'Contentful credentials missing. Bootstrapped fallback content because no snapshot exists.'
+        : 'Contentful credentials missing. Using existing generated snapshot.'
     );
     return;
   }
@@ -646,13 +671,20 @@ async function run() {
         : 'Content sync complete. No content changes detected.'
     );
   } catch (error) {
-    const changed = await writeGenerated(FALLBACK_CONTENT);
+    if (strictSync) {
+      throw new Error(`Contentful sync failed in strict mode: ${error.message}`);
+    }
+
+    const changed = await ensureBootstrapFallback();
     console.log(
       changed
-        ? `Contentful sync failed, wrote fallback content instead: ${error.message}`
-        : `Contentful sync failed, fallback content unchanged: ${error.message}`
+        ? `Contentful sync failed. Bootstrapped fallback content because no snapshot exists: ${error.message}`
+        : `Contentful sync failed. Preserving existing generated snapshot: ${error.message}`
     );
   }
 }
 
-run();
+run().catch((error) => {
+  console.error(error.message);
+  process.exitCode = 1;
+});

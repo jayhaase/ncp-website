@@ -12,11 +12,6 @@ import { NAV_LINKS } from './navLinks.js';
 
 const RESERVED_DYNAMIC_SLUGS = new Set(['gatherings', 'join', 'directory']);
 
-const PRIMARY_CTA = {
-  label: 'Join the community',
-  url: '/connect'
-};
-
 function isValidDate(value) {
   if (!value) {
     return false;
@@ -115,8 +110,7 @@ function isEventPast(event, nowMs) {
 export function getSiteSettings() {
   return {
     ...generated.siteSettings,
-    primaryCta: PRIMARY_CTA,
-    navLinks: NAV_LINKS.filter((item) => item?.href !== '/join')
+    navLinks: NAV_LINKS
   };
 }
 

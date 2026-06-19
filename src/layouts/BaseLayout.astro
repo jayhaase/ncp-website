@@ -1,12 +1,19 @@
 ---
 import '../styles/global.css';
 import { getSiteSettings } from '../lib/content.js';
-import { pathMatchesNav, sitePath } from '../lib/sitePath.js';
+import { assetUrl, pathMatchesNav, sitePath } from '../lib/sitePath.js';
 
 const site = getSiteSettings();
-const { title = `${site.organizationName}`, description = site.organizationName } = Astro.props;
+const {
+  title = `${site.organizationName}`,
+  description = site.organizationName,
+  image = '/images/placeholders/hero-nature.svg'
+} = Astro.props;
 
-function isActiveNavItem(href) {
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString();
+const socialImageUrl = new URL(assetUrl(image), Astro.site ?? Astro.url).toString();
+
+function isActiveNavItem(href: string) {
   return pathMatchesNav(Astro.url.pathname, href);
 }
 ---
@@ -17,6 +24,21 @@ function isActiveNavItem(href) {
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#1f5f43" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" type="image/svg+xml" href={assetUrl('/favicon.svg')} />
+    <link rel="manifest" href={sitePath('/site.webmanifest')} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.organizationName} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
     <title>{title}</title>
   </head>
   <body>

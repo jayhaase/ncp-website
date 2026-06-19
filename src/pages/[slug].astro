@@ -20,7 +20,11 @@ if (!page || slug === 'gatherings') {
 }
 ---
 
-<BaseLayout title={`${page.title} | ${site.organizationName}`} description={page.intro || page.title}>
+<BaseLayout
+  title={`${page.title} | ${site.organizationName}`}
+  description={page.intro || page.title}
+  image={page.heroImageUrl || '/images/placeholders/hero-nature.svg'}
+>
   {
     page.heroImageUrl ? (
       <section

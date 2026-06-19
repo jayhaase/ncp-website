@@ -1,15 +1,16 @@
 # Nature Connected Professionals Website
 
-Static Astro website for Netlify deployment with Contentful-managed content fetched at build time.
+Static Astro site deployed to GitHub Pages, with visible site content sourced from Contentful at build time.
 
 ## Architecture
 
 - Runtime: static HTML/CSS/JS from Astro
+- Hosting: GitHub Pages via `.github/workflows/deploy-pages.yml`
 - CMS: Contentful Delivery API
 - Content sync: `scripts/fetch-contentful.mjs`
-- Generated data file: `src/data/content.generated.json`
+- Generated snapshot: `src/data/content.generated.json`
 
-The deployed site does not call Contentful at runtime. Content is fetched during `sync-content` and rendered from local generated JSON.
+The deployed site does not call Contentful at runtime. Contentful data is fetched during `npm run sync-content` and rendered from the generated JSON snapshot.
 
 ## Local development
 
@@ -21,18 +22,50 @@ The deployed site does not call Contentful at runtime. Content is fetched during
    ```bash
    cp .env.example .env
    ```
-3. Start dev server with file watching:
+3. Start the dev server:
    ```bash
    npm run dev
    ```
-4. Refresh generated content manually when needed:
+4. Refresh the generated Contentful snapshot when needed:
    ```bash
    npm run sync-content
    ```
 
-## Seed Contentful from fallback JSON
+### Local sync behavior
 
-If you want to rebuild Contentful from the local generated content (`src/data/content.generated.json`):
+- If Contentful credentials are present and valid, `npm run sync-content` updates `src/data/content.generated.json`.
+- If credentials are missing or Contentful is temporarily unavailable, local sync preserves the checked-in snapshot instead of overwriting it.
+- If no snapshot exists yet, local sync bootstraps fallback content so the site can still start.
+- To make local sync fail hard like CI, set `CONTENT_SYNC_STRICT=true`.
+
+## Build and deploy
+
+### Local build
+
+- `npm run build` runs Contentful sync and then `astro build`.
+- `npm run build:site` runs only `astro build` against the current generated snapshot.
+- `npm run check` runs `astro check`.
+
+### GitHub Pages deployment
+
+GitHub Pages deploys from `.github/workflows/deploy-pages.yml`.
+
+- CI runs `npm run check`.
+- CI runs `npm run sync-content` as a separate step.
+- CI fails if Contentful credentials are missing or the sync request fails.
+- CI then runs `npm run build:site` and uploads `dist/` to GitHub Pages.
+
+`astro.config.mjs` sets `site` and `base` so the site works for both the production domain and GitHub Pages project-site paths. Internal links and asset URLs should go through `src/lib/sitePath.js`.
+
+## Content ownership
+
+- Contentful is the source of truth for homepage copy, CTA content, standard pages, and events.
+- Navigation links remain code-owned in `src/lib/navLinks.js`.
+- Markdown from Contentful is sanitized before rendering.
+
+## Seed Contentful from the generated snapshot
+
+If you want to rebuild Contentful from `src/data/content.generated.json`:
 
 1. Add a Contentful Management API token to `.env`:
    ```bash
@@ -47,68 +80,54 @@ Notes:
 - `seed-contentful` is destructive by design: it deletes all entries, assets, and content types in the target environment first.
 - After clearing, it recreates and publishes these content types: `siteSettings`, `homePage`, `infoCard`, `standardPage`, `event`.
 - Then it seeds and publishes entries from `src/data/content.generated.json`.
-- Home hero image comes from `homePage.heroImage` (Asset); the build output uses a resolved URL plus a static placeholder if no asset is set.
 
-## Build and deploy
-
-- Build command: `npm run build`
-- Publish directory: `dist`
-
-These are configured in `netlify.toml`.
-
-**GitHub Pages (project site):** `astro.config.mjs` sets `base` to `/${repo}/` when the GitHub Actions workflow runs (`GITHUB_ACTIONS` + `GITHUB_REPOSITORY`). Internal links and `public/` assets go through `src/lib/sitePath.js` so URLs work under `https://<user>.github.io/<repo>/`.
-
-## Routes in v1
+## Main routes
 
 - `/` Home
 - `/about` Standard page
-- `/gatherings` Events page with upcoming sections
+- `/gatherings` Events page
+- `/gatherings/2026-unconference` Standalone event page
+- `/directory` Member directory
 - `/connect` Standard page
 
-## Contentful content model (v1)
+## Contentful content model
 
-### `siteSettings` (single entry)
-- `organizationName` (short text)
-- `footerText` (short/long text)
-- `primaryCtaLabel` (short text)
-- `primaryCtaUrl` (short text)
+### `siteSettings`
+- `organizationName`
+- `footerText`
+- `primaryCtaLabel`
+- `primaryCtaUrl`
 
-Navigation links are defined in code (`src/lib/navLinks.js`), not in Contentful.
+### `homePage`
+- `heroTitle`
+- `heroSubtitle`
+- `heroImage`
+- `heroImageAlt`
+- `mission`
+- `howItWorks`
+- `highlightCards` or `highlights`
 
-### `homePage` (single entry)
-- `heroTitle` (short text)
-- `heroSubtitle` (long text)
-- `heroImage` (media / Asset)
-- `heroImageAlt` (short text)
-- `mission` (long text)
-- `howItWorks` (list of short/long text)
-- `highlightCards` or `highlights` (references)
+### `infoCard`
+- `title`
+- `description`
+- `href`
 
-### `infoCard` (multiple)
-- `title` (short text)
-- `description` (long text)
-- `href` (short text, optional) — internal path or external URL for an optional “Learn more” control
+### `standardPage`
+- `slug`
+- `title`
+- `intro`
+- `infoCards`
+- `sectionBlocks`
 
-### `standardPage` (multiple)
-- `slug` (short text)
-- `title` (short text)
-- `intro` (long text)
-- `infoCards` (references to `infoCard`)
-- `sectionBlocks` (references)
+### `event`
+- `slug`
+- `title`
+- `startDate`
+- `endDate`
+- `location`
+- `summary`
+- `details`
+- `registrationUrl`
+- `image`
 
-### `event` (multiple)
-- `slug` (short text)
-- `title` (short text)
-- `startDate` (date/time)
-- `endDate` (date/time, optional)
-- `location` (short/long text)
-- `summary` (long text)
-- `details` (long text)
-- `registrationUrl` (short text, optional)
-- `image` (media / Asset)
-
-Upcoming vs past in the app is derived from dates: an event is **past** after its end time (`endDate` if set, otherwise `startDate`).
-
-## Fallback behavior
-
-If Contentful variables are missing or API calls fail, the sync script writes fallback content so local dev and production builds still succeed.
+Upcoming vs. past in the app is derived from dates: an event is past after its `endDate`, or `startDate` when no end date exists.

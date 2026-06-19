@@ -10,7 +10,7 @@ const home = getHomeContent();
 const displayEvents = getUpcomingEvents().slice(0, 1);
 ---
 
-<BaseLayout title={site.organizationName} description={home.description}>
+<BaseLayout title={site.organizationName} description={home.description || home.title} image={home.heroImageUrl}>
   <section class="hero-block hero-block--media hero-block--image-first-mobile" aria-labelledby="home-hero-title">
     <div class="hero-copy">
       <h1 id="home-hero-title">{home.title}</h1>
@@ -90,51 +90,32 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
 
   <section class="section-stack identity-section" aria-labelledby="identity-title">
     <h2 id="identity-title">Who We Are &amp; Why We Exist</h2>
-    <p class="lead-text">
-      Nature Connected Professionals is a community for people who believe that meaningful work and a meaningful life are rooted in connection — to nature, to each other, and to something larger than ourselves.
-    </p>
+    {home.mission ? <div class="markdown lead-text" set:html={renderMarkdown(home.mission)} /> : null}
     <div class="identity-grid">
-      <article class="identity-item">
-        <h3>Cultivate Depth</h3>
-        <p>Build genuine community through intentional gathering and shared experience.</p>
-      </article>
-      <article class="identity-item">
-        <h3>Engage Broadly</h3>
-        <p>Expand your network with professionals who share your values.</p>
-      </article>
-      <article class="identity-item">
-        <h3>Steward Care</h3>
-        <p>Generously share skills, knowledge, and the wisdom of experience.</p>
-      </article>
+      {home.highlightCards.map((card) => (
+        <article class="identity-item">
+          <h3>{card.title}</h3>
+          <p>{card.description}</p>
+        </article>
+      ))}
     </div>
   </section>
 
   <section class="section-stack how-section" aria-labelledby="how-title">
     <h2 id="how-title">How this works</h2>
-    <p class="lead-text">
-      Simple, grounded, and designed for real connection. No complicated systems — just clear pathways to get involved at whatever level feels right for you.
-    </p>
+    <p class="lead-text">Simple, grounded, and designed for real connection.</p>
     <div class="how-list">
-      <article class="how-item">
-        <h3><span aria-hidden="true">🌲</span> Attend a Gathering</h3>
-        <p>Join a seasonal gathering — held outdoors, in community, with space for honest conversation.</p>
-        <a class="how-action" href={sitePath('/gatherings')}>Explore</a>
-      </article>
-      <article class="how-item">
-        <h3><span aria-hidden="true">💬</span> Connect Online</h3>
-        <p>Join our Slack community to stay in touch, share resources, and find collaborators between events.</p>
-        <a class="how-action" href={sitePath('/connect')}>Connect</a>
-      </article>
-      <article class="how-item">
-        <h3><span aria-hidden="true">📇</span> Join the Directory</h3>
-        <p>Add yourself to the member directory so others can find and reach out to you.</p>
-        <a class="how-action" href={sitePath('/connect')}>Join</a>
-      </article>
-      <article class="how-item">
-        <h3><span aria-hidden="true">🤝</span> Participate &amp; Contribute</h3>
-        <p>Propose a session, share your expertise, or simply show up and be present.</p>
-        <a class="how-action" href={sitePath('/connect')}>Participate</a>
-      </article>
+      {home.howItWorks.map((item, index) => (
+        <article class="how-item">
+          <h3>Step {index + 1}</h3>
+          <p>{item}</p>
+        </article>
+      ))}
+    </div>
+    <div class="button-row">
+      <a class="button" href={resolveHref(site.primaryCta.url)}>{site.primaryCta.label}</a>
+      <a class="button button--secondary" href={sitePath('/gatherings')}>Explore gatherings</a>
+      <a class="button button--secondary" href={sitePath('/directory')}>Browse the directory</a>
     </div>
   </section>
 
