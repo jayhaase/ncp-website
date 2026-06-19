@@ -34,8 +34,8 @@ const FALLBACK_CONTENT = {
     ],
     highlightCards: [
       {
-        title: 'For practitioners and educators',
-        description: 'A professional community for people weaving nature connection into their work.'
+        title: 'For everyone',
+        description: 'A professional community for people weaving nature connection into their work or volunteerism.'
       },
       {
         title: 'Rooted in practice',
