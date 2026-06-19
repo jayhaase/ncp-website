@@ -305,6 +305,12 @@ button:focus-visible,
   min-width: 0;
 }
 
+.hero-copy--vcenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.08em;
