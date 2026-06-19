@@ -32,7 +32,7 @@
       "title": "Join our newsletter",
       "description": "Get occasional updates on seasonal gatherings, community news, and ways to connect with fellow nature-connected professionals.",
       "ctaLabel": "Subscribe to our newsletter",
-      "url": "https://www.google.com"
+      "url": "https://forms.gle/njZ6agq5NFMQAa5L7"
     }
   },
   "pages": [
@@ -45,7 +45,7 @@
       "infoCards": [
         {
           "title": "Join Our Member Directory",
-          "description": "Follow the link to submit your information to the NCP Member Directory.\nThe NCP is a community built on trust and autonomy. Services are not verified or rated. The directory was generously built and curated in response to the dreams of the community.",
+          "description": "The NCP is a community built on trust and autonomy. Services are not verified or rated. The directory was generously built and curated in response to the dreams of the community.",
           "href": ""
         }
       ],
