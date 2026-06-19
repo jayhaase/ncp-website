@@ -47,7 +47,7 @@
           "href": ""
         },
         {
-          "title": "Sit Amet Consectetur",
+          "title": "Sit Amet Consecteturerer",
           "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
           "href": ""
         }
@@ -77,6 +77,19 @@
   ],
   "events": [
     {
+      "title": "Summer Gathering 2026",
+      "startDate": "",
+      "endDate": "",
+      "season": "Summer",
+      "year": "2026",
+      "location": "[Bush Lake  Izaak Walton League](https://maps.app.goo.gl/URWKwhop87QKtW7FA)",
+      "summary": "__Theme:__ Working in Relationship with Nature Amid a Changing Climate and an Atmosphere of Unrest",
+      "details": "The NCP Summer Gathering will address issues related to climate change. There will be facilitated nature immersion, climate-aware eco-art therapy to process climate anxiety and grief, and community conversation with the facilitators. The facilitators represent several archetypes within the NCP community, including:\n1) A Citizen Naturalist and Ecological Steward\n2) Climate-Aware Eco-Art Therapist\n3) Environmental Leadership Professional\n4) Climate Scientist\n\n__Theme:__ Working in Relationship with Nature Amid a Changing Climate and an Atmosphere of Unrest\n\n__Goals:__ \n1) Connection with nature and community\n2) Emotional processing\n3) Meaningful discussion about climate change and how it impacts our lives\n",
+      "specialInfo": "",
+      "registrationUrl": "Coming Soon!",
+      "image": "https://images.ctfassets.net/ek9rx9938ifx/50v6YQouAmqHlymQkWvjCE/ce6e808aa52c727d40f4c7f87ae972a6/imagejpeg_0_26_.jpg"
+    },
+    {
       "title": "Fall Gathering: NCP Unconference 2026",
       "startDate": "2026-10-02T14:00",
       "endDate": "2026-10-04T17:00",
@@ -88,19 +101,6 @@
       "specialInfo": "",
       "registrationUrl": "/gatherings/2026-unconference",
       "image": "https://images.ctfassets.net/ek9rx9938ifx/5op2ytdUT1OQVSMvY3uktX/dc1b36a54525c845bb9136121b55f2d8/20191116_130345.jpg"
-    },
-    {
-      "title": "Summer Gathering 2026",
-      "startDate": "",
-      "endDate": "",
-      "season": "Summer",
-      "year": "2026",
-      "location": "TBD",
-      "summary": "📣 Call for submissions!",
-      "details": "__Call for Facilitators!__ If you have a nature-connecting experience that you'd like to test out or offer to an open, warm, and enthusiastic group of nature-loving professionals, please email Becca Manthe at becca@intuitivetherapyclinic.com. Facilitators are supported by the NCP planning committee. Unsure? Reach out, and we'll chat!",
-      "specialInfo": "",
-      "registrationUrl": "",
-      "image": "https://images.ctfassets.net/ek9rx9938ifx/50v6YQouAmqHlymQkWvjCE/ce6e808aa52c727d40f4c7f87ae972a6/imagejpeg_0_26_.jpg"
     },
     {
       "title": "Spring Gathering 2026",

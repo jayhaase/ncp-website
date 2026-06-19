@@ -74,13 +74,13 @@ jobs:
         run: pnpm run build:site
 
       - name: Upload artifact
-        if: github.event_name == 'repository_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
 
   deploy:
-    if: github.event_name == 'repository_dispatch' || (github.event_name == 'push' && github.ref == 'refs/heads/main')
+    if: github.event_name != 'pull_request' && needs.build.result == 'success'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
