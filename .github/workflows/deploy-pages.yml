@@ -19,6 +19,7 @@ concurrency:
 
 jobs:
   secrets:
+    if: github.event_name != 'repository_dispatch'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -38,7 +39,8 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    needs: secrets
+    needs: [secrets]
+    if: always() && (github.event_name == 'repository_dispatch' || needs.secrets.result == 'success')
     steps:
       - name: Checkout
         uses: actions/checkout@v6
