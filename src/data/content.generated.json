@@ -31,10 +31,30 @@
   },
   "pages": [
     {
+      "slug": "connect",
+      "title": "Connect Online",
+      "intro": "Continue conversations online between in-person gatherings. Connect, collaborate, and support your professional growth in community.",
+      "heroImageUrl": "https://images.ctfassets.net/ek9rx9938ifx/2d1iOfIjrG6vVOPKDzNWA4/73d0a3676789a9d444d1ad325819356d/Pulling_GM_2022.jpg",
+      "heroImageAlt": "Hero image for Connect Online",
+      "infoCards": [
+        {
+          "title": "Join our Slack Group",
+          "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "href": ""
+        },
+        {
+          "title": "Get Listed in our Directory",
+          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+          "href": ""
+        }
+      ],
+      "sections": []
+    },
+    {
       "slug": "directory",
       "title": "Member Directory",
       "intro": "Connect with practitioners, guides, and professionals who integrate nature into their work. Listings are sourced from our community roster.",
-      "heroImageUrl": "https://images.ctfassets.net/ek9rx9938ifx/2d1iOfIjrG6vVOPKDzNWA4/2c3c9170cfce1a8c40d8b8bd739a2f6d/Abstract_Landscape_Moon_Trees_Hero_Image.png",
+      "heroImageUrl": "https://images.ctfassets.net/ek9rx9938ifx/2d1iOfIjrG6vVOPKDzNWA4/73d0a3676789a9d444d1ad325819356d/Pulling_GM_2022.jpg",
       "heroImageAlt": "Hero image for Member Directory",
       "infoCards": [],
       "sections": []
@@ -63,26 +83,6 @@
         {
           "title": "Present",
           "description": "Over the years, the NCP has grown organically with the generosity of co-resonant professionals who are dedicated to healing our human relationships with the more-than-human world in community. We aim to organize meaningful NCP seasonal gatherings three or four times per year. We have an open invitation to all who are interested to join the monthly planning meeting on Zoom to steer our movement forward.",
-          "href": ""
-        }
-      ],
-      "sections": []
-    },
-    {
-      "slug": "connect",
-      "title": "Connect With Others",
-      "intro": "Find clear pathways to connect with members, conversations, and collaboration opportunities across the community.",
-      "heroImageUrl": "https://images.ctfassets.net/ek9rx9938ifx/2d1iOfIjrG6vVOPKDzNWA4/2c3c9170cfce1a8c40d8b8bd739a2f6d/Abstract_Landscape_Moon_Trees_Hero_Image.png",
-      "heroImageAlt": "Hero image for Connect With Others",
-      "infoCards": [
-        {
-          "title": "Join our Slack Group",
-          "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-          "href": ""
-        },
-        {
-          "title": "Get Listed in our Directory",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
           "href": ""
         }
       ],
@@ -128,6 +128,18 @@
     }
   ],
   "directoryMembers": [
+    {
+      "email": "becca@intuitivetherapyclinic.com",
+      "firstName": "Becca",
+      "lastName": "Manthe",
+      "organization": "Intuitive Therapy & Consulting",
+      "website": "https://www.intuitivetherapyclinics.com/becca-manthe-ba",
+      "pronouns": "she/her",
+      "services": "Nature-Based Expressive Arts Therapy\nArt Therapy, Nature-Based Therapy.",
+      "certifications": "Nature-Based Expressive Arts Therapy (NBEX-AT): Healing Trauma and Grief through Nature\nNature in Counseling (part of Art Therapy Training at Adler Graduate School)\nClimate-Aware Therapy",
+      "displayName": "Becca Manthe",
+      "photoUrl": "https://images.ctfassets.net/ek9rx9938ifx/2U9KGGignCrfGVUSJvzsS3/e0ebc5a6f83dad548e08a84ca48ef2ef/Becca_Manthe_Summer_2022.jpg"
+    },
     {
       "email": "sherpa@findingmeaningoutdoors.com",
       "firstName": "Sherpa",
@@ -355,18 +367,6 @@
       "certifications": "Wilderness First Aid",
       "displayName": "Jay Haase",
       "photoUrl": "https://images.ctfassets.net/ek9rx9938ifx/3cianRAr9EzJklEECm9Z4V/7006308182ccfec4bc7189b8b3bf35dd/Provider_Directory_Image.jpg"
-    },
-    {
-      "email": "becca@intuitivetherapyclinic.com",
-      "firstName": "Becca",
-      "lastName": "Manthe",
-      "organization": "Intuitive Therapy & Consulting",
-      "website": "https://www.intuitivetherapyclinics.com/becca-manthe-ba",
-      "pronouns": "she/her",
-      "services": "Nature-Based Expressive Arts Therapy\nArt Therapy, Nature-Based Therapy.",
-      "certifications": "Climate Aware Therapy\nNature-Based Expressive Arts Therapy (NBEX-AT): Healing Trauma and Grief through Nature\nNature in Counseling (part of Art Therapy Training at Adler Graduate School)",
-      "displayName": "Becca Manthe",
-      "photoUrl": "https://images.ctfassets.net/ek9rx9938ifx/2U9KGGignCrfGVUSJvzsS3/e0ebc5a6f83dad548e08a84ca48ef2ef/Becca_Manthe_Summer_2022.jpg"
     },
     {
       "email": "bea@findingmeaningoutdoors.com",

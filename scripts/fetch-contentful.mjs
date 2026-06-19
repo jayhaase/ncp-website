@@ -39,7 +39,7 @@ const FALLBACK_CONTENT = {
       },
       {
         title: 'Participation first',
-        description: 'Join events, contribute ideas, and help shape the direction of the community.'
+        description: 'Join gatherings, contribute ideas, and help shape the direction of the community.'
       }
     ]
   },
