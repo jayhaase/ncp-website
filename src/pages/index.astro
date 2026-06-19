@@ -95,7 +95,7 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
 
   {
     home.newsletter ? (
-      <section class="section-stack callout newsletter-section" aria-labelledby="newsletter-title">
+      <section class="newsletter-section" aria-labelledby="newsletter-title">
         <h2 id="newsletter-title">{home.newsletter.title}</h2>
         {home.newsletter.description ? <p class="lead-text">{home.newsletter.description}</p> : null}
         {home.newsletter.url ? (

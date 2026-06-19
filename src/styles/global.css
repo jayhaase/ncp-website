@@ -505,6 +505,15 @@ p {
   max-width: 80ch;
 }
 
+.newsletter-section {
+  margin-top: 2.85rem;
+  padding: 1.35rem 1.35rem 1.4rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .newsletter-section .lead-text {
   max-width: 72ch;
   margin-bottom: 0.15rem;
