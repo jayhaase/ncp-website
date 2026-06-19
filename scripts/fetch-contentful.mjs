@@ -672,7 +672,7 @@ async function run() {
     );
   } catch (error) {
     if (strictSync) {
-      throw new Error(`Contentful sync failed in strict mode: ${error.message}`);
+      throw new Error(`Contentful sync failed in strict mode: ${error.message}`, { cause: error });
     }
 
     const changed = await ensureBootstrapFallback();

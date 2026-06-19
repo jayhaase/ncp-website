@@ -1,0 +1,8 @@
+minimumReleaseAge: 4320
+minimumReleaseAgeStrict: true
+# Temporary exception for an explicitly requested upgrade. Remove after 2026-06-20.
+minimumReleaseAgeExclude:
+  - astro@6.4.8
+onlyBuiltDependencies:
+  - esbuild
+  - sharp

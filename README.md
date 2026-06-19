@@ -10,13 +10,16 @@ Static Astro site deployed to GitHub Pages, with visible site content sourced fr
 - Content sync: `scripts/fetch-contentful.mjs`
 - Generated snapshot: `src/data/content.generated.json`
 
-The deployed site does not call Contentful at runtime. Contentful data is fetched during `npm run sync-content` and rendered from the generated JSON snapshot.
+The deployed site does not call Contentful at runtime. Contentful data is fetched during `pnpm run sync-content` and rendered from the generated JSON snapshot.
 
 ## Local development
 
+Target runtime: Node `24.17.0` LTS via [.nvmrc](/Users/jayhaase/dev/ncp-website/.nvmrc).
+
 1. Install dependencies:
    ```bash
-   npm install
+   corepack enable
+   pnpm install
    ```
 2. Configure environment variables:
    ```bash
@@ -24,36 +27,43 @@ The deployed site does not call Contentful at runtime. Contentful data is fetche
    ```
 3. Start the dev server:
    ```bash
-   npm run dev
+   pnpm run dev
    ```
 4. Refresh the generated Contentful snapshot when needed:
    ```bash
-   npm run sync-content
+   pnpm run sync-content
    ```
 
 ### Local sync behavior
 
-- If Contentful credentials are present and valid, `npm run sync-content` updates `src/data/content.generated.json`.
+- If Contentful credentials are present and valid, `pnpm run sync-content` updates `src/data/content.generated.json`.
 - If credentials are missing or Contentful is temporarily unavailable, local sync preserves the checked-in snapshot instead of overwriting it.
 - If no snapshot exists yet, local sync bootstraps fallback content so the site can still start.
 - To make local sync fail hard like CI, set `CONTENT_SYNC_STRICT=true`.
+- Package installation is managed by pnpm with a minimum release age of 3 days (`4320` minutes) to reduce supply-chain risk.
+- There is a temporary exception for `astro@6.4.8`, because it was explicitly upgraded before the 3-day window elapsed. Remove that exception after June 20, 2026.
 
 ## Build and deploy
 
 ### Local build
 
-- `npm run build` runs Contentful sync and then `astro build`.
-- `npm run build:site` runs only `astro build` against the current generated snapshot.
-- `npm run check` runs `astro check`.
+- `pnpm run build` runs Contentful sync and then `astro build`.
+- `pnpm run build:site` runs only `astro build` against the current generated snapshot.
+- `pnpm run lint` runs ESLint with Astro-aware rules.
+- `pnpm run check` runs `astro check`.
 
 ### GitHub Pages deployment
 
 GitHub Pages deploys from `.github/workflows/deploy-pages.yml`.
 
-- CI runs `npm run check`.
-- CI runs `npm run sync-content` as a separate step.
+- CI runs Gitleaks before any install/build step to catch committed secrets.
+- CI installs dependencies with pnpm under the 3-day minimum release-age policy.
+- CI runs on Node `24.17.0` LTS.
+- CI runs `pnpm run lint`.
+- CI runs `pnpm run check`.
+- CI runs `pnpm run sync-content` as a separate step.
 - CI fails if Contentful credentials are missing or the sync request fails.
-- CI then runs `npm run build:site` and uploads `dist/` to GitHub Pages.
+- CI then runs `pnpm run build:site` and uploads `dist/` to GitHub Pages on `main`.
 
 `astro.config.mjs` sets `site` and `base` so the site works for both the production domain and GitHub Pages project-site paths. Internal links and asset URLs should go through `src/lib/sitePath.js`.
 
@@ -62,6 +72,8 @@ GitHub Pages deploys from `.github/workflows/deploy-pages.yml`.
 - Contentful is the source of truth for homepage copy, CTA content, standard pages, and events.
 - Navigation links remain code-owned in `src/lib/navLinks.js`.
 - Markdown from Contentful is sanitized before rendering.
+- JavaScript package installs are managed by pnpm, not npm.
+- Linting is provided by ESLint with `eslint-plugin-astro`.
 
 ## Seed Contentful from the generated snapshot
 
@@ -73,7 +85,7 @@ If you want to rebuild Contentful from `src/data/content.generated.json`:
    ```
 2. Run:
    ```bash
-   npm run seed-contentful
+   pnpm run seed-contentful
    ```
 
 Notes:
