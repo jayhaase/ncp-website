@@ -57,12 +57,12 @@
       "infoCards": [
         {
           "title": "History",
-          "description": "Founded in 2022, by Becca Manthe as a graduate school community building experiment. The first networking event was held at the Woodlake Nature Center. The theme was Nature as Catalyst for Cultural Restructuring. We learned about garlic mustard, an edible invasive species brought to the land by European settlers. We helped remove a large swath in the woods while creating connections with each other and sharing stories about our experiences and relationships with foraging, invasive species, and our place in the ecosystem.",
+          "description": "Becca Manthe founded the NCP in 2022 to build a professional community during graduate school that would hopefully keep growing organically, in the wild afterward. The first networking event was held at the Woodlake Nature Center. The theme was Nature as Catalyst for Cultural Restructuring. We learned about garlic mustard, an edible invasive species brought to the land by European settlers. We helped remove a large swath in the woods while creating connections, sharing stories, foraging, grappling with invasive species and our place in the ecosystem.",
           "href": ""
         },
         {
-          "title": "Sit Amet Consecteturererer",
-          "description": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "title": "Present",
+          "description": "Over the years, the NCP has grown organically with the generosity of co-resonant professionals who are dedicated to healing our human relationships with the more-than-human world in community. We aim to organize meaningful NCP seasonal gatherings three or four times per year. We have an open invitation to all who are interested to join the monthly planning meeting on Zoom to steer our movement forward.",
           "href": ""
         }
       ],
@@ -91,6 +91,18 @@
   ],
   "events": [
     {
+      "title": "Spring Gathering 2026",
+      "whenText": "",
+      "season": "Spring",
+      "year": "2026",
+      "location": "[Boom Island Park](https://www.google.com/maps/place/724+Sibley+St+NE,+Minneapolis,+MN+55413/@44.9927359,-93.2692605,16z/data=!3m1!4b1!4m6!3m5!1s0x52b3327db5d698c7:0xaa11c30f709b8269!8m2!3d44.9927359!4d-93.2692605!16s%2Fg%2F11c43y1dg1?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D) (entrance/parking furthest north, near picnic pavilions and Paddle Bridge Kayak Tours - 724 Sibley St NE, Minneapolis, MN 55413",
+      "summary": "We'll gather by the water for a stewardship river clean up and networking while we work at [Boom Island Park](https://www.google.com/maps/place/724+Sibley+St+NE,+Minneapolis,+MN+55413/@44.9927359,-93.2692605,16z/data=!3m1!4b1!4m6!3m5!1s0x52b3327db5d698c7:0xaa11c30f709b8269!8m2!3d44.9927359!4d-93.2692605!16s%2Fg%2F11c43y1dg1?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D) to nurture our growing professional community, with a social hour afterward.",
+      "details": "__Our intention is to:__\n\n- Engage in collective action to develop our Nature-Connected Professionals community with the river as a guide.\n- Develop waste-awareness because it’s not just about picking up the trash and shuffling it off to another place.\n- Build self-efficacy with small actions that make a difference.\n- We’ve partnered with Fresh Water and their Adopt a River toolkit. Supplies provided include gloves, bags, buckets, grabbers, and safety vests.\n\n__Arrive prepared:__ Wear long pants, rubber boots/appropriate footwear and bring gloves if you have them. Also consider sun protection, snacks, and water.\n\n__Accessibility:__ Limited parking nearby, accessible by bus. Trails and restrooms located within walking distance.",
+      "specialInfo": "🎉 Social gathering follows at [Pryes Brewing Company](https://www.pryesbrewing.com/) until 6:30 PM",
+      "registrationUrl": "https://www.eventbrite.com/e/nature-connected-professionals-spring-gathering-2026-tickets-1985214740730?aff=oddtdtcreator&keep_tld=true",
+      "image": "https://images.ctfassets.net/ek9rx9938ifx/3G8Gu8iLbCEiPoERV0pj2a/c3f78bfec6faa6a9fb4cd6c45d5ad48b/image.png"
+    },
+    {
       "title": "Summer Gathering 2026",
       "whenText": "Either the fourth or fifth Friday in July from 4:00 PM - 6:30 PM",
       "season": "Summer",
@@ -113,21 +125,21 @@
       "specialInfo": "This is a co-creative process. If you’re not sure it’s going to work, it’s OK. Submit your idea, and we’ll talk to you. Click the Registration button to learn more!",
       "registrationUrl": "/gatherings/2026-unconference",
       "image": "https://images.ctfassets.net/ek9rx9938ifx/5op2ytdUT1OQVSMvY3uktX/dc1b36a54525c845bb9136121b55f2d8/20191116_130345.jpg"
-    },
-    {
-      "title": "Spring Gathering 2026",
-      "whenText": "",
-      "season": "",
-      "year": "",
-      "location": "[Boom Island Park](https://www.google.com/maps/place/724+Sibley+St+NE,+Minneapolis,+MN+55413/@44.9927359,-93.2692605,16z/data=!3m1!4b1!4m6!3m5!1s0x52b3327db5d698c7:0xaa11c30f709b8269!8m2!3d44.9927359!4d-93.2692605!16s%2Fg%2F11c43y1dg1?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D) (entrance/parking furthest north, near picnic pavilions and Paddle Bridge Kayak Tours - 724 Sibley St NE, Minneapolis, MN 55413",
-      "summary": "We'll gather by the water for a stewardship river clean up and networking while we work at [Boom Island Park](https://www.google.com/maps/place/724+Sibley+St+NE,+Minneapolis,+MN+55413/@44.9927359,-93.2692605,16z/data=!3m1!4b1!4m6!3m5!1s0x52b3327db5d698c7:0xaa11c30f709b8269!8m2!3d44.9927359!4d-93.2692605!16s%2Fg%2F11c43y1dg1?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D) to nurture our growing professional community, with a social hour afterward.",
-      "details": "__Our intention is to:__\n\n- Engage in collective action to develop our Nature-Connected Professionals community with the river as a guide.\n- Develop waste-awareness because it’s not just about picking up the trash and shuffling it off to another place.\n- Build self-efficacy with small actions that make a difference.\n- We’ve partnered with Fresh Water and their Adopt a River toolkit. Supplies provided include gloves, bags, buckets, grabbers, and safety vests.\n\n__Arrive prepared:__ Wear long pants, rubber boots/appropriate footwear and bring gloves if you have them. Also consider sun protection, snacks, and water.\n\n__Accessibility:__ Limited parking nearby, accessible by bus. Trails and restrooms located within walking distance.",
-      "specialInfo": "🎉 Social gathering follows at [Pryes Brewing Company](https://www.pryesbrewing.com/) until 6:30 PM",
-      "registrationUrl": "https://www.eventbrite.com/e/nature-connected-professionals-spring-gathering-2026-tickets-1985214740730?aff=oddtdtcreator&keep_tld=true",
-      "image": "https://images.ctfassets.net/ek9rx9938ifx/3G8Gu8iLbCEiPoERV0pj2a/c3f78bfec6faa6a9fb4cd6c45d5ad48b/image.png"
     }
   ],
   "directoryMembers": [
+    {
+      "email": "sherpa@findingmeaningoutdoors.com",
+      "firstName": "Sherpa",
+      "lastName": "Haase",
+      "organization": "Finding Meaning Outdoors",
+      "website": "https://www.findingmeaningoutdoors.com/",
+      "pronouns": "she/her",
+      "services": "Outdoor adventures",
+      "certifications": "",
+      "displayName": "Sherpa Haase",
+      "photoUrl": "https://images.ctfassets.net/ek9rx9938ifx/1Zx6WKs8dAtZ5M435SpjjH/6631cd5403d4ed9d60de81326e769f07/Provider_Directory.png"
+    },
     {
       "email": "tessa@windwavecounseling.com",
       "firstName": "Tessa",
@@ -151,18 +163,6 @@
       "certifications": "Licensed associate marriage and family therapist\nOCD for adults\nOCD for teens\nEcotherapy\nGroup therapy\nAnxiety",
       "displayName": "Tesni Sunne",
       "photoUrl": "https://images.ctfassets.net/ek9rx9938ifx/3bUIdXP5IeIW0g1PNE5zs0/6d0d1a378b6ac747518ec4d416971b26/Tesni_Sunne_Outdoors_-_Provider_Directory.jpg"
-    },
-    {
-      "email": "sherpa@findingmeaningoutdoors.com",
-      "firstName": "Sherpa",
-      "lastName": "Haase",
-      "organization": "Finding Meaning Outdoors",
-      "website": "https://www.findingmeaningoutdoors.com/",
-      "pronouns": "she/her",
-      "services": "",
-      "certifications": "",
-      "displayName": "Sherpa Haase",
-      "photoUrl": "https://images.ctfassets.net/ek9rx9938ifx/1Zx6WKs8dAtZ5M435SpjjH/6631cd5403d4ed9d60de81326e769f07/Provider_Directory.png"
     },
     {
       "email": "sarah.bowman.pottery@gmail.com",

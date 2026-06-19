@@ -37,6 +37,21 @@ function eventSortMs(event) {
   return new Date(yearNum, 6, 1).getTime();
 }
 
+function currentSeasonAnchorMs(now = new Date()) {
+  const month = now.getMonth();
+  let seasonMonth = 0;
+
+  if (month >= 2 && month <= 4) {
+    seasonMonth = 3; // Spring
+  } else if (month >= 5 && month <= 7) {
+    seasonMonth = 6; // Summer
+  } else if (month >= 8 && month <= 10) {
+    seasonMonth = 9; // Fall
+  }
+
+  return new Date(now.getFullYear(), seasonMonth, 15).getTime();
+}
+
 /** Compare by derived timestamp. Events with no temporal signal at all
  *  always sort to the end regardless of direction. */
 function compareBySortMs(a, b, direction) {
@@ -84,7 +99,13 @@ export function getAllEvents() {
 
 /** @returns {EventItem[]} */
 export function getUpcomingEvents() {
+  const currentAnchor = currentSeasonAnchorMs();
+
   return getAllEvents()
+    .filter((event) => {
+      const sortMs = eventSortMs(event);
+      return sortMs == null || sortMs >= currentAnchor;
+    })
     .sort((a, b) => compareBySortMs(a, b, 'asc'));
 }
 
