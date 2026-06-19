@@ -101,23 +101,5 @@ const displayEvents = getUpcomingEvents().slice(0, 1);
     </div>
   </section>
 
-  <section class="section-stack how-section" aria-labelledby="how-title">
-    <h2 id="how-title">How this works</h2>
-    <p class="lead-text">Simple, grounded, and designed for real connection.</p>
-    <div class="how-list">
-      {home.howItWorks.map((item, index) => (
-        <article class="how-item">
-          <h3>Step {index + 1}</h3>
-          <p>{item}</p>
-        </article>
-      ))}
-    </div>
-    <div class="button-row">
-      <a class="button" href={resolveHref(site.primaryCta.url)}>{site.primaryCta.label}</a>
-      <a class="button button--secondary" href={sitePath('/gatherings')}>Explore gatherings</a>
-      <a class="button button--secondary" href={sitePath('/directory')}>Browse the directory</a>
-    </div>
-  </section>
-
   <Lightbox />
 </BaseLayout>
