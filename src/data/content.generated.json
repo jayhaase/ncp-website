@@ -31,10 +31,19 @@
   },
   "pages": [
     {
+      "slug": "directory",
+      "title": "Member Directory",
+      "intro": "Connect with practitioners, guides, and professionals who integrate nature into their work. Listings are sourced from our community roster.",
+      "heroImageUrl": "https://images.ctfassets.net/ek9rx9938ifx/2d1iOfIjrG6vVOPKDzNWA4/2c3c9170cfce1a8c40d8b8bd739a2f6d/Abstract_Landscape_Moon_Trees_Hero_Image.png",
+      "heroImageAlt": "Hero image for Member Directory",
+      "infoCards": [],
+      "sections": []
+    },
+    {
       "slug": "gatherings",
       "title": "Seasonal Gatherings",
       "intro": "Partnering with nature's rhythms to nuture community and connection.",
-      "heroImageUrl": "https://images.ctfassets.net/ek9rx9938ifx/2d1iOfIjrG6vVOPKDzNWA4/2c3c9170cfce1a8c40d8b8bd739a2f6d/Abstract_Landscape_Moon_Trees_Hero_Image.png",
+      "heroImageUrl": "https://images.ctfassets.net/ek9rx9938ifx/5Bjdkwc88stneWb7aCFUyL/d5f7369aec88e5faab3617ca3cc2bf1e/FB5-French_Regional_Park.jpg",
       "heroImageAlt": "Hero image for Seasonal Gatherings",
       "infoCards": [],
       "sections": []
@@ -42,13 +51,13 @@
     {
       "slug": "about",
       "title": "About Our Community",
-      "intro": "Nature Connected Professionals is a member-powered network supporting people who use nature connection in counseling, education, health, and community practice.",
+      "intro": "We gather to cultivate depth through community building, engage broadly through networking, and steward care for life by generously sharing skills, knowledge, and lived experience.",
       "heroImageUrl": "https://images.ctfassets.net/ek9rx9938ifx/6jtVAhLVsal1W1TVGooZZH/8456daf4a136b920f177816a4d1ef295/GM_networking_event_2022.jpg",
       "heroImageAlt": "Hero image for About Our Community",
       "infoCards": [
         {
-          "title": "Lorem Ipsum Dolor",
-          "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+          "title": "History",
+          "description": "Founded in 2022, by Becca Manthe as a graduate school community building experiment. The first networking event was held at the Woodlake Nature Center. The theme was Nature as Catalyst for Cultural Restructuring. We learned about garlic mustard, an edible invasive species brought to the land by European settlers. We helped remove a large swath in the woods while creating connections with each other and sharing stories about our experiences and relationships with foraging, invasive species, and our place in the ecosystem.",
           "href": ""
         },
         {
@@ -89,7 +98,7 @@
       "location": "[Bush Lake  Izaak Walton League](https://maps.app.goo.gl/URWKwhop87QKtW7FA)",
       "summary": "__Theme:__ Working in Relationship with Nature Amid a Changing Climate and an Atmosphere of Unrest",
       "details": "The NCP Summer Gathering will address issues related to climate change. There will be facilitated nature immersion, climate-aware eco-art therapy to process climate anxiety and grief, and community conversation with the facilitators. The facilitators represent several archetypes within the NCP community, including:\n1) A Citizen Naturalist and Ecological Steward\n2) Climate-Aware Eco-Art Therapist\n3) Environmental Leadership Professional\n4) Climate Scientist\n\n__Theme:__ Working in Relationship with Nature Amid a Changing Climate and an Atmosphere of Unrest\n\n__Goals:__ \n1) Connection with nature and community\n2) Emotional processing\n3) Meaningful discussion about climate change and how it impacts our lives\n",
-      "specialInfo": "🎉 There is an optional social time afterward for picnicking and swimming at Bush Lake.",
+      "specialInfo": "🎉 Optional picnicking and swimming follows at Bush Lake starting at 6:30 PM.",
       "registrationUrl": "",
       "image": "https://images.ctfassets.net/ek9rx9938ifx/50v6YQouAmqHlymQkWvjCE/ce6e808aa52c727d40f4c7f87ae972a6/imagejpeg_0_26_.jpg"
     },

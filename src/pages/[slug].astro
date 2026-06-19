@@ -53,7 +53,7 @@ if (!page || slug === 'gatherings') {
   {
     (page.infoCards ?? []).map((card, i) => (
       <section
-        class="section-stack"
+        class="section-stack standard-page-panel"
         aria-labelledby={card.title ? `info-card-${slug}-${i}` : undefined}
         aria-label={card.title ? undefined : 'Information'}
       >

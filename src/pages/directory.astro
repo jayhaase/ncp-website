@@ -1,12 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getSiteSettings } from '../lib/content.js';
+import { getPageBySlug, getSiteSettings } from '../lib/content.js';
 import { getDirectoryEntries } from '../lib/directory.js';
-import { assetUrl } from '../lib/sitePath.js';
+import { assetUrl, resolveHref } from '../lib/sitePath.js';
 
 const site = getSiteSettings();
+const page = getPageBySlug('directory');
 const members = getDirectoryEntries();
 const placeholderPhoto = assetUrl('/images/placeholders/directory-avatar.svg');
+
+if (!page) {
+  throw new Error('Missing required standard page content for slug "directory".');
+}
 
 function resolveMemberPhoto(photoUrl: string | null) {
   if (!photoUrl) return placeholderPhoto;
@@ -36,25 +41,80 @@ function splitIntoBulletItems(text: string) {
 ---
 
 <BaseLayout
-  title={`Directory | ${site.organizationName}`}
-  description="Browse the member directory — nature-connected professionals across Minnesota and beyond."
-  image="/images/placeholders/hero-nature.svg"
+  title={`${page.title} | ${site.organizationName}`}
+  description={page.intro || page.title}
+  image={page.heroImageUrl || '/images/placeholders/hero-nature.svg'}
 >
-  <section class="hero-block hero-block--media hero-block--image-first-mobile" aria-labelledby="directory-title">
-    <div class="hero-copy hero-copy--vcenter">
-      <h1 id="directory-title">Member Directory</h1>
-      <p class="lead-text">
-        Connect with practitioners, guides, and professionals who integrate nature into their work. Listings are
-        sourced from our community roster.
-      </p>
-    </div>
-    <img
-      class="placeholder-image placeholder-image--hero"
-      src={assetUrl('/images/placeholders/hero-nature.svg')}
-      alt="Nature landscape illustration"
-      loading="lazy"
-    />
-  </section>
+  {
+    page.heroImageUrl ? (
+      <section
+        class="hero-block hero-block--media hero-block--image-first-mobile"
+        aria-labelledby="directory-title"
+      >
+        <div class="hero-copy hero-copy--vcenter">
+          <h1 id="directory-title">{page.title}</h1>
+          {page.intro ? <p class="lead-text">{page.intro}</p> : null}
+        </div>
+        <img
+          class="placeholder-image placeholder-image--hero"
+          src={assetUrl(page.heroImageUrl)}
+          alt={page.heroImageAlt || `${page.title} hero image`}
+          loading="lazy"
+        />
+      </section>
+    ) : (
+      <section class="hero-block" aria-labelledby="directory-title">
+        <h1 id="directory-title">{page.title}</h1>
+        {page.intro ? <p class="lead-text">{page.intro}</p> : null}
+      </section>
+    )
+  }
+
+  {
+    (page.infoCards ?? []).map((card, i) => (
+      <section
+        class="section-stack standard-page-panel"
+        aria-labelledby={card.title ? `directory-info-card-${i}` : undefined}
+        aria-label={card.title ? undefined : 'Information'}
+      >
+        {card.title ? <h2 id={`directory-info-card-${i}`}>{card.title}</h2> : null}
+        {card.description ? <p class="page-body">{card.description}</p> : null}
+        {card.href ? (
+          <p>
+            <a class="button button--compact" href={resolveHref(card.href)}>
+              Learn more
+            </a>
+          </p>
+        ) : null}
+      </section>
+    ))
+  }
+
+  {
+    page.sections.map((section) => (
+      <section class="section-stack" aria-label={section.heading || 'Page section'}>
+        {section.heading ? <h2>{section.heading}</h2> : null}
+        {section.bodyText ? <p class="page-body">{section.bodyText}</p> : null}
+
+        {section.cards?.length ? (
+          <div class="card-grid">
+            {section.cards.map((card) => (
+              <article class="card">
+                <h3>{card.title}</h3>
+                <p>{card.description}</p>
+              </article>
+            ))}
+          </div>
+        ) : null}
+
+        {section.listItems?.length ? (
+          <ul class="list-flow">
+            {section.listItems.map((item) => <li>{item}</li>)}
+          </ul>
+        ) : null}
+      </section>
+    ))
+  }
 
   <div class="directory-page">
     <div class="directory-page__header">

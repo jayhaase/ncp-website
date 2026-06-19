@@ -464,6 +464,20 @@ p {
   background: linear-gradient(90deg, var(--accent), var(--accent-gold));
 }
 
+.standard-page-panel {
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.directory-page__header,
+.directory-list > li {
+  max-width: 780px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
 /* Extra vertical space between major section cards only (does not change padding inside them). */
 .content-shell .wrapper > .section-stack + .section-stack {
   margin-top: 2.85rem;
